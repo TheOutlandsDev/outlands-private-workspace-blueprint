@@ -39,3 +39,9 @@ Keep a per-app note with the supported customization, the affected version, and 
 Review desktop, narrow browser, and real phone views. Check long app names, empty metrics, stale data, denied access, and loading failures. A screenshot should say **ILLUSTRATIVE MOCKUP** when it contains synthetic data. Crop or redact private information before any approved public capture, and treat the final exported file as the material to review.
 
 Consult [third-party boundaries](third-party.md) before adding logos, fonts, icons, or screenshots.
+
+## Try an app-specific example
+
+The [Dockhand cyberpunk walkthrough](06-dockhand-cyberpunk.md) includes an original
+local fixture, fictional services, desktop/mobile demo captures and a CSS adapter.
+Its proxy examples remain separate from native app authentication and API policy.

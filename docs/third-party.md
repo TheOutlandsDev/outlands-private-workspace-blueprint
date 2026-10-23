@@ -6,6 +6,8 @@ This blueprint uses original OUTLANDS tutorial text and visual direction. It lin
 
 | Project | Role in the tutorial | Official reference |
 | --- | --- | --- |
+| Dockhand | Container management discussed in the theme walkthrough | [Dockhand manual](https://dockhand.pro/manual/) · [source](https://github.com/Finsys/dockhand) |
+| Nginx | Optional HTML theme overlay | [HTTP sub module](https://nginx.org/en/docs/http/ngx_http_sub_module.html) |
 | Homepage | Central application catalog | [Homepage documentation](https://gethomepage.dev/) |
 | Docker and Compose | Container runtime and service definitions | [Docker documentation](https://docs.docker.com/) |
 | Tailscale | Private connectivity and Serve HTTPS routes | [Tailscale documentation](https://tailscale.com/docs/) |
@@ -13,7 +15,7 @@ This blueprint uses original OUTLANDS tutorial text and visual direction. It lin
 | Grafana | Native-login dashboards | [Grafana documentation](https://grafana.com/docs/grafana/latest/) |
 | Prometheus and Node Exporter | Host telemetry and queries | [Prometheus documentation](https://prometheus.io/docs/introduction/overview/) |
 
-Upstream documentation was consulted on 2026-10-22. Interfaces, defaults, license terms, and supported versions can change. Check the documentation for the exact release you deploy.
+Upstream documentation was consulted on 2026-10-22; Dockhand appearance and Nginx filter references were checked on 2026-10-23. Interfaces, defaults, license terms, and supported versions can change. Check the documentation for the exact release you deploy.
 
 ## Reuse decisions
 
