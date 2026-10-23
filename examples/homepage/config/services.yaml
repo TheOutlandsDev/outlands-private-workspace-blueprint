@@ -1,0 +1,13 @@
+- Workspace:
+    - Fleet Overview:
+        icon: /outlands/mark.svg
+        href: https://fleet.example.invalid/
+        description: "Inventory and health · replace this placeholder"
+    - Grafana:
+        icon: /outlands/mark.svg
+        href: https://grafana.example.invalid/
+        description: "Dashboards · native login"
+    - Container Inventory:
+        icon: /outlands/mark.svg
+        href: https://containers.example.invalid/
+        description: "Owner-only viewing · access policy required"

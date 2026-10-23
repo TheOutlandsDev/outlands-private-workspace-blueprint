@@ -1,0 +1,17 @@
+/* Original OUTLANDS sample. Version-specific selectors need visual QA. */
+:root { color-scheme: dark; --outlands-red: #ff364c; --outlands-ink: #080a0e; }
+body { background-color: var(--outlands-ink) !important; color: #eef0f6; }
+#page_container { background-color: transparent; }
+#page_container::before {
+  content: ""; display: block; width: min(96%, 1440px); height: clamp(140px, 22vw, 290px);
+  margin: 1rem auto 1.5rem; border: 1px solid #ff364c55; border-radius: .8rem;
+  background: #090a0e url('/outlands/netwall.svg') center / cover no-repeat;
+}
+.service-card { border: 1px solid #ff364c44; background-color: #101219e8 !important; }
+a:focus-visible, button:focus-visible { outline: 3px solid #ff697a; outline-offset: 4px; }
+@media (max-width: 640px) {
+  #page_container::before { min-height: 160px; width: calc(100% - 1rem); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
