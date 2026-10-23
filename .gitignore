@@ -1,0 +1,14 @@
+# Local credentials, runtime data and operator records do not belong in this guide.
+.env
+.env.*
+!.env.example
+**/config/logs/
+**/data/
+**/backups/
+*.key
+*.pem
+*.sqlite*
+*.db
+__pycache__/
+*.pyc
+.DS_Store
