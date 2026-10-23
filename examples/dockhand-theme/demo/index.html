@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>OUTLANDS · Dockhand theme demo · Fictional data</title>
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="../theme/netwall.css">
+</head>
+<body>
+  <a class="skip" href="#demo-content">Skip to sample containers</a>
+  <aside data-sidebar="sidebar" aria-label="Demo navigation">
+    <div data-sidebar="header"><img src="../theme/assets/mark.svg" alt="OUTLANDS original demo mark"><strong>OUTLANDS</strong></div>
+    <nav aria-label="Illustrative sections"><span>Overview</span><span data-sidebar="menu-button" data-active="true" aria-current="page">Containers</span><span>Health</span><span>Build notes</span></nav>
+    <p class="sidebar-note">ORIGINAL THEME<br>STATIC PREVIEW</p>
+  </aside>
+  <main class="bg-background">
+    <header><span class="demo-label">ILLUSTRATIVE MOCKUP</span><span>Fictional data · no backend</span></header>
+    <div class="content" id="demo-content">
+      <div class="heading"><div><p class="eyebrow">SAMPLE WORKSPACE / demo-node</p><h1>Containers <span class="count">6</span></h1></div><span class="boundary">READ-ONLY DEMO</span></div>
+      <p class="intro">A clear view of your services. This original layout demonstrates the theme; it is not the Dockhand application.</p>
+      <section class="summary" aria-label="Fictional container totals">
+        <div><span>RUNNING</span><strong>4 <small>services</small></strong></div>
+        <div><span>WAITING</span><strong>1 <small>service</small></strong></div>
+        <div><span>STOPPED</span><strong>1 <small>service</small></strong></div>
+      </section>
+      <div class="toolbar"><label>Find a sample <input type="search" placeholder="Demo only — no filtering" disabled></label><button type="button" disabled>Refresh sample</button></div>
+      <p class="table-hint">On a narrow screen, scroll the table sideways to see every column.</p>
+      <div class="table-wrap" role="region" aria-label="Fictional sample containers, horizontally scrollable" tabindex="0">
+        <table>
+          <caption>All service names, images, status and metrics below are invented.</caption>
+          <thead><tr><th scope="col">Service</th><th scope="col">Image</th><th scope="col">State</th><th scope="col">CPU</th><th scope="col">Memory</th><th scope="col">Uptime</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">demo-web</th><td>example/web:1.0</td><td><span class="state running">● Running</span></td><td>0.8%</td><td>96 MiB</td><td>2 days</td></tr>
+            <tr><th scope="row">demo-worker</th><td>example/worker:1.0</td><td><span class="state running">● Running</span></td><td>2.1%</td><td>128 MiB</td><td>2 days</td></tr>
+            <tr><th scope="row">demo-metrics</th><td>example/metrics:1.0</td><td><span class="state running">● Running</span></td><td>0.4%</td><td>64 MiB</td><td>1 day</td></tr>
+            <tr><th scope="row">demo-catalog</th><td>example/catalog:1.0</td><td><span class="state running">● Running</span></td><td>0.2%</td><td>48 MiB</td><td>1 day</td></tr>
+            <tr><th scope="row">demo-jobs</th><td>example/jobs:1.0</td><td><span class="state waiting">◷ Waiting</span></td><td>—</td><td>—</td><td>Not started</td></tr>
+            <tr><th scope="row">demo-sandbox</th><td>example/sandbox:1.0</td><td><span class="state stopped">■ Stopped</span></td><td>—</td><td>—</td><td>Stopped</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <footer><strong>YOUR DESIGN. YOUR BOUNDARY.</strong><p>Original OUTLANDS artwork · static example · no Docker connection</p></footer>
+    </div>
+  </main>
+</body>
+</html>
