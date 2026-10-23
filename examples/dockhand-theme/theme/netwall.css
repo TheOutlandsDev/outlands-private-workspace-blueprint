@@ -1,0 +1,101 @@
+/* Original OUTLANDS tutorial CSS. Selectors target the reviewed 1.0.43-era UI.
+   Presentation only: no API, authorization or read-only enforcement.
+   Relative assets must remain beside this stylesheet. Retest after upgrades. */
+html:root, html.dark, html[class*="theme-"] {
+  color-scheme: dark;
+  --background: 240 8% 4% !important;
+  --foreground: 220 15% 94% !important;
+  --card: 240 6% 7% !important;
+  --card-foreground: 220 15% 94% !important;
+  --popover: 240 6% 8% !important;
+  --popover-foreground: 220 15% 94% !important;
+  --primary: 354 95% 62% !important;
+  --primary-foreground: 240 8% 4% !important;
+  --secondary: 240 5% 12% !important;
+  --secondary-foreground: 220 15% 94% !important;
+  --muted: 240 5% 12% !important;
+  --muted-foreground: 220 8% 68% !important;
+  --accent: 350 22% 15% !important;
+  --accent-foreground: 0 0% 98% !important;
+  --destructive: 0 72% 43% !important;
+  --destructive-foreground: 0 0% 100% !important;
+  --border: 340 10% 17% !important;
+  --input: 340 10% 20% !important;
+  --ring: 354 95% 65% !important;
+  --sidebar-background: 240 7% 5% !important;
+  --sidebar-foreground: 220 12% 88% !important;
+  --sidebar-primary: 354 95% 62% !important;
+  --sidebar-primary-foreground: 240 8% 4% !important;
+  --sidebar-accent: 350 22% 13% !important;
+  --sidebar-accent-foreground: 0 0% 98% !important;
+  --sidebar-border: 340 10% 17% !important;
+  --sidebar-ring: 354 95% 65% !important;
+}
+body { background: hsl(var(--background)); color: hsl(var(--foreground)); }
+main.bg-background {
+  background: radial-gradient(ellipse at 100% 0, #35111944, transparent 50%), #09090b;
+  min-width: 0;
+}
+main.bg-background::before {
+  content: "OUTLANDS // DOCKHAND\A PRIVATE CONTAINER WORKSPACE";
+  display: flex;
+  align-items: flex-end;
+  flex: 0 0 178px;
+  box-sizing: border-box;
+  padding: 24px 28px;
+  border-top: 3px solid #fb3d52;
+  border-bottom: 1px solid #fb3d5277;
+  background-image: linear-gradient(90deg, #08090bf5 0%, #08090b99 42%, #08090b22 80%), url("assets/netwall.svg");
+  background-size: cover;
+  background-position: center;
+  color: #f4f4f7;
+  font: 700 clamp(17px, 2vw, 26px)/1.55 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: .07em;
+  white-space: pre-line;
+  text-shadow: 0 2px 16px #000;
+}
+main > header { background: #101013 !important; border-color: #38252a !important; }
+[data-sidebar="sidebar"] { background: #0c0c0f !important; border-right: 1px solid #38252a; }
+[data-sidebar="header"] { border-bottom: 1px solid #38252a; padding-block: 12px !important; }
+[data-sidebar="header"] img[alt="Dockhand Logo"] {
+  content: url("assets/mark.svg");
+  width: 164px !important;
+  max-width: calc(100% - 16px);
+  height: 40px !important;
+  object-fit: contain;
+}
+[data-sidebar="header"]::after {
+  content: "CONTAINER WORKSPACE";
+  color: #a8a5af;
+  font: 600 8px/1.5 ui-monospace, monospace;
+  letter-spacing: .08em;
+}
+[data-sidebar="menu-button"][data-active="true"] {
+  background: #35141b !important;
+  color: #ff677b !important;
+  box-shadow: inset 2px 0 #fb3d52;
+}
+main h1 { color: #f1f2f5; letter-spacing: .015em; }
+thead { background: #171317; }
+tbody tr:hover { background-color: #201318; }
+input, select { background-color: #131216; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid #ff677b;
+  outline-offset: 3px;
+}
+/* Status colors, visibility, disabled states, hit targets and app logic are native. */
+@media (max-width: 760px) {
+  main.bg-background::before {
+    flex-basis: 160px;
+    padding: 20px 16px;
+    background-position: 62% center;
+    font-size: 16px;
+    letter-spacing: .025em;
+  }
+}
+@media (max-height: 480px) and (orientation: landscape) {
+  main.bg-background::before { flex-basis: 76px; padding: 10px 20px; font-size: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  main.bg-background::before { scroll-behavior: auto; }
+}
