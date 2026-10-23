@@ -33,6 +33,8 @@ The custom-app examples teach a design and data contract. They do not distribute
 
 ## First exercise: inspect the design safely
 
+On the repository page, choose **Code → Download ZIP**, extract the archive, and open a terminal in the extracted repository folder. Install Python 3.9+ from its official source if needed. Check `python3 --version` before starting. On Windows, use `py -3` in place of `python3` if that is how Python is installed. No app installation is needed for the static tour.
+
 ```sh
 # From this repository root, with Python 3.9+
 python3 -I -B examples/app-tour/serve_demo.py --port 8766
