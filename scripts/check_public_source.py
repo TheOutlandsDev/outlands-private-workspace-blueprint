@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Read-only bounded screening of this guide checkout; no services or network."""
+import hashlib
 import ipaddress
 import json
 from pathlib import Path
@@ -10,6 +11,9 @@ ROOT = Path(__file__).resolve().parents[1]
 MAX_FILES = 100
 MAX_TOTAL_BYTES = 8_000_000
 ALLOWED_EMAIL_DOMAINS = {'example.com', 'example.invalid', 'example.org'}
+# Visually reviewed captures of the original fictional fixture only.
+# Any changed/new image requires a fresh review; arbitrary binaries stay blocked.
+REVIEWED_DEMO_IMAGES = {'assets/dockhand-demo-desktop.jpg': 'b9f9ac0cb9d163d5ab04b37e5856a362a6778fda78457a2a04646eb7015a17f2', 'assets/dockhand-demo-portrait.jpg': 'cd6ba476237dc009b45997f7e701e6a0cdd48a9b27d8bf4b0dfaec3633a52535'}
 
 
 def main():
@@ -34,6 +38,12 @@ def main():
         if ((path.name.startswith('.env') and path.name != '.env.example')
                 or path.suffix.lower() in ('.key', '.pem', '.db', '.sqlite', '.sqlite3')):
             findings.append({'file': str(relative), 'check': 'private_file_type'})
+        if relative.as_posix() in REVIEWED_DEMO_IMAGES:
+            data = path.read_bytes()
+            if (not data.startswith(b'\xff\xd8\xff') or not data.endswith(b'\xff\xd9')
+                    or hashlib.sha256(data).hexdigest() != REVIEWED_DEMO_IMAGES[relative.as_posix()]):
+                findings.append({'file': str(relative), 'check': 'reviewed_demo_image_changed'})
+            continue
         try:
             text = path.read_text(encoding='utf-8')
         except UnicodeError:
