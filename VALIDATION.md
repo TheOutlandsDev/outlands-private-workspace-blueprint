@@ -22,3 +22,29 @@ starts no service or network connection. Run it again after editing examples.
 The public guide deliberately contains no live host inventory, private deployment
 adapters, account bindings, application databases, configuration exports, tokens,
 cookies or operator evidence. Its QA matrix remains NOT RUN for a reader's setup.
+
+
+## Dockhand walkthrough example · 2026-10-23
+
+| Check | Result | Evidence boundary |
+|---|---|---|
+| Fictional static demo, local Browser rendering | PASS | Six invented services; no app backend, Docker socket or JavaScript. |
+| Requested viewport checks | PASS | Desktop 1200×800, portrait 390×844 and landscape 844×390; no document horizontal overflow. Scrollbar space reduces the measured client width. |
+| Keyboard table scroll | PASS | ArrowRight moved the portrait table's internal scroll offset from 0 to 40 pixels. |
+| Demo console sample | PASS | No errors or warnings in the captured sample. |
+| Clean exported screenshots | PASS | Desktop and portrait viewport captures of the original fixture, labeled ILLUSTRATIVE MOCKUP. The exports are native JPEGs, not live app screenshots; no EXIF/comment metadata was retained. |
+| Image/source screening | PASS | Reviewed screenshot hashes are pinned in the checker; other binary files remain review findings. Relative links and fictional values were checked. |
+| Fixed-file preview policy checks | PASS | Expected files served by the handler; wrong Host, unknown paths and query aliases denied in synthetic tests. No app routes exist. |
+| Real Nginx/native Dockhand deployment of this public example | NOT RUN | Included proxy fragments are nondeployable design examples; the owner-check placeholder denies everyone. |
+| Physical phone / tailnet owner sign-in / restore exercise | NOT RUN | Demo responsive previews do not prove these outcomes. |
+
+Run both read-only checks from the repository root:
+
+```sh
+python3 -I -B scripts/check_public_source.py
+python3 -I -B scripts/check_dockhand_demo.py
+```
+
+The screenshot hashes refer only to the two reviewed original mockups. Recapture
+and review any replacement image before changing those pins. Never whitelist a
+live infrastructure screenshot just to make a source check pass.

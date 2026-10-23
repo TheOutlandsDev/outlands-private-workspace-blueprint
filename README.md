@@ -45,6 +45,8 @@ flowchart LR
    [access and QA matrix](docs/03-access-and-qa.md) before adding privileged tools.
 4. Apply the [black/red branding](docs/04-branding.md), then document
    [operations, backup and rollback](docs/05-operations.md).
+5. Try the [Dockhand cyberpunk theme walkthrough](docs/06-dockhand-cyberpunk.md):
+   a local fictional demo, clean screenshots and a staged native-adapter path.
 
 ```sh
 # Read-only checks on this source checkout; no container or network activity.
