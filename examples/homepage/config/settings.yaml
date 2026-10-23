@@ -1,0 +1,18 @@
+title: "OUTLANDS // PRIVATE WORKSPACE"
+description: "A private home for your self-hosted tools"
+theme: dark
+color: slate
+headerStyle: clean
+cardStyle: hairline
+useEqualHeights: true
+hideVersion: true
+disableSearch: true
+disableCollapse: false
+background:
+  image: /outlands/netwall.svg
+  brightness: 50
+  opacity: 50
+layout:
+  Workspace:
+    style: row
+    columns: 3
