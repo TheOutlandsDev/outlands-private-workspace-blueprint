@@ -58,6 +58,10 @@ The example's `compose.yaml`, `.env.example`, `config/` and `assets/` live under
 in this repository automatically starts an app, joins a tailnet, creates an
 identity provider, imports secrets or changes an existing server.
 
+## More beginner walkthroughs
+
+Open the [app walkthrough library](docs/07-app-walkthroughs.md) for thirteen more guides: Homepage, AI Workbench, Grafana, identity, portals, fleet, metrics, alerts, container resources, Git, learning, game connection guides and local API tools. Each includes a fictional local demo, a clean screenshot, a setup path and rollback checks.
+
 ## Design direction
 
 Charcoal surfaces, a red digital-wall motif, clear service labels and restrained

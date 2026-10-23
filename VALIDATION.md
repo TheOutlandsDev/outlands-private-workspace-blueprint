@@ -48,3 +48,28 @@ python3 -I -B scripts/check_dockhand_demo.py
 The screenshot hashes refer only to the two reviewed original mockups. Recapture
 and review any replacement image before changing those pins. Never whitelist a
 live infrastructure screenshot just to make a source check pass.
+
+## 2026-10-23 · Remaining app walkthroughs
+
+Thirteen additional beginner guides, an index and original fictional fixtures were added. Grafana dashboard roles share one guide; identity user/admin destinations share one identity guide; custom portals and local tools use original teaching contracts. Pelican/Game Server Control remains excluded.
+
+| Evidence | Result | Limit |
+| --- | --- | --- |
+| Read-only source privacy/link screen | PASS | Bounded patterns plus manual review; not a guarantee against every secret format |
+| Original fixture checks | PASS | Local resources, no scripts/forms/remote assets, fixed-file handler tested synthetically |
+| YAML/JSON fenced examples | Parsed during author review | Syntax only; no native app deployment or schema validation claimed |
+| Browser desktop | 13/13 pages passed | Original static fixtures, not vendor interfaces |
+| Browser portrait + reload | 13/13 pages passed | Viewport simulation; no physical phone used |
+| Browser landscape | 13/13 pages passed | No horizontal document overflow observed |
+| Clean public screenshots | 13 reviewed JPEG captures | Fictional original pages; no live infrastructure |
+| Real native installations, access enforcement, inference, collectors and recovery | NOT RUN | Must be tested in each reader's own staging environment |
+
+Requested viewports were 1200×800, 390×844 and 844×390 CSS pixels. Browser capture dimensions may differ. The local demo server is a loopback development tool, not an owner authentication gateway. No native application, identity, Tailscale route, secret or shared-sign-in setting was changed while preparing these additions. The new CSS targets only original fixtures and is not advertised as a universal native adapter.
+
+Run the repository checks from its root:
+
+```sh
+python3 -I -B scripts/check_public_source.py
+python3 -I -B scripts/check_dockhand_demo.py
+python3 -I -B scripts/check_app_tour.py
+```

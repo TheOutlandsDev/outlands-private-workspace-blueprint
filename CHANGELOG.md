@@ -18,3 +18,10 @@
 
 No live deployment records, native app forks, private adapters, runtime
 collectors, credentials or universal shared-sign-in installer are included.
+
+## 2026-10-23 · App walkthrough library
+
+- Added thirteen beginner guides and a linked catalog index.
+- Added thirteen original fictional HTML demos with shared local artwork/CSS and an exact-route loopback server.
+- Grouped Grafana dashboard roles; retained native login and kept Pelican out of scope.
+- Custom apps use original teaching contracts; no private app implementation or runtime configuration is published.
