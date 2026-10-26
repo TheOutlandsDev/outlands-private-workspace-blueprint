@@ -14,6 +14,19 @@ application can share the same theme, credentials or read-only API.
 Original materials are [MIT licensed](LICENSE). Applications and their brands
 keep their [upstream licenses](docs/third-party.md).
 
+## Try the design first
+
+| Path | Requirements and first step |
+| --- | --- |
+| Local visual demo | A downloaded checkout and Python 3.9+. Follow the [static theme demo](docs/06-dockhand-cyberpunk.md#1-open-a-local-demo-first); no Docker, account or tailnet is needed for this path. |
+| Local Homepage example | Docker Engine with Compose, an ordinary local user and your reviewed Homepage image reference. [Prepare the example](examples/homepage/README.md). |
+| Private app access | Your own Tailscale policy and destination-app authorization, configured separately. Read the [build path](docs/02-build-path.md) and [access QA](docs/03-access-and-qa.md). |
+| Current status | Early reference blueprint; static-demo checks are separate from native app compatibility, owner-login tests and a complete-stack deployment. [Validation scope](VALIDATION.md). |
+
+**Illustrative static mockup with fictional data.** This screenshot shows the repository's original theme fixture, not a native Dockhand deployment or live infrastructure.
+
+![Illustrative static OUTLANDS theme mockup with fictional containers](assets/dockhand-demo-desktop.jpg)
+
 ## What you can build
 
 | Layer | Purpose | Boundary |
