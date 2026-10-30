@@ -7,7 +7,7 @@
 | Layer | Interface | Current example |
 | --- | --- | --- |
 | Host | Linux host with a supported Docker Engine and Compose plugin | Reader installs and validates locally |
-| Storage | Persistent volume and backup destination chosen by the operator | Named volumes in the AI module |
+| Storage | Persistent state with a privately chosen recovery plan | Named volumes in the AI module |
 | Network | Local binding first; remote route only after separate access review | WebUI binds to `127.0.0.1`; Ollama has no host port |
 | AI | Model server and browser application | [Ollama + Open WebUI](../../modules/ai/ollama-open-webui/README.md) |
 | Catalog | Optional entry point after the app access check | [Homepage example](../../examples/homepage/README.md) |
@@ -17,7 +17,7 @@ Modules do not need a shared login or a single all-services Compose file. Instal
 
 ## Host preparation checklist
 
-1. Choose a supported Linux release and follow its official installation and update instructions. Record disk layout, backup destination, and recovery media privately. No public example can choose these for your hardware.
+1. Choose a supported Linux release and follow its official installation and update instructions. Keep disk layout, recovery media, and every backup location or provider in private operator records. This public role does not describe an actual host.
 2. Install Docker Engine and Compose from the [official Docker instructions](https://docs.docker.com/engine/install/). Review Docker's daemon and group privileges; membership in the `docker` group grants powerful host control.
 3. Check `docker version` and `docker compose version` before using a module. Use an ordinary operator account with deliberate Docker access; do not paste credentials into a Compose file or shell history.
 4. Pick one module, copy its example settings to a Git-ignored local file, and resolve its configuration before starting it. Check its intended listening addresses and persistent volumes.
