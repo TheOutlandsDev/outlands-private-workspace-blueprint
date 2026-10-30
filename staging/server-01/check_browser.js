@@ -21,12 +21,12 @@ function requireCheck(condition, label) {
     const catalog = await context.newPage();
     const catalogResponse = await catalog.goto('http://127.0.0.1:13003/', { waitUntil: 'domcontentloaded' });
     requireCheck(catalogResponse && catalogResponse.status() === 200, 'Homepage browser response');
-    await catalog.waitForTimeout(5000);
-    process.stdout.write(`OBSERVED fictional Homepage body: ${JSON.stringify((await catalog.locator('body').innerText()).slice(0, 320))}\n`);
-    await catalog.getByText('Open WebUI', { exact: true }).first().waitFor({ timeout: 45000 });
-    await catalog.getByText('Grafana', { exact: true }).first().waitFor({ timeout: 45000 });
+    await catalog.waitForFunction(() => document.body.innerText.includes('Open WebUI') &&
+      document.body.innerText.includes('Grafana'), null, { timeout: 45000 });
     const catalogText = await catalog.locator('body').innerText();
-    requireCheck(catalogText.includes('FICTIONAL CATALOG'), 'fictional Homepage title rendered');
+    requireCheck(catalogText.includes('Open WebUI') && catalogText.includes('Grafana'),
+      'fictional Homepage cards rendered');
+    requireCheck((await catalog.title()).includes('FICTIONAL CATALOG'), 'fictional Homepage title rendered');
     requireCheck(await catalog.locator('a[href="https://webui.example.invalid/"]').count() === 1,
       'WebUI card remains fictional');
     requireCheck(await catalog.locator('a[href="https://metrics.example.invalid/"]').count() === 1,
