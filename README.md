@@ -34,6 +34,8 @@ stage a fictional route and verify both network and app denial. The
 adds local-only Prometheus/Grafana and invented fresh, stale, and unavailable data.
 The optional [Homepage catalog module](modules/catalog/homepage/README.md)
 provides two fictional app links; each destination keeps its own access check.
+The [disposable staging method](staging/server-01/README.md) exercises fresh
+synthetic projects on a hosted runner and records its own acceptance limits.
 
 ## Try the design first
 

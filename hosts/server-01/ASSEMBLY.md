@@ -84,3 +84,5 @@ python3 -I -B scripts/check_public_source.py
 ```
 
 The checker verifies that the public worksheet names only the reviewed modules, retains independent projects and fictional inputs, and claims no completed acceptance. It cannot validate a reader's private choices, native UI, service wiring, recovery, or authorization. Those remain `NOT_RUN` here.
+
+For a separate, disposable **repository staging run**, see [synthetic server-01 staging](../../staging/server-01/README.md). That job tests fresh fictional containers and browser behavior on a GitHub runner; it does not turn any reader-host `NOT_RUN` row into a pass.

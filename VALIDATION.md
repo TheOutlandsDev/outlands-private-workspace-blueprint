@@ -1,5 +1,16 @@
 # Validation boundaries
 
+## Disposable synthetic server-01 staging
+
+The [hosted staging method](staging/server-01/README.md) is a separate GitHub Actions job that boots fresh AI, fictional metrics, and catalog modules on a disposable runner. It records each run's resolved upstream image digests. The native checks cover loopback port bindings, Ollama/WebUI internal connectivity, fictional metrics fresh/stale/unavailable/recovered states, Grafana provisioning, disposable WebUI signup and signed-out denial, and Chromium DOM rendering. **A source or syntax check does not qualify that job**; only a specific completed hosted run can establish those outcomes. Model pull/inference, GPU use, private routes, physical devices, persistent restoration, and real-host security remain `NOT RUN`.
+
+Local source-only checks:
+
+```sh
+bash -n staging/server-01/run.sh
+python3 -I -B scripts/check_public_source.py
+```
+
 ## server-01 Homepage catalog module
 
 The [catalog module](modules/catalog/homepage/README.md) contains two fictional `.invalid` destination cards and a separate loopback-only Homepage Compose project. Offline checks reject real links, wildcard binding, Docker socket, service widgets, or filled public image/operator inputs. Synthetic Compose resolution checks only file shape. No image was pulled, container started, native Homepage UI rendered, private route tested, or destination authorization observed. Those results remain `NOT RUN` in the module guide.
