@@ -11,9 +11,9 @@ import sys
 
 PROJECT = "outlands-ai-restore-example"
 MODEL = "smollm2:135m"
-# Ollama's public tag page showed this identifier and 271 MB on 2026-10-30.
-# A changed tag must stop before generation. The full digest is logged safely.
-EXPECTED_DIGEST = "9077fe9d2ae1"
+# The first disposable hosted run resolved this full digest on 2026-10-30.
+# A changed tag must stop before generation. The digest is logged safely.
+EXPECTED_DIGEST = "9077fe9d2ae1a4a41a868836b56b8163731a8fe16621397028c2c76f838c6907"
 MAX_MODEL_BYTES = 350_000_000
 
 TAGS_SCRIPT = r"""
@@ -64,7 +64,7 @@ def validate_model(data):
     if (not isinstance(data, dict) or data.get("count") != 1
             or data.get("name") != MODEL or not isinstance(digest, str)
             or not re.fullmatch(r"[a-f0-9]{64}", digest)
-            or not digest.startswith(EXPECTED_DIGEST)
+            or digest != EXPECTED_DIGEST
             or type(data.get("size")) is not int
             or not 50_000_000 <= data["size"] <= MAX_MODEL_BYTES):
         raise RuntimeError("reviewed model identity or size changed")

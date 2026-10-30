@@ -13,7 +13,7 @@ from check_inference import (EXPECTED_DIGEST, MODEL, PROJECT, check, invoke,
                              main, validate_generation, validate_model)
 
 
-DIGEST = EXPECTED_DIGEST + "0" * (64 - len(EXPECTED_DIGEST))
+DIGEST = EXPECTED_DIGEST
 
 
 class InferenceTests(unittest.TestCase):
@@ -49,7 +49,7 @@ class InferenceTests(unittest.TestCase):
         self.assertNotIn("fictional red paper kite", output.getvalue())
 
     def test_digest_change_stops_before_generation(self):
-        runner, calls = self.fake(digest="f" * 64)
+        runner, calls = self.fake(digest=EXPECTED_DIGEST[:12] + "f" * 52)
         with redirect_stdout(io.StringIO()):
             with self.assertRaisesRegex(RuntimeError, "identity or size changed"):
                 check(self.root, runner)
