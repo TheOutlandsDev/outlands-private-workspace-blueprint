@@ -39,7 +39,7 @@ def check(root: Path) -> list[str]:
         findings.append("loopback_ports")
     if any(token in compose for token in ("docker.sock", "network_mode: host", "privileged: true")):
         findings.append("privileged_or_host_access")
-    if ("GF_SECURITY_ADMIN_PASSWORD__FILE: /run/secrets/grafana_admin_password" not in compose
+    if ('GF_SECURITY_ADMIN_PASSWORD: "$$__file{/run/secrets/grafana_admin_password}"' not in compose
             or "file: ${GRAFANA_PASSWORD_FILE:?" not in compose
             or 'GF_AUTH_ANONYMOUS_ENABLED: "false"' not in compose):
         findings.append("grafana_auth_boundary")

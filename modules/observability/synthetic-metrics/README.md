@@ -25,10 +25,12 @@ umask 077
 cp .env.example .env
 mkdir -m 700 .secrets
 openssl rand -hex 32 > .secrets/grafana-admin-password
-chmod 600 .env .secrets/grafana-admin-password
+chmod 600 .env
+sudo chgrp 0 .secrets/grafana-admin-password
+chmod 640 .secrets/grafana-admin-password
 ```
 
-Fill the three image references in `.env` with reviewed `@sha256:` digests. The public file has blank values. The `.secrets` directory and `.env` are ignored by Git, and the source screen rejects a checked-in secrets directory. Do not publish the generated password, `.env`, Compose output, Grafana database, Prometheus data, dashboard exports from a real instance, or screenshots containing labels. Grafana reads the password through a Compose secret file. Keep the same secret and state for a controlled update; do not treat the sample password file as a recovery design.
+Fill the three image references in `.env` with reviewed `@sha256:` digests. The public file has blank values. The `.secrets` directory and `.env` are ignored by Git, and the source screen rejects a checked-in secrets directory. Do not publish the generated password, `.env`, Compose output, Grafana database, Prometheus data, dashboard exports from a real instance, or screenshots containing labels. Grafana reads the password from a Compose-mounted file through its `$__file{...}` configuration provider. The selected Grafana 13.3.0 image runs as UID 472, GID 0; file-backed Compose secrets retain host ownership and mode, so the group-read command gives this image access without making the file world-readable. Check the selected image's user and group before applying this recipe to another version. Keep the same secret and state for a controlled update; do not treat the sample password file as a recovery design.
 
 ## 2. Resolve and start only this example
 

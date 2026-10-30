@@ -26,12 +26,18 @@ OPEN_WEBUI_IMAGE="$(pull_digest open-webui ghcr.io/open-webui/open-webui:v0.12.5
 PYTHON_IMAGE="$(pull_digest python python:3.13-slim)"
 PROMETHEUS_IMAGE="$(pull_digest prometheus prom/prometheus:v3.15.1)"
 GRAFANA_IMAGE="$(pull_digest grafana grafana/grafana:13.3.0)"
+test "$(docker image inspect --format '{{.Config.User}}' "$GRAFANA_IMAGE")" = '472'
 
 cp -a modules/catalog/homepage "$stage_root/catalog"
 cp -a modules/ai/ollama-open-webui "$stage_root/ai"
 cp -a modules/observability/synthetic-metrics "$stage_root/metrics"
 mkdir -m 700 "$stage_root/metrics/.secrets"
 openssl rand -hex 32 > "$stage_root/metrics/.secrets/grafana-admin-password"
+# The pinned Grafana 13 image runs as UID 472, GID 0. File-backed Compose
+# secrets retain host ownership/mode, so grant only its group read access.
+sudo chgrp 0 "$stage_root/metrics/.secrets/grafana-admin-password"
+chmod 640 "$stage_root/metrics/.secrets/grafana-admin-password"
+test "$(stat -c '%g:%a' "$stage_root/metrics/.secrets/grafana-admin-password")" = '0:640'
 openssl rand -hex 32 > "$stage_root/webui-test-password"
 webui_key="$(openssl rand -hex 32)"
 
