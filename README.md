@@ -25,7 +25,9 @@ configurable [Ollama + Open WebUI module](modules/ai/ollama-open-webui/README.md
 blank private inputs, reviewed image digests, persistent volumes, an internal
 Ollama API, and a loopback-only WebUI. Installation, first-owner setup,
 validation, backup, upgrade, and rollback are documented separately.
-No remote route or model is enabled by the example. The optional
+No remote route or model is enabled by the example. The AI guide also covers
+private model selection, a fictional inference check, and an opt-in NVIDIA
+one-GPU profile; CPU remains the default. The optional
 [private entry module](modules/access/private-entry/README.md) shows how to
 stage a fictional route and verify both network and app denial. The
 [synthetic observability module](modules/observability/synthetic-metrics/README.md)

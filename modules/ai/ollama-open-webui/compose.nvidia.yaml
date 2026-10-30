@@ -1,0 +1,11 @@
+# Optional, reviewed NVIDIA profile. Use only on a staging host with a working
+# NVIDIA driver and container toolkit. The CPU compose.yaml remains the default.
+services:
+  ollama:
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

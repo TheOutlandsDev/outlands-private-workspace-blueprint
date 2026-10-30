@@ -5,7 +5,7 @@ Modules are optional parts of a `server-01`-style host. A module must identify i
 | Module | Role | Status |
 | --- | --- | --- |
 | [Docker host foundation](foundation/docker-host/README.md) | Linux/Docker setup guidance and isolated smoke check | Synthetic reference; offline source and Compose checks |
-| [Ollama + Open WebUI](ai/ollama-open-webui/README.md) | Local model server and authenticated browser UI | Synthetic CPU reference; offline source and Compose checks |
+| [Ollama + Open WebUI](ai/ollama-open-webui/README.md) | Local model server, authenticated browser UI, and optional NVIDIA example | Synthetic CPU default and one-GPU override; inference and native UI NOT RUN |
 | [Private entry](access/private-entry/README.md) | Optional staged access to a locally protected app | Fictional route and NOT RUN access review; no live policy export |
 | [Synthetic observability](observability/synthetic-metrics/README.md) | Local-only Prometheus/Grafana with a fictional source | Offline source checks; native GUI and ingestion NOT RUN |
 

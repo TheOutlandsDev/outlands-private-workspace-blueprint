@@ -37,7 +37,7 @@ Follow the [Docker host foundation](../../modules/foundation/docker-host/README.
 
 ## 3. Add AI locally
 
-Follow [Ollama + Open WebUI](../../modules/ai/ollama-open-webui/README.md) in its **own Compose project**. Choose reviewed image digests, create a stable private WebUI key, resolve Compose, then start only that project. Confirm the Ollama API has no host port and WebUI binds only to the selected loopback port. Preserve the two named volumes and key together in the private recovery plan.
+Follow [Ollama + Open WebUI](../../modules/ai/ollama-open-webui/README.md) in its **own Compose project**. Choose reviewed image digests, create a stable private WebUI key, resolve Compose, then start only that project. CPU is the default; the optional one-GPU NVIDIA overlay requires a separate driver/toolkit review on an isolated test host. Confirm the Ollama API has no host port and WebUI binds only to the selected loopback port. Preserve the two named volumes and key together in the private recovery plan.
 
 On a **new** WebUI data volume, create the first owner account locally. Disable sign-up in the effective Admin UI, sign out, and prove an unassigned user cannot register or view protected content. Select a model only after its own license and resource review; use a harmless fictional prompt for an inference check. Do not use private documents for a public tutorial.
 

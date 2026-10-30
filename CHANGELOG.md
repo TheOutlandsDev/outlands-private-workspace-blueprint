@@ -1,5 +1,11 @@
 # Changelog
 
+## server-01 Ollama hosting expansion
+
+- Added a provider-neutral model selection and resource-planning path, a fictional inference worksheet, and native WebUI connection checks.
+- Added an opt-in one-GPU NVIDIA Compose override for an isolated test host; CPU remains the default, and no device inventory or real model reference is published.
+- Expanded offline boundaries and negative tests; no image, model, driver, container, account, or host setting was changed.
+
 ## server-01 assembly guide
 
 - Connected the published foundation, AI, synthetic metrics, and optional private entry modules in a staged reader path.
