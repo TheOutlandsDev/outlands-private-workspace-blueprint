@@ -43,6 +43,21 @@ jobs:
       - name: Test public source boundary
         run: python3 -I -B -m unittest discover -s scripts -p 'test_*.py'
 
+      - name: Test pre-upload review aid
+        run: python3 -I -B -m unittest discover -s tools/preupload-check -p 'test_*.py'
+
+      - name: Check fictional pre-upload export
+        run: |
+          receipt_parent="$(mktemp -d)"
+          cp tools/preupload-check/fixtures/private-terms.example.json "$receipt_parent/private-terms.json"
+          chmod 600 "$receipt_parent/private-terms.json"
+          python3 -I -B tools/preupload-check/preupload_check.py \
+            tools/preupload-check/fixtures/allowlist.example.json \
+            tools/preupload-check/fixtures/export \
+            tools/preupload-check/fixtures/base-paths.example.json \
+            "$receipt_parent/private-terms.json" \
+            "$receipt_parent/fictional-receipt"
+
       - name: Check synthetic server-01 AI module
         run: python3 -I -B modules/ai/ollama-open-webui/check_example.py
 

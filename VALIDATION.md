@@ -1,5 +1,13 @@
 # Validation boundaries
 
+## Local pre-upload review aid
+
+The [pre-upload review aid](tools/preupload-check/README.md) checks an exact staged text export before a public branch is pushed. Eleven disposable tests cover clean fictional files, changed bytes, extra files, missing links, private values, binary and symlink refusal, address boundaries, private input permissions, and private no-overwrite receipts. The checked-in two-file fixture is invented; CI runs it with a disposable private receipt directory. The tool makes no network request and leaves publication authorization false and all manual review fields pending. It does not prove synthetic data, rights, safe Git history, or the current GitHub destination state.
+
+```sh
+python3 -I -B -m unittest discover -s tools/preupload-check -p 'test_*.py'
+```
+
 ## server-01 opt-in host-health snapshot
 
 The [host-health module](modules/observability/host-health/README.md) uses invented CPU, memory, and root-filesystem counters in its public fixtures. Offline tests use those fixtures and mocked live reads; they never sample the CI runner's host. A reader can opt into a one-shot local Linux check that prints only bounded labels, or a separate foreground collector that writes a bounded private series and static HTML dashboard outside the repository. Neither opens a listener, uses a Docker socket, or sends a network request. The tests verify strict data shape, private no-overwrite outputs, incomplete-run refusal, and exact reproduction of the public fictional dashboard. A successful fictional test or source check is not evidence of a reader's resource condition, other filesystems, application health, or active alerting. Reader-host acceptance remains `NOT RUN`.
