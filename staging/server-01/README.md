@@ -1,0 +1,15 @@
+# Disposable synthetic server-01 staging
+
+This CI job boots fresh copies of the public [AI](../../modules/ai/ollama-open-webui/README.md), [fictional metrics](../../modules/observability/synthetic-metrics/README.md), and [catalog](../../modules/catalog/homepage/README.md) Compose projects on a GitHub-hosted runner. It uses only original `.invalid` links, fictional metrics, generated test credentials, and disposable named volumes. It mounts no Docker socket into an app and never reads an operator host or backup location. The runner is discarded after the job.
+
+The workflow runs on same-repository PRs and `main` pushes with `contents: read`; fork PRs do not start this job. It pulls six upstream version tags selected from their public release lists, records the resolved registry digests in the run, then supplies those digests to the modules' blank image inputs. A tag may resolve to a different digest in a later run; compare receipts before treating runs as the same software snapshot. The test installs a pinned Playwright package and Chromium in the disposable runner. No GitHub secret, model, private route, or live application data is supplied.
+
+`run.sh` resolves Compose and starts separate projects. `check_runtime.py` checks running loopback bindings, Ollama's empty model list, WebUI-to-Ollama reachability, fictional Prometheus ingestion and mode changes, Grafana provisioning, and signed-out API denial using disposable accounts. `check_browser.js` checks that Homepage's fictional cards, WebUI's login screen, and Grafana's login and synthetic dashboard render in Chromium. The scripts print bounded PASS/FAIL summaries without account tokens, passwords, app logs, or screenshots. A failed step remains a failed hosted run; the scripts do not restart it, delete volumes, or relabel it as accepted.
+
+| Acceptance boundary | Scope |
+| --- | --- |
+| Native containers, browser DOM, fictional metrics, disposable login denial | Checked only when hosted job succeeds |
+| Model pull and inference, GPU use, real private route, physical device | NOT RUN |
+| Long-term persistence, isolated restore, upgrades, real host policy | NOT RUN |
+
+This job costs runner time and registry bandwidth. It is a reproducible teaching check, not a security certification or evidence that a reader's host works. Keep real destinations and all backup information out of the public repository. Upstream release tags and docs were checked 2026-10-30; [Homepage Docker](https://gethomepage.dev/installation/docker/), [Open WebUI quick start](https://docs.openwebui.com/getting-started/quick-start/), [Ollama Docker](https://docs.ollama.com/docker), [Prometheus installation](https://prometheus.io/docs/prometheus/latest/installation/), and [Grafana Docker](https://grafana.com/docs/grafana/latest/setup-grafana/configure-docker/) remain the operator references.

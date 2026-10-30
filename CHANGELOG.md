@@ -1,5 +1,11 @@
 # Changelog
 
+## Disposable server-01 synthetic staging
+
+- Added a same-repository, read-only-permission GitHub Actions job for fresh AI, fictional metrics, and catalog projects on a disposable runner.
+- Added bounded native HTTP, API denial, Prometheus mode, provisioning, and Chromium DOM checks using only fictional accounts and links.
+- Model inference, GPU use, private routes, long-term recovery, and any real host remain outside the hosted run.
+
 ## server-01 Homepage catalog module
 
 - Added a separate local Homepage project with fictional WebUI and optional Grafana cards, blank private image and operator inputs, and loopback-only binding.
