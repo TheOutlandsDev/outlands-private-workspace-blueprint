@@ -43,6 +43,12 @@ jobs:
       - name: Test public source boundary
         run: python3 -I -B -m unittest discover -s scripts -p 'test_*.py'
 
+      - name: Check synthetic server-01 AI module
+        run: python3 -I -B modules/ai/ollama-open-webui/check_example.py
+
+      - name: Test server-01 AI module boundaries
+        run: python3 -I -B -m unittest discover -s modules/ai/ollama-open-webui -p 'test_*.py'
+
       - name: Check Dockhand demo
         run: python3 -I -B scripts/check_dockhand_demo.py
 

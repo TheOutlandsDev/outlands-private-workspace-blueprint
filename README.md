@@ -14,6 +14,17 @@ application can share the same theme, credentials or read-only API.
 Original materials are [MIT licensed](LICENSE). Applications and their brands
 keep their [upstream licenses](docs/third-party.md).
 
+## server-01: a modular OUTLANDS host
+
+The [server-01 host reference](hosts/server-01/README.md) is a synthetic
+Linux host role, not an export of a live server. The [module contract](modules/README.md)
+lets readers add one service at a time. Start with the configurable
+[Ollama + Open WebUI module](modules/ai/ollama-open-webui/README.md):
+blank private inputs, reviewed image digests, persistent volumes, an internal
+Ollama API, and a loopback-only WebUI. Installation, first-owner setup,
+validation, backup, upgrade, and rollback are documented separately.
+No remote route or model is enabled by the example.
+
 ## Try the design first
 
 | Path | Requirements and first step |

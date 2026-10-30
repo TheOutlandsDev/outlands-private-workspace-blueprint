@@ -1,5 +1,17 @@
 # Validation boundaries
 
+## server-01 AI hosting module
+
+The [server-01 host reference](hosts/server-01/README.md) and [Ollama/Open WebUI module](modules/ai/ollama-open-webui/README.md) use synthetic settings. The offline module checker verifies the published Compose and empty `.env.example` source boundaries; negative tests cover accidental Ollama host exposure, wildcard WebUI binding, and a filled public secret. Docker Compose configuration can be resolved with private, locally selected image digests and a generated key. Source and configuration checks do **not** prove that containers boot, model inference works, an account is restricted, data survives restart, or a backup restores. Those runtime and access checks remain `NOT RUN` in the module guide.
+
+Run from the repository root without contacting Docker or a network:
+
+```sh
+python3 -I -B modules/ai/ollama-open-webui/check_example.py
+python3 -I -B -m unittest discover -s modules/ai/ollama-open-webui -p 'test_*.py'
+python3 -I -B scripts/check_public_source.py
+```
+
 ## Fictional release walkthrough
 
 The [worked example](docs/24-fictional-release-walkthrough.md) uses only the

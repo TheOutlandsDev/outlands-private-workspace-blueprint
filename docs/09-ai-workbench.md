@@ -1,5 +1,7 @@
 # AI Workbench: Open WebUI without losing your data
 
+For a separate, configurable hosting example, see the [synthetic server-01 Ollama + Open WebUI module](../modules/ai/ollama-open-webui/README.md). This page remains the visual and access walkthrough.
+
 [All app walkthroughs](07-app-walkthroughs.md) · [Architecture](01-architecture.md) · [Access and QA](03-access-and-qa.md)
 
 A branded place to talk to a model. This mockup has no chat engine and sends nothing.

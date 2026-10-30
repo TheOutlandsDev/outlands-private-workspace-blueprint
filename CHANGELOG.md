@@ -1,5 +1,11 @@
 # Changelog
 
+## server-01 modular host and AI hosting example
+
+- Added a synthetic `server-01` host role, a module contract, and a CPU-oriented Ollama/Open WebUI Compose example.
+- Added blank private inputs, loopback WebUI binding, internal-only Ollama networking, offline boundary checks, and installation, bootstrap, backup, upgrade, and rollback guidance.
+- No live host configuration, model inventory, account, volume data, remote route, or deployment result was exported.
+
 ## Fictional release walkthrough
 
 - Added a worked create-verify-refuse example and a separate publication decision table.
