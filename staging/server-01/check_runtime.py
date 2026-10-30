@@ -140,10 +140,11 @@ def main():
     datasource_url = "http://127.0.0.1:13002/api/datasources/uid/synthetic-prom"
     status, _ = http(datasource_url)
     require(status in (401, 403), "signed-out Grafana datasource denied")
-    wait_for("fictional Grafana datasource provisioned", lambda: (
-        (lambda response: response[0] == 200 and json.loads(response[1]).get("uid") == "synthetic-prom")
-        (http(datasource_url, headers=auth))
-    ))
+    status, _ = http("http://127.0.0.1:13002/api/user", headers=auth)
+    require(status == 200, "Grafana administrator basic auth accepted (HTTP " + str(status) + ")")
+    status, body = http(datasource_url, headers=auth)
+    require(status == 200 and json.loads(body).get("uid") == "synthetic-prom",
+            "fictional Grafana datasource provisioned (HTTP " + str(status) + ")")
     dashboard_url = "http://127.0.0.1:13002/api/dashboards/uid/outlands-synthetic-source"
     wait_for("fictional Grafana dashboard provisioned", lambda: (
         (lambda response: response[0] == 200 and len(json.loads(response[1]).get("dashboard", {}).get("panels", [])) == 3)
