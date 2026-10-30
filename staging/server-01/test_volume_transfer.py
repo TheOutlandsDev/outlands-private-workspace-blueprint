@@ -50,12 +50,32 @@ class VolumeTransferTests(unittest.TestCase):
             restore(self.target, self.archive)
         self.assertFalse((self.root / "escape.txt").exists())
 
-    def test_rejects_symlink_in_source(self):
+    def test_internal_relative_symlink_is_preserved(self):
+        (self.source / "blobs").mkdir()
+        (self.source / "snapshots").mkdir()
+        (self.source / "blobs" / "state.txt").write_text("fictional\n")
+        (self.source / "snapshots" / "link").symlink_to("../blobs/state.txt")
+        backup(self.source, self.archive)
+        restore(self.target, self.archive)
+        self.assertEqual((self.target / "snapshots" / "link").read_text(), "fictional\n")
+        self.assertTrue((self.target / "snapshots" / "link").is_symlink())
+
+    def test_rejects_escaping_symlink_in_source(self):
         (self.source / "state.txt").write_text("fictional\n")
-        (self.source / "link").symlink_to("state.txt")
-        with self.assertRaisesRegex(ValueError, "unsupported"):
+        (self.source / "link").symlink_to("../outside.txt")
+        with self.assertRaisesRegex(ValueError, "unsafe source symlink"):
             backup(self.source, self.archive)
         self.assertFalse(self.archive.exists())
+
+    def test_rejects_escaping_symlink_in_archive(self):
+        with tarfile.open(self.archive, "w:gz") as archive:
+            entry = tarfile.TarInfo("link")
+            entry.type = tarfile.SYMTYPE
+            entry.linkname = "../outside.txt"
+            archive.addfile(entry)
+        with self.assertRaisesRegex(ValueError, "unsafe archive symlink"):
+            restore(self.target, self.archive)
+        self.assertFalse((self.target / "link").exists())
 
 
 if __name__ == "__main__":

@@ -27,6 +27,21 @@ def require(condition, label):
 def run(command, *, cwd=None, timeout=180):
     result = subprocess.run(command, cwd=cwd, capture_output=True, text=True, timeout=timeout)
     if result.returncode:
+        safe = result.stderr.strip()
+        if command[:2] == ["docker", "run"] and safe in {
+            "REVIEW: backup input or output boundary",
+            "REVIEW: backup member boundary",
+            "REVIEW: backup size boundary",
+            "REVIEW: unsupported volume entry",
+            "REVIEW: unsafe source symlink",
+            "REVIEW: restore input or output boundary",
+            "REVIEW: unsafe archive member",
+            "REVIEW: unsafe archive symlink",
+            "REVIEW: archive path escape",
+            "REVIEW: archive file missing",
+            "REVIEW: empty archive",
+        }:
+            raise RuntimeError(safe)
         # Captured Docker output can contain private environment values or app data.
         raise RuntimeError("disposable Docker operation failed")
     return result.stdout
