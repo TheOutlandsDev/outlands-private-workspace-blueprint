@@ -1,5 +1,7 @@
 # Access and owner Browser QA
 
+The optional [server-01 private entry module](../modules/access/private-entry/README.md) applies this matrix to a synthetic local app and a staged private Serve route. Its checked-in results remain `NOT_RUN`.
+
 A successful login is one test case. Complete the denial cases and inspect the direct app route before recording access control as tested. This checklist is a proposed acceptance process; every result starts as **NOT RUN**.
 
 ## Define the audience before configuring it

@@ -1,5 +1,10 @@
 # Changelog
 
+## server-01 private entry reference
+
+- Added an optional synthetic Serve staging guide and a fictional access review covering both network and app denial.
+- Added an offline fixture checker and negative tests; no tailnet policy, real route, identity, or live access state was exported or changed.
+
 ## server-01 Docker host foundation example
 
 - Added a synthetic Linux/Docker host preparation guide and a separate no-network, no-port smoke Compose fixture.

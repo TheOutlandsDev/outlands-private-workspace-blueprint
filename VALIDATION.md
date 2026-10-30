@@ -1,5 +1,14 @@
 # Validation boundaries
 
+## server-01 private entry example
+
+The [private entry module](modules/access/private-entry/README.md) includes a fictional route and seven `NOT_RUN` access cases. Its offline checker and negative tests verify the checked-in example stays fictional and cannot claim an unearned PASS. They send no network traffic, do not start Serve, and do not test a real tailnet or application login. Allowed access, denial, direct-route behavior, public-internet reachability, and route removal remain `NOT RUN` for a reader's own installation.
+
+```sh
+python3 -I -B modules/access/private-entry/check_example.py
+python3 -I -B -m unittest discover -s modules/access/private-entry -p 'test_*.py'
+```
+
 ## server-01 foundation smoke example
 
 The [Docker host foundation module](modules/foundation/docker-host/README.md) is a synthetic installation guide and a one-off Compose fixture. Its offline checker verifies the published fixture has no host network, port, volume, Docker socket, or privileged mode; negative tests cover those boundaries and a filled public image input. A local Compose resolution with a synthetic digest checks syntax and service shape only. This repository did **not** install Docker, pull an image, start a container, change host access, or test update/recovery behavior on a reader's host. The module acceptance table remains `NOT RUN`.

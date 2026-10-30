@@ -55,6 +55,12 @@ jobs:
       - name: Test server-01 foundation boundaries
         run: python3 -I -B -m unittest discover -s modules/foundation/docker-host -p 'test_*.py'
 
+      - name: Check synthetic server-01 private entry
+        run: python3 -I -B modules/access/private-entry/check_example.py
+
+      - name: Test server-01 private entry boundaries
+        run: python3 -I -B -m unittest discover -s modules/access/private-entry -p 'test_*.py'
+
       - name: Check Dockhand demo
         run: python3 -I -B scripts/check_dockhand_demo.py
 

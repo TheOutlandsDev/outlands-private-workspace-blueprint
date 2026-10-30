@@ -4,6 +4,7 @@ The blueprint teaches how to build and explain a private application workspace. 
 
 | Practice | Inspectable example | Test or decision boundary |
 | --- | --- | --- |
+| Private entry | [Staged route guide and fictional access review](../modules/access/private-entry/README.md) | Offline fixture checks do not prove network or app authorization. |
 | Host foundation | [Linux/Docker guide and isolated smoke fixture](../modules/foundation/docker-host/README.md) | Source and Compose resolution are separate from an installed daemon or a successful container run. |
 | Modular host | [server-01 role](../hosts/server-01/README.md), [module contract](../modules/README.md), and [Ollama + Open WebUI example](../modules/ai/ollama-open-webui/README.md) | Source and Compose checks do not prove a booted host, model inference, or an access policy. |
 | System design | [Architecture](01-architecture.md), [build path](02-build-path.md), and [Homepage example](../examples/homepage/README.md) | Compose resolution is separate from a running service. |
