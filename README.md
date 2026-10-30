@@ -17,7 +17,8 @@ keep their [upstream licenses](docs/third-party.md).
 ## server-01: a modular OUTLANDS host
 
 The [server-01 host reference](hosts/server-01/README.md) is a synthetic
-Linux host role, not an export of a live server. The [module contract](modules/README.md)
+Linux host role, not an export of a live server. Follow its [assembly guide](hosts/server-01/ASSEMBLY.md)
+for the staged build and fictional acceptance worksheet. The [module contract](modules/README.md)
 lets readers add one service at a time. Begin with the synthetic
 [Docker host foundation](modules/foundation/docker-host/README.md), then try the
 configurable [Ollama + Open WebUI module](modules/ai/ollama-open-webui/README.md):

@@ -1,5 +1,14 @@
 # Validation boundaries
 
+## server-01 assembly guide
+
+The [assembly guide](hosts/server-01/ASSEMBLY.md) links four published modules and supplies a fictional `NOT_RUN` worksheet. Its offline checker and negative tests verify that the public worksheet retains separate projects, a loopback-only illustrative route, no real metrics target or backup destination, and no claimed acceptance. These checks do not install or connect modules. Cross-module wiring, native login and denial, inference, monitoring UI, route behavior, persistence, and restoration remain `NOT_RUN` for a reader's own host.
+
+```sh
+python3 -I -B hosts/server-01/check_assembly.py
+python3 -I -B -m unittest discover -s hosts/server-01 -p 'test_*.py'
+```
+
 ## server-01 synthetic observability module
 
 The [synthetic metrics module](modules/observability/synthetic-metrics/README.md) contains only a fictional scrape target, a small Grafana dashboard, and a three-mode source. Offline tests distinguish fresh, stale, and unavailable payloads and reject public ports, external scrape targets, or broader dashboard queries in the example. Compose resolution with synthetic image references and a synthetic secret file checks configuration shape only. No image was pulled, no container or browser was started, and native Grafana provisioning, ingestion, login, persistence, and recovery remain `NOT RUN`.
