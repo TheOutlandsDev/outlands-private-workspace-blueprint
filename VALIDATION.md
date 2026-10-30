@@ -1,5 +1,14 @@
 # Validation boundaries
 
+## server-01 opt-in host-health snapshot
+
+The [host-health module](modules/observability/host-health/README.md) uses invented CPU, memory, and root-filesystem counters in its public fixture. Offline tests use that fixture and mocked live reads; they never sample the CI runner's host. A reader can opt into a one-shot local Linux check that prints only bounded labels. It opens no listener, uses no Docker socket, sends no network request, and writes no record. A successful fictional test or source check is not evidence of a reader's resource condition, other filesystems, application health, or an active monitoring pipeline. Reader-host acceptance remains `NOT RUN`.
+
+```sh
+python3 -I -B modules/observability/host-health/host_health.py --fictional
+python3 -I -B -m unittest discover -s modules/observability/host-health -p 'test_*.py'
+```
+
 ## server-01 reader quick-start
 
 The [reader quick-start](hosts/server-01/QUICKSTART.md) supplies a read-only local Docker-context preflight and an additive private-copy helper. Offline tests simulate local and remote context responses, verify remote contexts are refused before daemon contact, and check that the copy keeps private inputs blank, creates mode-0600 files, and does not overwrite a destination. These tests do not install Docker, pull images, start services, inspect the owner's host, or establish a reader's acceptance results. The reader's private `acceptance.json` begins at `NOT_RUN`.

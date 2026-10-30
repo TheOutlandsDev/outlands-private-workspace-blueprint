@@ -1,5 +1,11 @@
 # Changelog
 
+## server-01 opt-in host-health snapshot
+
+- Added a one-shot local Linux resource check for aggregate CPU, available memory, and root-filesystem space. It prints fixed labels only and stores or sends no readings.
+- Added invented fixture data and mocked offline tests. The reader chooses any live run; no owner host or CI runner was sampled for this module.
+- Linked the optional module from the host guide and quick-start without changing the existing fictional Prometheus/Grafana project.
+
 ## Disposable server-01 CPU inference fixture
 
 - Added a separate, bounded model pull and fictional inference check after the existing disposable AI recovery rehearsal.

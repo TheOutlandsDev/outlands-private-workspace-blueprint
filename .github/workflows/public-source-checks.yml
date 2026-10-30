@@ -70,6 +70,12 @@ jobs:
       - name: Test server-01 observability states and boundaries
         run: python3 -I -B -m unittest discover -s modules/observability/synthetic-metrics -p 'test_*.py'
 
+      - name: Check fictional server-01 host-health snapshot
+        run: python3 -I -B modules/observability/host-health/host_health.py --fictional
+
+      - name: Test server-01 host-health boundaries
+        run: python3 -I -B -m unittest discover -s modules/observability/host-health -p 'test_*.py'
+
       - name: Check server-01 fictional assembly
         run: python3 -I -B hosts/server-01/check_assembly.py
 
