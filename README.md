@@ -109,7 +109,9 @@ an exact public export without carrying private operator records into Git.
 Use the [fictional evidence ledger](examples/evidence-ledger/README.md) to try a
 bounded offline record-shape check. The [fictional release tools](examples/release-manifest/README.md)
 create and verify an exact export manifest. The [worked example](docs/24-fictional-release-walkthrough.md)
-shows the review gates. The [project map](docs/23-what-this-project-demonstrates.md)
+shows the review gates. The [pre-upload review aid](tools/preupload-check/README.md)
+screens a frozen text export before its first public push; it cannot authorize
+publication. The [project map](docs/23-what-this-project-demonstrates.md)
 links the inspectable examples.
 
 ## Design direction

@@ -1,5 +1,10 @@
 # Changelog
 
+## Local pre-upload review aid
+
+- Added a reusable offline exact-file text screen, private terms input, and owner-only no-overwrite review receipt for a staged public export.
+- Added an invented two-file walkthrough and refusal tests; CI runs the fictional example. A passing screen does not approve publication or replace manual privacy, rights, diff, and destination review.
+
 ## server-01 bounded private host trends
 
 - Added an opt-in foreground collector for bounded CPU, available-memory, and root-filesystem samples, with no network endpoint, Docker socket, schedule, or automatic cleanup.

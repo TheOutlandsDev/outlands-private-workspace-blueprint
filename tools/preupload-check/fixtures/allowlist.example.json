@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "repository": "ExampleOrg/example-blueprint",
+  "base_commit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "de6c2aa1550baaffc16a627a456e06816afce4fc33a64d8c605bfa24339cf032",
+      "synthetic_fixture": true
+    },
+    {
+      "path": "docs/guide.md",
+      "sha256": "050f987e214114672df57050233f9df64d40d9f884a0f4195e8f070387c1d06b",
+      "synthetic_fixture": true
+    }
+  ]
+}
