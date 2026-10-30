@@ -1,0 +1,10 @@
+- Applications:
+    - Open WebUI:
+        icon: /outlands/mark.svg
+        href: https://webui.example.invalid/
+        description: "Fictional link; native WebUI login is still required"
+- Optional monitoring:
+    - Grafana:
+        icon: /outlands/mark.svg
+        href: https://metrics.example.invalid/
+        description: "Fictional link; review access separately before enabling"

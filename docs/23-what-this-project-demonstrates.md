@@ -5,6 +5,7 @@ The blueprint teaches how to build and explain a private application workspace. 
 | Practice | Inspectable example | Test or decision boundary |
 | --- | --- | --- |
 | Host assembly | [server-01 staged guide and fictional worksheet](../hosts/server-01/ASSEMBLY.md) | Source checks cannot establish cross-module wiring, app authorization, or recovery on a reader's host. |
+| Catalog navigation | [server-01 Homepage module](../modules/catalog/homepage/README.md) | Fictional links do not deploy apps, grant access, or prove native UI rendering. |
 | Observability | [Synthetic Prometheus/Grafana module](../modules/observability/synthetic-metrics/README.md) | Fictional state generator and source checks do not prove native dashboard or live ingestion. |
 | Private entry | [Staged route guide and fictional access review](../modules/access/private-entry/README.md) | Offline fixture checks do not prove network or app authorization. |
 | Host foundation | [Linux/Docker guide and isolated smoke fixture](../modules/foundation/docker-host/README.md) | Source and Compose resolution are separate from an installed daemon or a successful container run. |

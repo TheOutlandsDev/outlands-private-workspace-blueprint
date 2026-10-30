@@ -10,7 +10,7 @@
 | Storage | Persistent state with a privately chosen recovery plan | Named volumes in the AI module |
 | Network | Local binding first; remote route only after separate access review | [Private entry module](../../modules/access/private-entry/README.md); WebUI stays on loopback |
 | AI | Model server, browser application, and optional GPU profile | [Ollama + Open WebUI](../../modules/ai/ollama-open-webui/README.md) |
-| Catalog | Optional entry point after the app access check | [Homepage example](../../examples/homepage/README.md) |
+| Catalog | Optional entry point after the app access check | [Homepage catalog module](../../modules/catalog/homepage/README.md) |
 | Monitoring | Optional, with its own authorization and retention plan | [Synthetic observability module](../../modules/observability/synthetic-metrics/README.md) |
 
 Follow the [assembly guide](ASSEMBLY.md) for the staged order, private decisions, and cross-module acceptance worksheet. Modules do not need a shared login or a single all-services Compose file. Start with the [foundation module](../../modules/foundation/docker-host/README.md), then install one optional service into its own project and verify its boundary before linking it from the catalog. The [module contract](../../modules/README.md) explains which parts each module must document.

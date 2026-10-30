@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "id": "server-01.catalog.homepage",
+  "host_role": "server-01",
+  "status": "synthetic-reference",
+  "requires": ["linux", "docker-engine", "docker-compose-plugin"],
+  "inputs": ["HOMEPAGE_IMAGE", "CATALOG_PORT", "HOMEPAGE_ALLOWED_HOSTS", "PUID", "PGID"],
+  "public_ports": [],
+  "loopback_ports": ["CATALOG_PORT"],
+  "persistent_bind_mounts": ["config"],
+  "linked_apps_deployed": false,
+  "native_auth_replaced": false,
+  "starts_by_default": false
+}

@@ -55,7 +55,7 @@ In Grafana's native UI, verify the fictional dashboard and the `fresh`, `stale`,
 
 The [private entry module](../../modules/access/private-entry/README.md) is optional. Inspect existing routes and policy privately before a foreground Tailscale Serve trial to the selected **WebUI loopback port**. First prove WebUI's native login and registration denial. Then test intended-owner access, signed-out denial, app-unassigned denial, network-unassigned denial, direct URL access, public-internet reachability, and trial route removal. Record minimal outcomes privately. Do not enable Funnel or replace the app's native login.
 
-**Gate:** every allowed and denied case passes on the actual test route, and stopping the trial leaves unrelated routes intact. A link in an optional [Homepage catalog](../../examples/homepage/README.md) is navigation, not authorization. Add the link only after its destination gate is accepted.
+**Gate:** every allowed and denied case passes on the actual test route, and stopping the trial leaves unrelated routes intact. The optional [Homepage catalog module](../../modules/catalog/homepage/README.md) starts with dead fictional links. Add a real destination only in a private copy after that destination gate is accepted. A catalog link is navigation, not authorization; a remotely routed catalog needs its own access gate.
 
 ## 6. Record acceptance and recoverability
 

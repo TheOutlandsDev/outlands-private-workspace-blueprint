@@ -1,0 +1,17 @@
+name: outlands-catalog-example
+
+services:
+  homepage:
+    image: ${HOMEPAGE_IMAGE:?Select a reviewed Homepage image digest}
+    environment:
+      HOMEPAGE_ALLOWED_HOSTS: ${HOMEPAGE_ALLOWED_HOSTS:?Set exact allowed hosts}
+      PUID: ${PUID:?Set the intended local user ID}
+      PGID: ${PGID:?Set the intended local group ID}
+    ports:
+      - "127.0.0.1:${CATALOG_PORT:?Set a free local port}:3000"
+    volumes:
+      - ./config:/app/config
+      - ./assets:/app/public/outlands:ro
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped

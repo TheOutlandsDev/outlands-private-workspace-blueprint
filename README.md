@@ -32,6 +32,8 @@ one-GPU profile; CPU remains the default. The optional
 stage a fictional route and verify both network and app denial. The
 [synthetic observability module](modules/observability/synthetic-metrics/README.md)
 adds local-only Prometheus/Grafana and invented fresh, stale, and unavailable data.
+The optional [Homepage catalog module](modules/catalog/homepage/README.md)
+provides two fictional app links; each destination keeps its own access check.
 
 ## Try the design first
 

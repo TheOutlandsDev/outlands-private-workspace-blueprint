@@ -10,7 +10,8 @@
     {"id": "foundation", "path": "modules/foundation/docker-host/README.md", "required": true, "status": "NOT_RUN"},
     {"id": "ai", "path": "modules/ai/ollama-open-webui/README.md", "required": false, "status": "NOT_RUN"},
     {"id": "observability", "path": "modules/observability/synthetic-metrics/README.md", "required": false, "status": "NOT_RUN"},
-    {"id": "private-entry", "path": "modules/access/private-entry/README.md", "required": false, "status": "NOT_RUN"}
+    {"id": "private-entry", "path": "modules/access/private-entry/README.md", "required": false, "status": "NOT_RUN"},
+    {"id": "catalog", "path": "modules/catalog/homepage/README.md", "required": false, "status": "NOT_RUN"}
   ],
   "optional_route": {"target_module": "ai", "example_backend": "http://127.0.0.1:3001/", "status": "NOT_RUN"}
 }
