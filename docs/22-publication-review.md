@@ -4,7 +4,7 @@ An open source guide is useful when someone else can inspect and try it without 
 
 ## Select
 
-Choose only the files needed for a reproducible example: source, documentation, fictional fixtures, tests, and required notices. Record each selected path, byte length, and SHA-256 outside the export. Give each file a reason to be there. Keep real configuration, databases, backups, logs, credentials, account lists, host inventories, private routes, and live screenshots in protected storage.
+Choose only the files needed for a reproducible example: source, documentation, fictional fixtures, tests, and required notices. Record each selected path, byte length, and SHA-256 outside the export. Give each file a reason to be there. Keep real configuration, databases, backups, logs, credentials, account lists, host inventories, private routes, and live screenshots in protected storage. Do not publish an operator's backup provider or any destination identifier, even in a diagram, command, test fixture, or commit message.
 
 Use reserved example domains and fictional names in teaching material. A redacted label or a passing pattern scan does not clear a file. Review text, filenames, diagrams, image/document metadata, embedded assets, links, and generated outputs. Git commits expose author and message metadata; an old secret remains in history even after its latest file is changed. Start with clean history for a new public export.
 

@@ -8,7 +8,9 @@ phone, or a restore exercise.
 Keep examples private by design. Replace account names, domains, device IDs and
 addresses with reserved examples. Do not attach live logs, tokens, cookies,
 backup payloads, configuration exports, database files or screenshots containing
-private inventory. Reproduce the issue using a minimal example instead.
+private inventory. Do not name an operator's backup provider, account, storage
+location, bucket, endpoint, or recovery path. Reproduce the issue using a minimal
+example instead.
 
 For code or documentation changes, run `python3 -I -B scripts/check_public_source.py`
 from the repository root, verify relative links, and state what you did not test.
