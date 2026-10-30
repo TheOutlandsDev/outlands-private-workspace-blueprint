@@ -33,3 +33,6 @@ contains relative file names and hashes, so review it before sharing it. A
 Neither tool reviews private data, provenance, license rights, malware, runtime
 behavior, or publication permission. Both outputs keep `privacy_cleared` and
 `rights_cleared` false.
+
+The [worked example](../../docs/24-fictional-release-walkthrough.md) shows the
+commands, a refusal case, and the separate human review gates.

@@ -1,5 +1,10 @@
 # Changelog
 
+## Fictional release walkthrough
+
+- Added a worked create-verify-refuse example and a separate publication decision table.
+- Linked the example from the project map and release tools guide.
+
 ## Explicit-allowlist release manifest creator
 
 - Added an offline manifest creator with no-overwrite output and fictional fixtures.
