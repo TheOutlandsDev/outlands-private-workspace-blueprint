@@ -1,5 +1,13 @@
 # Validation boundaries
 
+## server-01 reader quick-start
+
+The [reader quick-start](hosts/server-01/QUICKSTART.md) supplies a read-only local Docker-context preflight and an additive private-copy helper. Offline tests simulate local and remote context responses, verify remote contexts are refused before daemon contact, and check that the copy keeps private inputs blank, creates mode-0600 files, and does not overwrite a destination. These tests do not install Docker, pull images, start services, inspect the owner's host, or establish a reader's acceptance results. The reader's private `acceptance.json` begins at `NOT_RUN`.
+
+```sh
+python3 -I -B -m unittest discover -s hosts/server-01 -p 'test_*.py'
+```
+
 ## Disposable synthetic server-01 staging
 
 The [hosted staging method](staging/server-01/README.md) is a separate GitHub Actions job that boots fresh AI, fictional metrics, and catalog modules on a disposable runner. It records each run's resolved upstream image digests. The native checks cover loopback port bindings, Ollama/WebUI internal connectivity, fictional metrics fresh/stale/unavailable/recovered states, Grafana provisioning, disposable WebUI signup and signed-out denial, Chromium DOM rendering, and a separate-project AI volume restore. **A source or syntax check does not qualify that job**; only a specific completed hosted run can establish those outcomes. Model pull/inference, GPU use, private routes, physical devices, long-term retention, and real-host restoration remain `NOT RUN`.
