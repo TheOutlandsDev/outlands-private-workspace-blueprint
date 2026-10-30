@@ -78,5 +78,6 @@ done
 python3 -I -B staging/server-01/check_runtime.py
 node staging/server-01/check_browser.js
 python3 -I -B staging/server-01/check_recovery.py
+python3 -I -B staging/server-01/check_inference.py
 
-printf 'PASS synthetic native staging and disposable AI recovery; no model inference or private route tested\n'
+printf 'PASS synthetic native staging, disposable AI recovery, and bounded CPU inference; no private route tested\n'

@@ -10,7 +10,7 @@ python3 -I -B -m unittest discover -s hosts/server-01 -p 'test_*.py'
 
 ## Disposable synthetic server-01 staging
 
-The [hosted staging method](staging/server-01/README.md) is a separate GitHub Actions job that boots fresh AI, fictional metrics, and catalog modules on a disposable runner. It records each run's resolved upstream image digests. The native checks cover loopback port bindings, Ollama/WebUI internal connectivity, fictional metrics fresh/stale/unavailable/recovered states, Grafana provisioning, disposable WebUI signup and signed-out denial, Chromium DOM rendering, and a separate-project AI volume restore. **A source or syntax check does not qualify that job**; only a specific completed hosted run can establish those outcomes. Model pull/inference, GPU use, private routes, physical devices, long-term retention, and real-host restoration remain `NOT RUN`.
+The [hosted staging method](staging/server-01/README.md) is a separate GitHub Actions job that boots fresh AI, fictional metrics, and catalog modules on a disposable runner. It records each run's resolved upstream image digests. The native checks cover loopback port bindings, Ollama/WebUI internal connectivity, fictional metrics fresh/stale/unavailable/recovered states, Grafana provisioning, disposable WebUI signup and signed-out denial, Chromium DOM rendering, and a separate-project AI volume restore. After recovery, a separate step pulls one reviewed 135M model into the disposable restored project, checks its identity and CPU-only Docker boundary, then tests one bounded fictional response through the internal WebUI-to-Ollama route. **A source or syntax check does not qualify that job**; only a specific completed hosted run can establish those outcomes. GPU use, reader-selected models, private routes, physical devices, long-term retention, and real-host restoration remain `NOT RUN`.
 
 Local source-only checks:
 
@@ -31,7 +31,7 @@ python3 -I -B -m unittest discover -s modules/catalog/homepage -p 'test_*.py'
 
 ## server-01 Ollama hosting expansion
 
-The [AI module](modules/ai/ollama-open-webui/README.md) includes an optional NVIDIA reservation overlay and a fictional inference worksheet with a blank model reference and `NOT_RUN` results. Offline checks reject GPU scope drift, a filled public model reference, and unearned acceptance labels. Synthetic Compose resolution checks only configuration shape. The separate hosted staging job tests disposable WebUI connection and login. Driver/toolkit setup, GPU allocation, model download and inference remain `NOT RUN`.
+The [AI module](modules/ai/ollama-open-webui/README.md) includes an optional NVIDIA reservation overlay and a fictional inference worksheet with a blank model reference and `NOT_RUN` results. Offline checks reject GPU scope drift, a filled public model reference, and unearned acceptance labels. Synthetic Compose resolution checks only configuration shape. The separate hosted staging job tests disposable WebUI connection, login, and one explicitly selected CPU inference fixture. Driver/toolkit setup, GPU allocation, and any reader's model download or inference remain `NOT RUN`.
 
 The example also sets `OLLAMA_NO_CLOUD=1`. Its opt-in `smoke_inference.py` checks for an already installed model and a nonempty response to a fixed fictional prompt when a reader runs it in a private terminal. The repository tests replace Docker with a fictional runner. They prove command selection and refusal behavior only; no model was pulled or run during those tests.
 

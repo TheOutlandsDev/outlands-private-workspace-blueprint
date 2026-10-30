@@ -1,5 +1,11 @@
 # Changelog
 
+## Disposable server-01 CPU inference fixture
+
+- Added a separate, bounded model pull and fictional inference check after the existing disposable AI recovery rehearsal.
+- Selected a small Apache-2.0 instruction model from upstream sources and required its published identifier, one-model inventory, size bound, and no Docker GPU request before generation.
+- Kept pull progress and generated text out of CI logs; a completed hosted run is required before claiming native inference. Reader installations and model choices retain their own `NOT RUN` gates.
+
 ## server-01 reader quick-start
 
 - Added a read-only local Docker-context preflight and an additive helper that copies reviewed runtime fixtures into a new private directory with blank configuration files and an unrun acceptance worksheet.
