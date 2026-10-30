@@ -1,5 +1,11 @@
 # Changelog
 
+## server-01 Ollama local operations
+
+- Set Ollama's documented cloud-disable switch in the CPU-default Compose example.
+- Added a private resource-planning checklist and an opt-in, interactive fictional inference smoke script that requires an already installed model.
+- Added offline tests for the cloud switch, missing model, private environment file, empty response, and optional GPU overlay. No model was downloaded or inferred against for this change.
+
 ## Disposable server-01 synthetic staging
 
 - Added a same-repository, read-only-permission GitHub Actions job for fresh AI, fictional metrics, and catalog projects on a disposable runner.

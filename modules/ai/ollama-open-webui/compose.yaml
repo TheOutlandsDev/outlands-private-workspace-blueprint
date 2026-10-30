@@ -4,6 +4,8 @@ services:
   ollama:
     image: ${OLLAMA_IMAGE:?Set OLLAMA_IMAGE to a reviewed image digest}
     restart: unless-stopped
+    environment:
+      OLLAMA_NO_CLOUD: "1"
     volumes:
       - ollama_models:/root/.ollama
     networks:
