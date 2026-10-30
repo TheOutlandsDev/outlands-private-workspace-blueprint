@@ -8,7 +8,7 @@ The workflow runs on same-repository PRs and `main` pushes with `contents: read`
 
 After those checks, `check_recovery.py` restarts the AI project and verifies the fictional owner can still sign in. It then stops both AI services, writes a fixed marker into the model volume, and archives the two quiesced volumes into a private temporary directory on the runner. A helper container uses the already resolved Python image, no network, and read-only mounts for the source volumes. It restores into fresh volumes under a **different Compose project name**, with the same temporary WebUI key and a different loopback port. The test checks the model-volume marker, the original fictional session, a fresh owner sign-in, second-signup denial, signed-out denial, loopback bindings, and WebUI-to-Ollama reachability. It never uploads the archives as CI artifacts. The runner and archives are discarded after the job.
 
-The archive helper is bounded to 1 GB per volume and accepts regular files, directories, and relative symlinks that resolve inside the same volume. It refuses links outside the volume, unsafe archive entries, and nonempty restore targets. These limits suit this fictional fixture; they are not a general backup tool for reader data.
+The archive helper is bounded to 4 GB per volume and accepts regular files, directories, and relative symlinks that resolve inside the same volume. It refuses links outside the volume, unsafe archive entries, and nonempty restore targets. These limits suit this fictional fixture; they are not a general backup tool for reader data.
 
 The checked-in [earlier staging receipt](RESULTS.md) predates this recovery step. Use the specific completed workflow run on a commit containing `check_recovery.py` as evidence for the new check.
 

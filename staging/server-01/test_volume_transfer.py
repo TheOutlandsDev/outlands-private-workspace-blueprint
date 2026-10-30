@@ -5,6 +5,7 @@ import io
 import tarfile
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from volume_transfer import backup, mark, restore, verify_marker
 
@@ -39,6 +40,13 @@ class VolumeTransferTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "restore input"):
             restore(self.target, self.archive)
         self.assertEqual((self.target / "existing.txt").read_text(), "preserve\n")
+
+    def test_rejects_volume_over_configured_size_limit(self):
+        (self.source / "state.txt").write_text("fictional\n")
+        with patch("volume_transfer.MAX_BYTES", 4):
+            with self.assertRaisesRegex(ValueError, "backup size boundary"):
+                backup(self.source, self.archive)
+        self.assertFalse(self.archive.exists())
 
     def test_rejects_parent_traversal_member(self):
         with tarfile.open(self.archive, "w:gz") as archive:

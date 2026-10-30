@@ -12,7 +12,7 @@ import tarfile
 MARKER = "_outlands_disposable_restore_marker.txt"
 MARKER_TEXT = "fictional model-volume restore marker\n"
 MAX_MEMBERS = 20_000
-MAX_BYTES = 1_000_000_000
+MAX_BYTES = 4_000_000_000
 
 
 def mark(volume: Path) -> None:
