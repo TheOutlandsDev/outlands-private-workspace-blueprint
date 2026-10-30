@@ -8,7 +8,7 @@ import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-MAX_FILES = 128
+MAX_FILES = 192
 MAX_TOTAL_BYTES = 8_000_000
 ALLOWED_EMAIL_DOMAINS = {'example.com', 'example.invalid', 'example.org'}
 # Visually reviewed captures of the original fictional fixture only.
@@ -36,6 +36,7 @@ def main():
             findings.append({'check': 'bounded_source_limit'})
             break
         if ((path.name.startswith('.env') and path.name != '.env.example')
+                or '.secrets' in relative.parts
                 or path.suffix.lower() in ('.key', '.pem', '.db', '.sqlite', '.sqlite3')):
             findings.append({'file': str(relative), 'check': 'private_file_type'})
         if relative.as_posix() in REVIEWED_DEMO_IMAGES:

@@ -26,7 +26,9 @@ Ollama API, and a loopback-only WebUI. Installation, first-owner setup,
 validation, backup, upgrade, and rollback are documented separately.
 No remote route or model is enabled by the example. The optional
 [private entry module](modules/access/private-entry/README.md) shows how to
-stage a fictional route and verify both network and app denial.
+stage a fictional route and verify both network and app denial. The
+[synthetic observability module](modules/observability/synthetic-metrics/README.md)
+adds local-only Prometheus/Grafana and invented fresh, stale, and unavailable data.
 
 ## Try the design first
 

@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "id": "server-01.observability.synthetic-metrics",
+  "host_role": "server-01",
+  "status": "synthetic-reference",
+  "requires": ["docker-engine", "docker-compose-plugin"],
+  "inputs": ["PYTHON_IMAGE", "PROMETHEUS_IMAGE", "GRAFANA_IMAGE", "GRAFANA_PASSWORD_FILE", "PROMETHEUS_PORT", "GRAFANA_PORT", "DEMO_MODE"],
+  "public_ports": [],
+  "loopback_ports": ["PROMETHEUS_PORT", "GRAFANA_PORT"],
+  "persistent_volumes": ["prometheus_data", "grafana_data"],
+  "real_targets_included": false,
+  "starts_by_default": false
+}

@@ -1,5 +1,11 @@
 # Changelog
 
+## server-01 synthetic observability module
+
+- Added a local-only Prometheus/Grafana example that scrapes a fictional metrics source with fresh, stale, and unavailable modes.
+- Added an original three-panel dashboard, offline boundary tests, and a private-file guard; no live host telemetry or backup location was exported.
+- Raised the bounded public source screen from 128 to 192 files with an updated fail-closed boundary test.
+
 ## server-01 private entry reference
 
 - Added an optional synthetic Serve staging guide and a fictional access review covering both network and app denial.

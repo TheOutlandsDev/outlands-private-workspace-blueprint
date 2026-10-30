@@ -1,5 +1,7 @@
 # Grafana: one visual language across dashboards
 
+For a small provisioned dashboard and fictional fresh/stale/unavailable source, see the [server-01 synthetic observability module](../modules/observability/synthetic-metrics/README.md). This page remains the product walkthrough.
+
 [All app walkthroughs](07-app-walkthroughs.md) · [Architecture](01-architecture.md) · [Access and QA](03-access-and-qa.md)
 
 Panels summarize measurements. Empty or stale data must remain visibly different from zero.

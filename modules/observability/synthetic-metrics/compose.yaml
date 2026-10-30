@@ -1,0 +1,66 @@
+name: outlands-observability-example
+
+services:
+  fixture:
+    image: ${PYTHON_IMAGE:?Set PYTHON_IMAGE to a reviewed digest}
+    command: ["python3", "-I", "-B", "/app/metrics_server.py"]
+    environment:
+      DEMO_MODE: ${DEMO_MODE:?Set DEMO_MODE to fresh, stale, or unavailable}
+    volumes:
+      - ./metrics_server.py:/app/metrics_server.py:ro
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    user: "65534:65534"
+    restart: unless-stopped
+    networks:
+      - telemetry
+
+  prometheus:
+    image: ${PROMETHEUS_IMAGE:?Set PROMETHEUS_IMAGE to a reviewed digest}
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.path=/prometheus
+      - --storage.tsdb.retention.time=1d
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    ports:
+      - "127.0.0.1:${PROMETHEUS_PORT:?Set PROMETHEUS_PORT}:9090"
+    restart: unless-stopped
+    networks:
+      - telemetry
+
+  grafana:
+    image: ${GRAFANA_IMAGE:?Set GRAFANA_IMAGE to a reviewed digest}
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD__FILE: /run/secrets/grafana_admin_password
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      GF_AUTH_ANONYMOUS_ENABLED: "false"
+      GF_ANALYTICS_REPORTING_ENABLED: "false"
+      GF_ANALYTICS_CHECK_FOR_UPDATES: "false"
+    secrets:
+      - grafana_admin_password
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./provisioning/datasources:/etc/grafana/provisioning/datasources:ro
+      - ./provisioning/dashboards:/etc/grafana/provisioning/dashboards:ro
+      - ./dashboards:/etc/grafana/dashboards:ro
+    ports:
+      - "127.0.0.1:${GRAFANA_PORT:?Set GRAFANA_PORT}:3000"
+    restart: unless-stopped
+    networks:
+      - telemetry
+
+networks:
+  telemetry:
+
+volumes:
+  prometheus_data:
+  grafana_data:
+
+secrets:
+  grafana_admin_password:
+    file: ${GRAFANA_PASSWORD_FILE:?Set a private Grafana password file}
