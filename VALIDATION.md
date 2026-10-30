@@ -1,5 +1,13 @@
 # Validation boundaries
 
+## Fictional release walkthrough
+
+The [worked example](docs/24-fictional-release-walkthrough.md) uses only the
+checked-in 46-byte fictional export. Its expected `CREATED`, `PASS`, and
+`ERROR: EXTRA_FILE` outputs can be reproduced offline. The decision table keeps
+privacy, rights and publication at `NOT RUN` or `HOLD`; those reviews were not
+performed by the tools.
+
 ## Fictional release manifest creator
 
 The creator reads an explicit allowlist and refuses unlisted files and output
