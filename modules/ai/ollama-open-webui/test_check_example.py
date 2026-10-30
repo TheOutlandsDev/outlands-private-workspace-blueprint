@@ -34,6 +34,10 @@ class ExampleBoundaryTests(unittest.TestCase):
         self.change("compose.yaml", "127.0.0.1:${WEBUI_PORT:?Set WEBUI_PORT}:8080", "0.0.0.0:3001:8080")
         self.assertIn("webui_loopback", check(self.root))
 
+    def test_ollama_cloud_switch_cannot_be_enabled(self):
+        self.change("compose.yaml", 'OLLAMA_NO_CLOUD: "1"', 'OLLAMA_NO_CLOUD: "0"')
+        self.assertIn("ollama_local_only", check(self.root))
+
     def test_filled_public_secret_is_rejected(self):
         self.change(".env.example", "WEBUI_SECRET_KEY=\n", "WEBUI_SECRET_KEY=example-value\n")
         self.assertIn("nonblank_public_WEBUI_SECRET_KEY", check(self.root))

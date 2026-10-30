@@ -22,7 +22,9 @@ python3 -I -B -m unittest discover -s modules/catalog/homepage -p 'test_*.py'
 
 ## server-01 Ollama hosting expansion
 
-The [AI module](modules/ai/ollama-open-webui/README.md) now includes an optional NVIDIA reservation overlay and a fictional inference worksheet with a blank model reference and `NOT_RUN` results. Offline checks reject GPU scope drift, a filled public model reference, and unearned acceptance labels. Synthetic Compose resolution checks only configuration shape. No driver, toolkit, GPU allocation, image pull, model download, inference, WebUI connection, or native login was tested by this repository. Hardware and user-visible acceptance remain `NOT_RUN`.
+The [AI module](modules/ai/ollama-open-webui/README.md) includes an optional NVIDIA reservation overlay and a fictional inference worksheet with a blank model reference and `NOT_RUN` results. Offline checks reject GPU scope drift, a filled public model reference, and unearned acceptance labels. Synthetic Compose resolution checks only configuration shape. The separate hosted staging job tests disposable WebUI connection and login. Driver/toolkit setup, GPU allocation, model download and inference remain `NOT RUN`.
+
+The example also sets `OLLAMA_NO_CLOUD=1`. Its opt-in `smoke_inference.py` checks for an already installed model and a nonempty response to a fixed fictional prompt when a reader runs it in a private terminal. The repository tests replace Docker with a fictional runner. They prove command selection and refusal behavior only; no model was pulled or run during those tests.
 
 ```sh
 python3 -I -B modules/ai/ollama-open-webui/check_example.py

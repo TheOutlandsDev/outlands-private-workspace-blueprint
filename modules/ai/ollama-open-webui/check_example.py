@@ -28,6 +28,8 @@ def check(root: Path) -> list[str]:
             findings.append("manifest_" + key)
     if not service or "ports:" in ollama or "network_mode: host" in ollama:
         findings.append("ollama_host_exposure")
+    if 'environment:\n      OLLAMA_NO_CLOUD: "1"' not in ollama:
+        findings.append("ollama_local_only")
     if '127.0.0.1:${WEBUI_PORT:?Set WEBUI_PORT}:8080' not in compose:
         findings.append("webui_loopback")
     if "OLLAMA_BASE_URL: http://ollama:11434" not in compose:
