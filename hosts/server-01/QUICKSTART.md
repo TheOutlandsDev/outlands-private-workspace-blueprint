@@ -15,6 +15,14 @@ python3 -I -B hosts/server-01/preflight.py
 
 The assembly check reads public files only. The preflight reads the selected Docker context, checks for the Compose plugin, and asks the **local Unix-socket daemon** for its version. It starts no services, prints only bounded PASS/REVIEW flags, and refuses `DOCKER_HOST`, `DOCKER_CONTEXT`, SSH, or TCP contexts. Stop if either command reports REVIEW. Resolve the context privately; never paste `docker info`, Compose output, or a filled environment file into a public issue.
 
+### Optional one-shot host snapshot
+
+The [host-health module](../../modules/observability/host-health/README.md) is independent of Docker and the fictional dashboard. Its default published example uses invented counters. After reviewing its source, a reader may choose `--live` on their own Linux host; it prints fixed labels only and does not install, schedule, or export a collector. This optional result does not complete any Docker or application acceptance gate.
+
+```sh
+python3 -I -B modules/observability/host-health/host_health.py --fictional
+```
+
 ## 2. Make a private local working copy
 
 Choose a new absolute directory **outside the repository**. The example below uses a reader-owned home directory; choose your own private location and keep it out of Git.

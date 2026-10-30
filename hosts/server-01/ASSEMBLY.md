@@ -37,6 +37,8 @@ Follow the [Docker host foundation](../../modules/foundation/docker-host/README.
 
 **Gate:** Docker and Compose respond in the intended context, the smoke container exits successfully, and no unexpected host setting changed. If this fails, stop before adding applications. A source check or resolved Compose model alone does not satisfy this gate.
 
+The optional [local host-health snapshot](../../modules/observability/host-health/README.md) can check three example resource bounds on a reader-owned Linux host without Docker or a network endpoint. Its fictional fixture is safe for source CI. A live one-shot result stays private and does not replace the foundation gate or establish monitoring, storage recovery, or application health.
+
 ## 3. Add AI locally
 
 Follow [Ollama + Open WebUI](../../modules/ai/ollama-open-webui/README.md) in its **own Compose project**. Choose reviewed image digests, create a stable private WebUI key, resolve Compose, then start only that project. CPU is the default; the optional one-GPU NVIDIA overlay requires a separate driver/toolkit review on an isolated test host. Confirm the Ollama API has no host port and WebUI binds only to the selected loopback port. Preserve the two named volumes and key together in the private recovery plan.

@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "id": "server-01.observability.host-health",
+  "host_role": "server-01",
+  "status": "optional-local-reader-tool",
+  "requires": ["linux-procfs", "python3"],
+  "inputs": [],
+  "public_ports": [],
+  "loopback_ports": [],
+  "persistent_volumes": [],
+  "real_targets_included": false,
+  "starts_by_default": false
+}

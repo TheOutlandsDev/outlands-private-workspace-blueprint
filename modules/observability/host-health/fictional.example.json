@@ -1,0 +1,9 @@
+{
+  "scope": "fictional",
+  "cpu_first": [100, 0, 20, 800, 30, 0, 0, 0],
+  "cpu_second": [110, 0, 25, 885, 30, 0, 0, 0],
+  "memory_total_kib": 8192,
+  "memory_available_kib": 4096,
+  "root_blocks": 1000,
+  "root_available_blocks": 400
+}
