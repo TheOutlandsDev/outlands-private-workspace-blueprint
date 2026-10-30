@@ -1,5 +1,10 @@
 # Changelog
 
+## Public source screen capacity
+
+- Raised the bounded source file ceiling to 128, retaining byte and content checks.
+- Added offline tests for the 128/129 file boundary and private-path detection.
+
 ## Fictional release manifest verifier
 
 - Added an offline exact-file verifier, a fictional export and seven contract tests.

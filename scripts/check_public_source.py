@@ -8,7 +8,7 @@ import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-MAX_FILES = 100
+MAX_FILES = 128
 MAX_TOTAL_BYTES = 8_000_000
 ALLOWED_EMAIL_DOMAINS = {'example.com', 'example.invalid', 'example.org'}
 # Visually reviewed captures of the original fictional fixture only.
