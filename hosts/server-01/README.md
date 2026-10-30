@@ -8,7 +8,7 @@
 | --- | --- | --- |
 | Host | Linux host with a supported Docker Engine and Compose plugin | [Foundation module](../../modules/foundation/docker-host/README.md) |
 | Storage | Persistent state with a privately chosen recovery plan | Named volumes in the AI module |
-| Network | Local binding first; remote route only after separate access review | WebUI binds to `127.0.0.1`; Ollama has no host port |
+| Network | Local binding first; remote route only after separate access review | [Private entry module](../../modules/access/private-entry/README.md); WebUI stays on loopback |
 | AI | Model server and browser application | [Ollama + Open WebUI](../../modules/ai/ollama-open-webui/README.md) |
 | Catalog | Optional entry point after the app access check | [Homepage example](../../examples/homepage/README.md) |
 | Monitoring | Optional, with its own authorization and retention plan | [Prometheus guide](../../docs/14-prometheus.md) |

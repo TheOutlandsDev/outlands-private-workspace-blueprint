@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "scope": "fictional-example",
+  "host_role": "server-01",
+  "example_route": "https://workspace.example.invalid/",
+  "example_backend": "http://127.0.0.1:3001/",
+  "checks": [
+    {"id": "owner_allowed", "expected": "ALLOW_AFTER_APP_LOGIN", "status": "NOT_RUN"},
+    {"id": "signed_out", "expected": "DENY_PROTECTED_CONTENT", "status": "NOT_RUN"},
+    {"id": "app_unassigned", "expected": "APP_DENY", "status": "NOT_RUN"},
+    {"id": "network_unassigned", "expected": "NETWORK_DENY", "status": "NOT_RUN"},
+    {"id": "direct_app_route", "expected": "SAME_APP_AUTH", "status": "NOT_RUN"},
+    {"id": "public_internet", "expected": "UNREACHABLE", "status": "NOT_RUN"},
+    {"id": "foreground_stop", "expected": "ROUTE_REMOVED", "status": "NOT_RUN"}
+  ]
+}

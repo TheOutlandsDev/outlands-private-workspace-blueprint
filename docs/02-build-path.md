@@ -35,6 +35,8 @@ If using Authentik, begin from its current installation guide in a separate priv
 
 ## 3. Enable private HTTPS with Serve
 
+Use the [optional private entry module](../modules/access/private-entry/README.md) for a full fictional allowed/denied matrix and a foreground-only route trial before deciding on persistence.
+
 Install and enroll Tailscale using its official instructions, review your tailnet policy, and authorize any account or HTTPS changes yourself. First check the existing Serve configuration so this tutorial does not overwrite unrelated routes:
 
 ```sh

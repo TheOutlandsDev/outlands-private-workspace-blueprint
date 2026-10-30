@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "id": "server-01.access.private-entry",
+  "host_role": "server-01",
+  "status": "synthetic-reference",
+  "requires": ["tailscale-client", "reviewed-tailnet-policy", "authenticated-loopback-app"],
+  "inputs": ["owner-selected-private-route", "app-local-port", "app-auth-policy"],
+  "public_ports": [],
+  "changes_tailnet_policy": false,
+  "starts_by_default": false
+}
