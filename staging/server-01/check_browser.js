@@ -21,6 +21,8 @@ function requireCheck(condition, label) {
     const catalog = await context.newPage();
     const catalogResponse = await catalog.goto('http://127.0.0.1:13003/', { waitUntil: 'domcontentloaded' });
     requireCheck(catalogResponse && catalogResponse.status() === 200, 'Homepage browser response');
+    await catalog.waitForTimeout(5000);
+    process.stdout.write(`OBSERVED fictional Homepage body: ${JSON.stringify((await catalog.locator('body').innerText()).slice(0, 320))}\n`);
     await catalog.getByText('Open WebUI', { exact: true }).first().waitFor({ timeout: 45000 });
     await catalog.getByText('Grafana', { exact: true }).first().waitFor({ timeout: 45000 });
     const catalogText = await catalog.locator('body').innerText();
