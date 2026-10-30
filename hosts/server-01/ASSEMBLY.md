@@ -2,6 +2,8 @@
 
 `server-01` is a **role** for a reader-owned Linux host. This guide connects the published modules into one staged build. It is not a copy of anyone's server, an installer, or a record of a completed deployment. The [fictional assembly worksheet](assembly.example.json) starts every acceptance gate at `NOT_RUN`; copy the method into private records and replace it with evidence from your own isolated installation.
 
+The [reader quick-start](QUICKSTART.md) gives a bounded local preflight and a new private working copy before these gates. It does not qualify a host or fill private decisions automatically.
+
 ```mermaid
 flowchart LR
   H[Linux and Docker foundation] --> A[Ollama + Open WebUI project]

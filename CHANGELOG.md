@@ -1,5 +1,11 @@
 # Changelog
 
+## server-01 reader quick-start
+
+- Added a read-only local Docker-context preflight and an additive helper that copies reviewed runtime fixtures into a new private directory with blank configuration files and an unrun acceptance worksheet.
+- Added ordered AI, fictional metrics, and catalog setup steps with explicit local login, denial, and evidence gates. Remote entry, model choice, and backup destinations remain private reader decisions.
+- Added offline refusal tests and a complete-checkout copy test in source CI. No owner host, Docker daemon, model, or private route was used to prepare this change.
+
 ## Disposable server-01 AI recovery rehearsal
 
 - Added a runner-local archive and fresh-project restore of both synthetic AI volumes after the existing native and browser checks.
