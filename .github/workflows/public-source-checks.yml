@@ -67,6 +67,12 @@ jobs:
       - name: Test server-01 observability states and boundaries
         run: python3 -I -B -m unittest discover -s modules/observability/synthetic-metrics -p 'test_*.py'
 
+      - name: Check server-01 fictional assembly
+        run: python3 -I -B hosts/server-01/check_assembly.py
+
+      - name: Test server-01 assembly boundaries
+        run: python3 -I -B -m unittest discover -s hosts/server-01 -p 'test_*.py'
+
       - name: Check Dockhand demo
         run: python3 -I -B scripts/check_dockhand_demo.py
 

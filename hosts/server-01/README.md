@@ -13,7 +13,7 @@
 | Catalog | Optional entry point after the app access check | [Homepage example](../../examples/homepage/README.md) |
 | Monitoring | Optional, with its own authorization and retention plan | [Synthetic observability module](../../modules/observability/synthetic-metrics/README.md) |
 
-Modules do not need a shared login or a single all-services Compose file. Start with the [foundation module](../../modules/foundation/docker-host/README.md), then install one optional service into its own project and verify its boundary before linking it from the catalog. The [module contract](../../modules/README.md) explains which parts each module must document.
+Follow the [assembly guide](ASSEMBLY.md) for the staged order, private decisions, and cross-module acceptance worksheet. Modules do not need a shared login or a single all-services Compose file. Start with the [foundation module](../../modules/foundation/docker-host/README.md), then install one optional service into its own project and verify its boundary before linking it from the catalog. The [module contract](../../modules/README.md) explains which parts each module must document.
 
 ## Host preparation checklist
 

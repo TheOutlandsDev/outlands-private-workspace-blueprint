@@ -1,5 +1,11 @@
 # Changelog
 
+## server-01 assembly guide
+
+- Connected the published foundation, AI, synthetic metrics, and optional private entry modules in a staged reader path.
+- Added a fictional `NOT_RUN` worksheet and offline checks for module independence, no real target, no backup destination, and no unearned access or deployment claim.
+- No host service, route, account, recovery location, or operator state was exported or changed.
+
 ## server-01 synthetic observability module
 
 - Added a local-only Prometheus/Grafana example that scrapes a fictional metrics source with fresh, stale, and unavailable modes.

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "scope": "fictional-assembly",
+  "host_role": "server-01",
+  "shared_compose_project": false,
+  "shared_service_network": false,
+  "real_targets_included": false,
+  "backup_destination_included": false,
+  "modules": [
+    {"id": "foundation", "path": "modules/foundation/docker-host/README.md", "required": true, "status": "NOT_RUN"},
+    {"id": "ai", "path": "modules/ai/ollama-open-webui/README.md", "required": false, "status": "NOT_RUN"},
+    {"id": "observability", "path": "modules/observability/synthetic-metrics/README.md", "required": false, "status": "NOT_RUN"},
+    {"id": "private-entry", "path": "modules/access/private-entry/README.md", "required": false, "status": "NOT_RUN"}
+  ],
+  "optional_route": {"target_module": "ai", "example_backend": "http://127.0.0.1:3001/", "status": "NOT_RUN"}
+}

@@ -11,4 +11,4 @@ Modules are optional parts of a `server-01`-style host. A module must identify i
 
 Use each module in a separate Compose project. A module may declare a dependency on a host capability such as Docker, but must not silently install another service or modify an existing deployment. Public examples use invented labels and empty secret values. Operators select images, data handling, access policy, and recovery arrangements privately. Public modules must not identify backup providers, accounts, paths, buckets, or endpoints.
 
-The [server-01 host reference](../hosts/server-01/README.md) describes the role and assembly order. More modules can follow the same contract without requiring the AI example.
+The [server-01 host reference](../hosts/server-01/README.md) describes the role; its [assembly guide](../hosts/server-01/ASSEMBLY.md) provides the staged order and a fictional acceptance worksheet. More modules can follow the same contract without requiring the AI example.
