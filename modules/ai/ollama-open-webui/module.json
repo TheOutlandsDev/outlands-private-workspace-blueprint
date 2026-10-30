@@ -8,5 +8,6 @@
   "public_ports": [],
   "loopback_ports": ["WEBUI_PORT"],
   "persistent_volumes": ["ollama_models", "open_webui_data"],
+  "optional_profiles": ["nvidia-one-gpu"],
   "starts_by_default": false
 }

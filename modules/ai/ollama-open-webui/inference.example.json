@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "scope": "fictional-inference-smoke",
+  "model_reference": "",
+  "prompt": "Describe a fictional red paper kite in one sentence.",
+  "checks": [
+    {"id": "reviewed_model_license_and_size", "status": "NOT_RUN"},
+    {"id": "ollama_cli_response", "status": "NOT_RUN"},
+    {"id": "webui_model_visible", "status": "NOT_RUN"},
+    {"id": "webui_fictional_response", "status": "NOT_RUN"},
+    {"id": "signed_out_denial", "status": "NOT_RUN"},
+    {"id": "optional_gpu_processor_observed", "status": "NOT_RUN"}
+  ]
+}
