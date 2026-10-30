@@ -4,6 +4,7 @@ The blueprint teaches how to build and explain a private application workspace. 
 
 | Practice | Inspectable example | Test or decision boundary |
 | --- | --- | --- |
+| Modular host | [server-01 role](../hosts/server-01/README.md), [module contract](../modules/README.md), and [Ollama + Open WebUI example](../modules/ai/ollama-open-webui/README.md) | Source and Compose checks do not prove a booted host, model inference, or an access policy. |
 | System design | [Architecture](01-architecture.md), [build path](02-build-path.md), and [Homepage example](../examples/homepage/README.md) | Compose resolution is separate from a running service. |
 | Access design | [Owner access matrix](03-access-and-qa.md) | Allowed access and denial need separate observations. |
 | Interface work | [App walkthroughs](07-app-walkthroughs.md) and original fictional demos | A static mockup is separate from a native application or physical phone. |
