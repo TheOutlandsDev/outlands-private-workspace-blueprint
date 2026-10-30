@@ -1,5 +1,14 @@
 # Validation boundaries
 
+## server-01 synthetic observability module
+
+The [synthetic metrics module](modules/observability/synthetic-metrics/README.md) contains only a fictional scrape target, a small Grafana dashboard, and a three-mode source. Offline tests distinguish fresh, stale, and unavailable payloads and reject public ports, external scrape targets, or broader dashboard queries in the example. Compose resolution with synthetic image references and a synthetic secret file checks configuration shape only. No image was pulled, no container or browser was started, and native Grafana provisioning, ingestion, login, persistence, and recovery remain `NOT RUN`.
+
+```sh
+python3 -I -B modules/observability/synthetic-metrics/check_example.py
+python3 -I -B -m unittest discover -s modules/observability/synthetic-metrics -p 'test_*.py'
+```
+
 ## server-01 private entry example
 
 The [private entry module](modules/access/private-entry/README.md) includes a fictional route and seven `NOT_RUN` access cases. Its offline checker and negative tests verify the checked-in example stays fictional and cannot claim an unearned PASS. They send no network traffic, do not start Serve, and do not test a real tailnet or application login. Allowed access, denial, direct-route behavior, public-internet reachability, and route removal remain `NOT RUN` for a reader's own installation.
@@ -49,9 +58,9 @@ source checks only; they do not clear privacy or publication rights. See the
 
 ## Public source screen capacity
 
-The source screen accepts up to 128 files while retaining its 8 MB total and
-2 MB per-file limits. An offline boundary test checks that 128 fictional files
-pass, the 129th fails, and a synthetic private-path finding still appears.
+The source screen accepts up to 192 files while retaining its 8 MB total and
+2 MB per-file limits. An offline boundary test checks that 192 fictional files
+pass, the 193rd fails, and synthetic private-path and secret-directory findings still appear.
 The screen reports categories, not matched content; it remains a review aid,
 not publication clearance. Run from the repository root:
 

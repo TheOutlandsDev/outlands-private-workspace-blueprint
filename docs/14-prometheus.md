@@ -1,5 +1,7 @@
 # Prometheus: see where measurements come from
 
+For an installable local-only example with fictional metrics, see the [server-01 synthetic observability module](../modules/observability/synthetic-metrics/README.md). This page remains the product walkthrough.
+
 [All app walkthroughs](07-app-walkthroughs.md) · [Architecture](01-architecture.md) · [Access and QA](03-access-and-qa.md)
 
 A scrape target supplies measurements. A successful scrape alone does not prove every service is healthy.

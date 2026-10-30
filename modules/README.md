@@ -7,6 +7,7 @@ Modules are optional parts of a `server-01`-style host. A module must identify i
 | [Docker host foundation](foundation/docker-host/README.md) | Linux/Docker setup guidance and isolated smoke check | Synthetic reference; offline source and Compose checks |
 | [Ollama + Open WebUI](ai/ollama-open-webui/README.md) | Local model server and authenticated browser UI | Synthetic CPU reference; offline source and Compose checks |
 | [Private entry](access/private-entry/README.md) | Optional staged access to a locally protected app | Fictional route and NOT RUN access review; no live policy export |
+| [Synthetic observability](observability/synthetic-metrics/README.md) | Local-only Prometheus/Grafana with a fictional source | Offline source checks; native GUI and ingestion NOT RUN |
 
 Use each module in a separate Compose project. A module may declare a dependency on a host capability such as Docker, but must not silently install another service or modify an existing deployment. Public examples use invented labels and empty secret values. Operators select images, data handling, access policy, and recovery arrangements privately. Public modules must not identify backup providers, accounts, paths, buckets, or endpoints.
 

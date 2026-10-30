@@ -61,6 +61,12 @@ jobs:
       - name: Test server-01 private entry boundaries
         run: python3 -I -B -m unittest discover -s modules/access/private-entry -p 'test_*.py'
 
+      - name: Check synthetic server-01 observability
+        run: python3 -I -B modules/observability/synthetic-metrics/check_example.py
+
+      - name: Test server-01 observability states and boundaries
+        run: python3 -I -B -m unittest discover -s modules/observability/synthetic-metrics -p 'test_*.py'
+
       - name: Check Dockhand demo
         run: python3 -I -B scripts/check_dockhand_demo.py
 

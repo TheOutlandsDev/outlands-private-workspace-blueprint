@@ -1,0 +1,38 @@
+{
+  "uid": "outlands-synthetic-source",
+  "title": "Synthetic source states",
+  "tags": ["fictional", "outlands-example"],
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "15s",
+  "time": {"from": "now-15m", "to": "now"},
+  "panels": [
+    {
+      "id": 1,
+      "type": "stat",
+      "title": "Scrape available (1=yes, 0=no)",
+      "datasource": {"type": "prometheus", "uid": "synthetic-prom"},
+      "targets": [{"refId": "A", "expr": "up{job=\"fictional_fixture\"}", "instant": true, "range": false}],
+      "gridPos": {"h": 8, "w": 8, "x": 0, "y": 0},
+      "fieldConfig": {"defaults": {"noValue": "UNKNOWN"}, "overrides": []}
+    },
+    {
+      "id": 2,
+      "type": "stat",
+      "title": "Source observation age (seconds)",
+      "datasource": {"type": "prometheus", "uid": "synthetic-prom"},
+      "targets": [{"refId": "A", "expr": "time() - outlands_demo_observed_at_seconds{job=\"fictional_fixture\"}", "instant": true, "range": false}],
+      "gridPos": {"h": 8, "w": 8, "x": 8, "y": 0},
+      "fieldConfig": {"defaults": {"unit": "s", "noValue": "UNKNOWN", "thresholds": {"mode": "absolute", "steps": [{"color": "green", "value": null}, {"color": "yellow", "value": 120}, {"color": "red", "value": 300}]}}, "overrides": []}
+    },
+    {
+      "id": 3,
+      "type": "stat",
+      "title": "Fictional sample value",
+      "datasource": {"type": "prometheus", "uid": "synthetic-prom"},
+      "targets": [{"refId": "A", "expr": "outlands_demo_value{job=\"fictional_fixture\"}", "instant": true, "range": false}],
+      "gridPos": {"h": 8, "w": 8, "x": 16, "y": 0},
+      "fieldConfig": {"defaults": {"noValue": "UNKNOWN"}, "overrides": []}
+    }
+  ]
+}
