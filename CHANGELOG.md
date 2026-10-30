@@ -1,5 +1,11 @@
 # Changelog
 
+## server-01 bounded private host trends
+
+- Added an opt-in foreground collector for bounded CPU, available-memory, and root-filesystem samples, with no network endpoint, Docker socket, schedule, or automatic cleanup.
+- Added an invented time series and reproducible static dashboard. Real percentages and timestamps are written only to new owner-private files outside the repository; failures preserve partial evidence and cannot render as complete.
+- Added mocked source, privacy-boundary, and no-overwrite tests. No owner host or CI runner was sampled for this increment.
+
 ## server-01 opt-in host-health snapshot
 
 - Added a one-shot local Linux resource check for aggregate CPU, available memory, and root-filesystem space. It prints fixed labels only and stores or sends no readings.

@@ -17,7 +17,7 @@ The assembly check reads public files only. The preflight reads the selected Doc
 
 ### Optional one-shot host snapshot
 
-The [host-health module](../../modules/observability/host-health/README.md) is independent of Docker and the fictional dashboard. Its default published example uses invented counters. After reviewing its source, a reader may choose `--live` on their own Linux host; it prints fixed labels only and does not install, schedule, or export a collector. This optional result does not complete any Docker or application acceptance gate.
+The [host-health module](../../modules/observability/host-health/README.md) is independent of Docker and the fictional Prometheus/Grafana dashboard. Its default published examples use invented counters. After reviewing its source, a reader may choose a one-shot `--live` check or a bounded foreground trend run on their own Linux host. The latter writes readings only to a new private directory and renders a static local dashboard; it does not install, schedule, or export a service. Follow that module's separate opt-in instructions. Neither result completes a Docker or application acceptance gate.
 
 ```sh
 python3 -I -B modules/observability/host-health/host_health.py --fictional

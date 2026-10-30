@@ -2,7 +2,7 @@
 
 ## server-01 opt-in host-health snapshot
 
-The [host-health module](modules/observability/host-health/README.md) uses invented CPU, memory, and root-filesystem counters in its public fixture. Offline tests use that fixture and mocked live reads; they never sample the CI runner's host. A reader can opt into a one-shot local Linux check that prints only bounded labels. It opens no listener, uses no Docker socket, sends no network request, and writes no record. A successful fictional test or source check is not evidence of a reader's resource condition, other filesystems, application health, or an active monitoring pipeline. Reader-host acceptance remains `NOT RUN`.
+The [host-health module](modules/observability/host-health/README.md) uses invented CPU, memory, and root-filesystem counters in its public fixtures. Offline tests use those fixtures and mocked live reads; they never sample the CI runner's host. A reader can opt into a one-shot local Linux check that prints only bounded labels, or a separate foreground collector that writes a bounded private series and static HTML dashboard outside the repository. Neither opens a listener, uses a Docker socket, or sends a network request. The tests verify strict data shape, private no-overwrite outputs, incomplete-run refusal, and exact reproduction of the public fictional dashboard. A successful fictional test or source check is not evidence of a reader's resource condition, other filesystems, application health, or active alerting. Reader-host acceptance remains `NOT RUN`.
 
 ```sh
 python3 -I -B modules/observability/host-health/host_health.py --fictional

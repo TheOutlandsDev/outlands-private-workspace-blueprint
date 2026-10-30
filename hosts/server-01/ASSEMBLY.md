@@ -37,7 +37,7 @@ Follow the [Docker host foundation](../../modules/foundation/docker-host/README.
 
 **Gate:** Docker and Compose respond in the intended context, the smoke container exits successfully, and no unexpected host setting changed. If this fails, stop before adding applications. A source check or resolved Compose model alone does not satisfy this gate.
 
-The optional [local host-health snapshot](../../modules/observability/host-health/README.md) can check three example resource bounds on a reader-owned Linux host without Docker or a network endpoint. Its fictional fixture is safe for source CI. A live one-shot result stays private and does not replace the foundation gate or establish monitoring, storage recovery, or application health.
+The optional [local host-health module](../../modules/observability/host-health/README.md) can check three example resource bounds on a reader-owned Linux host without Docker or a network endpoint. A separate foreground command can collect a bounded private series and render a static local dashboard. Its published series and dashboard are fictional; source CI uses only invented or mocked data. A live result stays private and does not replace the foundation gate or establish alerting, storage recovery, or application health.
 
 ## 3. Add AI locally
 
