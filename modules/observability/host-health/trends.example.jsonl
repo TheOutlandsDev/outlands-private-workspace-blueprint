@@ -1,0 +1,6 @@
+{"interval_seconds":60,"kind":"header","planned_samples":4,"schema_version":1,"scope":"fictional"}
+{"cpu_busy_pct":22.0,"index":1,"kind":"sample","memory_available_pct":68.0,"observed_at_utc":"2020-01-01T00:00:00Z","root_available_pct":54.0}
+{"cpu_busy_pct":51.0,"index":2,"kind":"sample","memory_available_pct":64.0,"observed_at_utc":"2020-01-01T00:01:00Z","root_available_pct":54.0}
+{"cpu_busy_pct":84.0,"index":3,"kind":"sample","memory_available_pct":59.0,"observed_at_utc":"2020-01-01T00:02:00Z","root_available_pct":53.0}
+{"cpu_busy_pct":36.0,"index":4,"kind":"sample","memory_available_pct":62.0,"observed_at_utc":"2020-01-01T00:03:00Z","root_available_pct":53.0}
+{"kind":"complete","samples":4}
