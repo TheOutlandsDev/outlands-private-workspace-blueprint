@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "files": [
+    {
+      "path": "example.txt",
+      "bytes": 46,
+      "sha256": "42ebd053d2467f487161a874b34eafb91a0dcd8432e6aa545f708685a2c9add4"
+    }
+  ]
+}
