@@ -12,6 +12,8 @@ private inventory. Reproduce the issue using a minimal example instead.
 
 For code or documentation changes, run `python3 -I -B scripts/check_public_source.py`
 from the repository root, verify relative links, and state what you did not test.
+For changes to the fictional evidence ledger, also run
+`python3 -I -B -m unittest discover -s examples/evidence-ledger -p 'test_*.py'`.
 Do not add an automatic installer or expand a proxy/API policy without describing
 the exact behavior, failure handling and rollback procedure.
 

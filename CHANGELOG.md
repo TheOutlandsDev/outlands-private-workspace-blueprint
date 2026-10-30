@@ -1,5 +1,11 @@
 # Changelog
 
+## Engineering method and fictional evidence ledger
+
+- Added an evidence-driven build method, a public-export review, and a map of the project's inspectable practices.
+- Added a bounded offline ledger example with fictional `NOT_RUN` checks and four contract tests.
+- Kept source validation, native access, physical-device use, and recovery as separate evidence claims.
+
 ## 0.2.0 · Dockhand theme walkthrough
 
 - Beginner steps for a local, fictional container-workspace preview.

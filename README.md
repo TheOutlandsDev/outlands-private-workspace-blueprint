@@ -75,6 +75,16 @@ identity provider, imports secrets or changes an existing server.
 
 Open the [app walkthrough library](docs/07-app-walkthroughs.md) for thirteen more guides: Homepage, AI Workbench, Grafana, identity, portals, fleet, metrics, alerts, container resources, Git, learning, game connection guides and local API tools. Each includes a fictional local demo, a clean screenshot, a setup path and rollback checks.
 
+## Engineering methods
+
+The [evidence-driven build method](docs/21-evidence-driven-delivery.md) shows how
+to separate source checks, interface observations, access denial and recovery.
+The [publication review](docs/22-publication-review.md) describes how to select
+an exact public export without carrying private operator records into Git.
+Use the [fictional evidence ledger](examples/evidence-ledger/README.md) to try a
+bounded offline record-shape check. The [project map](docs/23-what-this-project-demonstrates.md)
+links the inspectable examples.
+
 ## Design direction
 
 Charcoal surfaces, a red digital-wall motif, clear service labels and restrained

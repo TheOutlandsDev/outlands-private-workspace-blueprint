@@ -1,5 +1,24 @@
 # Validation boundaries
 
+## Engineering method and evidence ledger example
+
+| Check | Result | Limit |
+| --- | --- | --- |
+| Ledger example | PASS | Five fictional checks remain `NOT_RUN`; no deployment evidence is asserted. |
+| Ledger contract tests | 4 PASS | Tests reject duplicate keys/IDs, unmatched evidence stages, and evidence on unrun checks. |
+| Public source screen | PASS | 92 selected files passed the documented bounded patterns and relative-link checks at this source review. |
+| Native deployment, access, physical phone, restore | NOT RUN | This addition is documentation and an offline record-shape example. |
+
+Run from the repository root:
+
+```sh
+python3 -I -B examples/evidence-ledger/check_ledger.py examples/evidence-ledger/ledger.example.json
+python3 -I -B -m unittest discover -s examples/evidence-ledger -p 'test_*.py'
+python3 -I -B scripts/check_public_source.py
+```
+
+The validator does not open evidence references or verify that a stated test happened. Re-run these commands for a changed checkout; the counts above describe this reviewed source selection.
+
 Checks recorded for the initial source publication:
 
 | Check | Result | What it means |

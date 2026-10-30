@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "project": "fictional-workspace",
+  "checks": [
+    {
+      "id": "compose-model",
+      "stage": "source",
+      "claim": "The selected Compose example resolves",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "owner-login",
+      "stage": "access",
+      "claim": "The intended owner can use the app",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "non-owner-denial",
+      "stage": "access",
+      "claim": "An unassigned user sees no protected data",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "isolated-restore",
+      "stage": "restore",
+      "claim": "An isolated restore yields expected state",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "real-phone",
+      "stage": "physical-device",
+      "claim": "The intended app works on a physical phone",
+      "status": "NOT_RUN",
+      "evidence": null
+    }
+  ]
+}
