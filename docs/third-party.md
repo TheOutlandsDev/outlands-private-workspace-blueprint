@@ -14,8 +14,9 @@ This blueprint uses original OUTLANDS tutorial text and visual direction. It lin
 | Authentik | Staged application identity and policy integration | [Authentik documentation](https://docs.goauthentik.io/) |
 | Grafana | Native-login dashboards | [Grafana documentation](https://grafana.com/docs/grafana/latest/) |
 | Prometheus and Node Exporter | Host telemetry and queries | [Prometheus documentation](https://prometheus.io/docs/introduction/overview/) |
+| SmolLM2 135M Instruct | Small model fetched only by the disposable CPU inference job | [Ollama tag and size](https://ollama.com/library/smollm2:135m) · [upstream model card and Apache-2.0 license](https://huggingface.co/HuggingFaceTB/SmolLM2-135M-Instruct) |
 
-Upstream documentation was consulted on 2026-10-22; Dockhand appearance and Nginx filter references were checked on 2026-10-23. Interfaces, defaults, license terms, and supported versions can change. Check the documentation for the exact release you deploy.
+Upstream documentation was consulted on 2026-10-22; Dockhand appearance and Nginx filter references were checked on 2026-10-23. The SmolLM2 model tag, size, and license were checked on 2026-10-30; its weights are downloaded only into a disposable CI runner and are not committed or redistributed here. Interfaces, defaults, license terms, and supported versions can change. Check the documentation for the exact release you deploy.
 
 ## Reuse decisions
 
