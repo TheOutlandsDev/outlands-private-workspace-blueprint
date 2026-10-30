@@ -27,9 +27,10 @@ function requireCheck(condition, label) {
     requireCheck(catalogText.includes('Open WebUI') && catalogText.includes('Grafana'),
       'fictional Homepage cards rendered');
     requireCheck((await catalog.title()).includes('FICTIONAL CATALOG'), 'fictional Homepage title rendered');
-    requireCheck(await catalog.locator('a[href="https://webui.example.invalid/"]').count() === 1,
+    const catalogLinks = await catalog.locator('a').evaluateAll((nodes) => nodes.map((node) => node.href));
+    requireCheck(catalogLinks.includes('https://webui.example.invalid/'),
       'WebUI card remains fictional');
-    requireCheck(await catalog.locator('a[href="https://metrics.example.invalid/"]').count() === 1,
+    requireCheck(catalogLinks.includes('https://metrics.example.invalid/'),
       'optional Grafana card remains fictional');
 
     const webui = await context.newPage();
