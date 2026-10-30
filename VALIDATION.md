@@ -2,12 +2,13 @@
 
 ## Disposable synthetic server-01 staging
 
-The [hosted staging method](staging/server-01/README.md) is a separate GitHub Actions job that boots fresh AI, fictional metrics, and catalog modules on a disposable runner. It records each run's resolved upstream image digests. The native checks cover loopback port bindings, Ollama/WebUI internal connectivity, fictional metrics fresh/stale/unavailable/recovered states, Grafana provisioning, disposable WebUI signup and signed-out denial, and Chromium DOM rendering. **A source or syntax check does not qualify that job**; only a specific completed hosted run can establish those outcomes. Model pull/inference, GPU use, private routes, physical devices, persistent restoration, and real-host security remain `NOT RUN`.
+The [hosted staging method](staging/server-01/README.md) is a separate GitHub Actions job that boots fresh AI, fictional metrics, and catalog modules on a disposable runner. It records each run's resolved upstream image digests. The native checks cover loopback port bindings, Ollama/WebUI internal connectivity, fictional metrics fresh/stale/unavailable/recovered states, Grafana provisioning, disposable WebUI signup and signed-out denial, Chromium DOM rendering, and a separate-project AI volume restore. **A source or syntax check does not qualify that job**; only a specific completed hosted run can establish those outcomes. Model pull/inference, GPU use, private routes, physical devices, long-term retention, and real-host restoration remain `NOT RUN`.
 
 Local source-only checks:
 
 ```sh
 bash -n staging/server-01/run.sh
+python3 -I -B -m unittest discover -s staging/server-01 -p 'test_*.py'
 python3 -I -B scripts/check_public_source.py
 ```
 

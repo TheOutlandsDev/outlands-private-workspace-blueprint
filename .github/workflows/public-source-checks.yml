@@ -49,6 +49,9 @@ jobs:
       - name: Test server-01 AI module boundaries
         run: python3 -I -B -m unittest discover -s modules/ai/ollama-open-webui -p 'test_*.py'
 
+      - name: Test disposable AI archive boundaries
+        run: python3 -I -B -m unittest discover -s staging/server-01 -p 'test_*.py'
+
       - name: Check synthetic server-01 foundation
         run: python3 -I -B modules/foundation/docker-host/check_example.py
 

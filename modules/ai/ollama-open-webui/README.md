@@ -131,6 +131,8 @@ Record each observation privately with a time, image and model versions, expecte
 
 Record the selected image digests and Compose input set privately. Back up **both named volumes** with a method appropriate to the host; include the stable secret key in protected recovery material. Quiesce writes or use an application-consistent backup method. Test restoration in a separate project before calling it recoverable. Do not publish archives, chats, model inventories, account databases, or restore logs.
 
+The [disposable staging recovery method](../../../staging/server-01/README.md) demonstrates a two-volume, separate-project restore using only fictional account data and a marker in an otherwise model-free Ollama volume. It is a hosted test of that fixture, not a reader's backup result. Copy the **method**, then privately verify your own data, key handling, access denial, retention, and restore. The public example names no backup provider or destination.
+
 For an update, read both upstream release notes, back up, change one reviewed image digest at a time, run `config --quiet`, recreate that service, and repeat the acceptance table. If behavior changes, return to the previous digest while keeping the volumes and key intact; database migrations can make image rollback incompatible, so use a tested restore plan rather than assuming an old image can read newer state. `docker compose down` stops the module without removing its volumes; **do not use `down -v`** on data you intend to keep.
 
 Remote access is a separate module decision. A catalog link does not secure WebUI. Keep the native login and check both network reachability and app authorization before adding any private route. This example never enables public exposure.

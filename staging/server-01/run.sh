@@ -2,6 +2,10 @@
 # Disposable GitHub runner only. No repository, host, or operator data is mounted.
 set -euo pipefail
 umask 077
+if [[ "${GITHUB_ACTIONS:-}" != "true" ]]; then
+  printf 'REVIEW: disposable GitHub Actions runner required\n' >&2
+  exit 2
+fi
 
 stage_root="$(mktemp -d)"
 export STAGE_ROOT="$stage_root"
@@ -24,6 +28,7 @@ HOMEPAGE_IMAGE="$(pull_digest homepage ghcr.io/gethomepage/homepage:v2.7.0)"
 OLLAMA_IMAGE="$(pull_digest ollama ollama/ollama:0.40.13)"
 OPEN_WEBUI_IMAGE="$(pull_digest open-webui ghcr.io/open-webui/open-webui:v0.12.5)"
 PYTHON_IMAGE="$(pull_digest python python:3.13-slim)"
+export PYTHON_IMAGE
 PROMETHEUS_IMAGE="$(pull_digest prometheus prom/prometheus:v3.15.1)"
 GRAFANA_IMAGE="$(pull_digest grafana grafana/grafana:13.3.0)"
 test "$(docker image inspect --format '{{.Config.User}}' "$GRAFANA_IMAGE")" = '472'
@@ -72,5 +77,6 @@ done
 
 python3 -I -B staging/server-01/check_runtime.py
 node staging/server-01/check_browser.js
+python3 -I -B staging/server-01/check_recovery.py
 
-printf 'PASS synthetic native staging; no model inference or private route tested\n'
+printf 'PASS synthetic native staging and disposable AI recovery; no model inference or private route tested\n'
