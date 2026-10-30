@@ -1,5 +1,18 @@
 # Validation boundaries
 
+## Public source screen capacity
+
+The source screen accepts up to 128 files while retaining its 8 MB total and
+2 MB per-file limits. An offline boundary test checks that 128 fictional files
+pass, the 129th fails, and a synthetic private-path finding still appears.
+The screen reports categories, not matched content; it remains a review aid,
+not publication clearance. Run from the repository root:
+
+```sh
+python3 -I -B scripts/check_public_source.py
+python3 -I -B -m unittest discover -s scripts -p 'test_*.py'
+```
+
 ## Fictional release manifest example
 
 | Check | Local result | Limit |
