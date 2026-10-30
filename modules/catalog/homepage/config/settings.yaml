@@ -1,0 +1,16 @@
+title: "OUTLANDS // FICTIONAL CATALOG"
+description: "Synthetic server-01 links; no live applications"
+theme: dark
+color: slate
+disableSearch: true
+background:
+  image: /outlands/netwall.svg
+  brightness: 50
+  opacity: 50
+layout:
+  Applications:
+    style: row
+    columns: 1
+  Optional monitoring:
+    style: row
+    columns: 1

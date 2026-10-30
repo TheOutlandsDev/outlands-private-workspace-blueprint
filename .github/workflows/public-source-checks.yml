@@ -73,6 +73,12 @@ jobs:
       - name: Test server-01 assembly boundaries
         run: python3 -I -B -m unittest discover -s hosts/server-01 -p 'test_*.py'
 
+      - name: Check fictional server-01 catalog
+        run: python3 -I -B modules/catalog/homepage/check_example.py
+
+      - name: Test server-01 catalog boundaries
+        run: python3 -I -B -m unittest discover -s modules/catalog/homepage -p 'test_*.py'
+
       - name: Check Dockhand demo
         run: python3 -I -B scripts/check_dockhand_demo.py
 

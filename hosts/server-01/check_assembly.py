@@ -11,6 +11,7 @@ MODULES = {
     "ai": ("modules/ai/ollama-open-webui/README.md", False),
     "observability": ("modules/observability/synthetic-metrics/README.md", False),
     "private-entry": ("modules/access/private-entry/README.md", False),
+    "catalog": ("modules/catalog/homepage/README.md", False),
 }
 TOP_KEYS = {
     "schema_version", "scope", "host_role", "shared_compose_project",

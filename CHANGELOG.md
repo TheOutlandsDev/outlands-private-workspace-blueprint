@@ -1,5 +1,11 @@
 # Changelog
 
+## server-01 Homepage catalog module
+
+- Added a separate local Homepage project with fictional WebUI and optional Grafana cards, blank private image and operator inputs, and loopback-only binding.
+- Added offline checks for placeholder links, no Docker socket or API widgets, and no claimed shared login or deployed app.
+- Linked the module into the host assembly path; no real route, app, account, destination, or host state was exported or changed.
+
 ## server-01 Ollama hosting expansion
 
 - Added a provider-neutral model selection and resource-planning path, a fictional inference worksheet, and native WebUI connection checks.

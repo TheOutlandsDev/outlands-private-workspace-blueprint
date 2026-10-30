@@ -1,5 +1,14 @@
 # Validation boundaries
 
+## server-01 Homepage catalog module
+
+The [catalog module](modules/catalog/homepage/README.md) contains two fictional `.invalid` destination cards and a separate loopback-only Homepage Compose project. Offline checks reject real links, wildcard binding, Docker socket, service widgets, or filled public image/operator inputs. Synthetic Compose resolution checks only file shape. No image was pulled, container started, native Homepage UI rendered, private route tested, or destination authorization observed. Those results remain `NOT RUN` in the module guide.
+
+```sh
+python3 -I -B modules/catalog/homepage/check_example.py
+python3 -I -B -m unittest discover -s modules/catalog/homepage -p 'test_*.py'
+```
+
 ## server-01 Ollama hosting expansion
 
 The [AI module](modules/ai/ollama-open-webui/README.md) now includes an optional NVIDIA reservation overlay and a fictional inference worksheet with a blank model reference and `NOT_RUN` results. Offline checks reject GPU scope drift, a filled public model reference, and unearned acceptance labels. Synthetic Compose resolution checks only configuration shape. No driver, toolkit, GPU allocation, image pull, model download, inference, WebUI connection, or native login was tested by this repository. Hardware and user-visible acceptance remain `NOT_RUN`.
@@ -11,7 +20,7 @@ python3 -I -B -m unittest discover -s modules/ai/ollama-open-webui -p 'test_*.py
 
 ## server-01 assembly guide
 
-The [assembly guide](hosts/server-01/ASSEMBLY.md) links four published modules and supplies a fictional `NOT_RUN` worksheet. Its offline checker and negative tests verify that the public worksheet retains separate projects, a loopback-only illustrative route, no real metrics target or backup destination, and no claimed acceptance. These checks do not install or connect modules. Cross-module wiring, native login and denial, inference, monitoring UI, route behavior, persistence, and restoration remain `NOT_RUN` for a reader's own host.
+The [assembly guide](hosts/server-01/ASSEMBLY.md) links five published modules and supplies a fictional `NOT_RUN` worksheet. Its offline checker and negative tests verify that the public worksheet retains separate projects, a loopback-only illustrative route, no real metrics target or backup destination, and no claimed acceptance. These checks do not install or connect modules. Cross-module wiring, native login and denial, inference, monitoring or catalog UI, route behavior, persistence, and restoration remain `NOT_RUN` for a reader's own host.
 
 ```sh
 python3 -I -B hosts/server-01/check_assembly.py
