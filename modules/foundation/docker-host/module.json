@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "id": "server-01.foundation.docker-host",
+  "host_role": "server-01",
+  "status": "synthetic-reference",
+  "requires": ["supported-linux", "docker-engine", "docker-compose-plugin"],
+  "inputs": ["SMOKE_IMAGE"],
+  "public_ports": [],
+  "persistent_volumes": [],
+  "smoke_network": "none",
+  "starts_by_default": false
+}
