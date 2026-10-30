@@ -1,5 +1,10 @@
 # Changelog
 
+## Explicit-allowlist release manifest creator
+
+- Added an offline manifest creator with no-overwrite output and fictional fixtures.
+- Added creator contract tests and a create-then-verify CI example; privacy and rights review remain separate.
+
 ## Public source screen capacity
 
 - Raised the bounded source file ceiling to 128, retaining byte and content checks.

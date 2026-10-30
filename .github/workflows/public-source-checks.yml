@@ -28,6 +28,12 @@ jobs:
       - name: Verify fictional release fixture
         run: python3 -I -B examples/release-manifest/verify_release.py examples/release-manifest/fixtures/manifest.example.json examples/release-manifest/fixtures/export
 
+      - name: Create and verify fictional release manifest
+        run: |
+          output_dir="$(mktemp -d)"
+          python3 -I -B examples/release-manifest/create_manifest.py examples/release-manifest/fixtures/allowlist.example.json examples/release-manifest/fixtures/export "$output_dir/manifest.json"
+          python3 -I -B examples/release-manifest/verify_release.py "$output_dir/manifest.json" examples/release-manifest/fixtures/export
+
       - name: Run release manifest tests
         run: python3 -I -B -m unittest discover -s examples/release-manifest -p 'test_*.py'
 

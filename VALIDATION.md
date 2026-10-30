@@ -1,5 +1,14 @@
 # Validation boundaries
 
+## Fictional release manifest creator
+
+The creator reads an explicit allowlist and refuses unlisted files and output
+overwrite. Its local contract tests cover missing/extra files, links, unsafe
+paths, size and entry bounds, output placement, and fixed-code failures. The
+generated fictional manifest passes the existing verifier. These are offline
+source checks only; they do not clear privacy or publication rights. See the
+[release tools guide](examples/release-manifest/README.md) for commands and limits.
+
 ## Public source screen capacity
 
 The source screen accepts up to 128 files while retaining its 8 MB total and
