@@ -1,0 +1,13 @@
+name: outlands-foundation-smoke-example
+
+services:
+  smoke:
+    image: ${SMOKE_IMAGE:?Set SMOKE_IMAGE to a reviewed image digest}
+    network_mode: none
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    user: "65534:65534"
+    restart: "no"

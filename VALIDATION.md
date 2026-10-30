@@ -1,5 +1,14 @@
 # Validation boundaries
 
+## server-01 foundation smoke example
+
+The [Docker host foundation module](modules/foundation/docker-host/README.md) is a synthetic installation guide and a one-off Compose fixture. Its offline checker verifies the published fixture has no host network, port, volume, Docker socket, or privileged mode; negative tests cover those boundaries and a filled public image input. A local Compose resolution with a synthetic digest checks syntax and service shape only. This repository did **not** install Docker, pull an image, start a container, change host access, or test update/recovery behavior on a reader's host. The module acceptance table remains `NOT RUN`.
+
+```sh
+python3 -I -B modules/foundation/docker-host/check_example.py
+python3 -I -B -m unittest discover -s modules/foundation/docker-host -p 'test_*.py'
+```
+
 ## server-01 AI hosting module
 
 The [server-01 host reference](hosts/server-01/README.md) and [Ollama/Open WebUI module](modules/ai/ollama-open-webui/README.md) use synthetic settings. The offline module checker verifies the published Compose and empty `.env.example` source boundaries; negative tests cover accidental Ollama host exposure, wildcard WebUI binding, and a filled public secret. Docker Compose configuration can be resolved with private, locally selected image digests and a generated key. Source and configuration checks do **not** prove that containers boot, model inference works, an account is restricted, data survives restart, or a backup restores. Those runtime and access checks remain `NOT RUN` in the module guide.

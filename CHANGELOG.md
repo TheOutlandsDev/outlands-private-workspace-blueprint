@@ -1,5 +1,10 @@
 # Changelog
 
+## server-01 Docker host foundation example
+
+- Added a synthetic Linux/Docker host preparation guide and a separate no-network, no-port smoke Compose fixture.
+- Added offline isolation checks and negative tests; no host installation, container run, or private operator data was included.
+
 ## server-01 modular host and AI hosting example
 
 - Added a synthetic `server-01` host role, a module contract, and a CPU-oriented Ollama/Open WebUI Compose example.
