@@ -1,0 +1,35 @@
+name: Public source checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  offline-checks:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Validate fictional ledger shape
+        run: python3 -I -B examples/evidence-ledger/check_ledger.py examples/evidence-ledger/ledger.example.json
+
+      - name: Run ledger contract tests
+        run: python3 -I -B -m unittest discover -s examples/evidence-ledger -p 'test_*.py'
+
+      - name: Screen public source
+        run: python3 -I -B scripts/check_public_source.py
+
+      - name: Check Dockhand demo
+        run: python3 -I -B scripts/check_dockhand_demo.py
+
+      - name: Check app tour
+        run: python3 -I -B scripts/check_app_tour.py
