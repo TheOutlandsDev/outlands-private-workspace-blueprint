@@ -32,7 +32,7 @@ def http(url, method="GET", data=None, headers=None):
             return response.status, response.read(1_000_000)
     except HTTPError as error:
         return error.code, error.read(1_000_000)
-    except (URLError, TimeoutError):
+    except (URLError, TimeoutError, ConnectionResetError):
         return 0, b""
 
 
