@@ -1,5 +1,10 @@
 # Changelog
 
+## Fictional release manifest verifier
+
+- Added an offline exact-file verifier, a fictional export and six contract tests.
+- Added PR CI steps for the verifier; privacy and rights clearance remain separate reviews.
+
 ## Engineering method and fictional evidence ledger
 
 - Added an evidence-driven build method, a public-export review, and a map of the project's inspectable practices.

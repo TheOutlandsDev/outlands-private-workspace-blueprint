@@ -1,5 +1,18 @@
 # Validation boundaries
 
+## Fictional release manifest example
+
+| Check | Local result | Limit |
+| --- | --- | --- |
+| Exact-file fixture | PASS | One fictional 46-byte file; no live export reviewed. |
+| Contract tests | 6 PASS | Tampering, extra/missing files, links, unsafe paths, duplicate keys and quiet error output were exercised. |
+| Public source screen | PASS | 98 files passed bounded source screening in this proposed PR checkout. |
+| Hosted PR CI | SEE PR | GitHub reports the current hosted result for each proposed commit. |
+| Privacy, rights, deployment | NOT CLEARED | A hash match does not grant publication rights or prove private data absent. |
+
+Commands and manifest format are in the [release manifest example](examples/release-manifest/README.md).
+These results describe local source checks; the export should be frozen while it is verified.
+
 ## Engineering method and evidence ledger example
 
 | Check | Result | Limit |
