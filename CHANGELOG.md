@@ -1,5 +1,11 @@
 # Changelog
 
+## Disposable server-01 AI recovery rehearsal
+
+- Added a runner-local archive and fresh-project restore of both synthetic AI volumes after the existing native and browser checks.
+- Verified fictional owner login after restart and restore, original session continuity, signup and signed-out denial, model-volume marker, loopback bindings, and internal Ollama connection.
+- Added offline archive boundary tests. No model, real backup material, provider, destination, or host recovery is included.
+
 ## server-01 Ollama local operations
 
 - Set Ollama's documented cloud-disable switch in the CPU-default Compose example.
