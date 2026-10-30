@@ -78,6 +78,11 @@ class ReleaseManifestTests(unittest.TestCase):
                                  encoding="utf-8")
         self.assert_code("DUPLICATE_JSON_KEY")
 
+    def test_directory_fanout_is_bounded(self):
+        for index in range(verify_release.MAX_ENTRIES + 1):
+            (self.export / f"empty-{index:03d}").mkdir()
+        self.assert_code("ENTRY_COUNT")
+
     def test_cli_failure_omits_payload_and_path(self):
         (self.export / "example.txt").write_bytes(b"X" + PAYLOAD[1:])
         run = subprocess.run(

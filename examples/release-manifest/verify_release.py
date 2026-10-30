@@ -11,6 +11,7 @@ import sys
 
 MAX_MANIFEST_BYTES = 65_536
 MAX_FILES = 128
+MAX_ENTRIES = 256
 MAX_FILE_BYTES = 2_000_000
 MAX_TOTAL_BYTES = 8_000_000
 SEGMENT = re.compile(r"[A-Za-z0-9._-]+\Z")
@@ -114,11 +115,15 @@ def verify(manifest_path, export_root):
 
     seen = set()
     total = 0
+    entries_seen = 0
 
     def visit(directory_fd, prefix):
-        nonlocal total
+        nonlocal total, entries_seen
         with os.scandir(directory_fd) as entries:
             for entry in entries:
+                entries_seen += 1
+                if entries_seen > MAX_ENTRIES:
+                    raise ReleaseError("ENTRY_COUNT")
                 name = f"{prefix}/{entry.name}" if prefix else entry.name
                 validate_path(name)
                 entry_info = os.stat(entry.name, dir_fd=directory_fd,

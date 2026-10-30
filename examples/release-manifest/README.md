@@ -11,8 +11,9 @@ python3 -I -B -m unittest discover -s examples/release-manifest -p 'test_*.py'
 The manifest contains `schema_version: 1` and a sorted `files` array. Each entry
 has a relative `path`, integer `bytes`, and lowercase SHA-256 `sha256`. All files
 must be listed exactly once. The verifier rejects path traversal, links, special
-files, missing or extra files, size changes, and hash changes. It reads at most
-64 KiB of manifest data, 128 files, 2 MB per file and 8 MB total. Paths use
+files, missing or extra files, size changes, and hash changes. It accepts a
+manifest up to 64 KiB, up to 128 listed files, 2 MB per file and 8 MB total;
+directory traversal stops after 256 entries. Paths use
 ASCII letters, digits, dots, underscores, and hyphens in each segment.
 
 Run it against an export that nobody is changing during verification. Failure

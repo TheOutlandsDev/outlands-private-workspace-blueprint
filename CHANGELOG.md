@@ -2,7 +2,7 @@
 
 ## Fictional release manifest verifier
 
-- Added an offline exact-file verifier, a fictional export and six contract tests.
+- Added an offline exact-file verifier, a fictional export and seven contract tests.
 - Added PR CI steps for the verifier; privacy and rights clearance remain separate reviews.
 
 ## Engineering method and fictional evidence ledger
