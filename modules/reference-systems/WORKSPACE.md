@@ -4,6 +4,14 @@ One local portal connects identity sessions, source inventory, document retrieva
 and advisory review. Every input comes from the checked-in invented fixtures.
 It has no private connector, real-root selector, production account or live feed.
 
+## Optional durable synthetic state
+
+Use the [state and recovery guide](STATE.md) to initialize a new owner-private
+state directory outside Git, then add `--state-dir "$PRIVATE_STATE_DIR"` to the
+serve command. Active document deletions and source-state changes then survive
+restart. Sessions remain ephemeral. Backup, restore, upgrade, rollback and reset
+are explicit offline commands; prior generations are retained.
+
 ## Start and stop
 
 Use Linux and Python 3.10+ in a downloaded checkout. From the repository root:
@@ -15,7 +23,8 @@ python3 -I -B modules/reference-systems/run.py workspace --serve
 Open the exact `http://127.0.0.1:` URL printed in the terminal. The process
 chooses an unused local port. To select a fixed local port, append `--port 8788`.
 No package installation, Docker or model is needed. Stop with Ctrl+C; the server
-closes its listener and its in-memory sessions and changes disappear.
+closes its listener and its sessions disappear. In default memory-only mode, document/scenario changes
+also disappear; explicit persistent mode retains them.
 
 Sign in as `fictional-owner` or `fictional-reader`, using the public fixture
 password `synthetic-only`. The owner and reader share one synthetic workspace,
@@ -27,7 +36,7 @@ with different server-enforced access. The page labels all data as invented.
 | Search documents permitted to the session role | Allowed | Allowed | Denied |
 | Owner-only document text or identifiers | Allowed | Omitted from search and page | Denied |
 | Advisory details and document administration list | Allowed | Denied | Denied |
-| Change fixture source state or delete a document from memory | Allowed with session CSRF and exact Origin | Denied, even with a valid reader CSRF value | Denied |
+| Change fixture source state or delete a document from active state | Allowed with session CSRF and exact Origin | Denied, even with a valid reader CSRF value | Denied |
 
 Reader pages omit administrative forms and owner-only data. The endpoints enforce
 the same rules independently; hiding controls is not the authorization mechanism.
@@ -44,7 +53,8 @@ Roles come from the session, not query fields or forwarded identity headers.
    retrieval remains independently available. Select `fresh` to recover.
 4. Delete `fictional-owner-note` with the owner form, then search `recovery`
    again. It is absent from results, document administration and the count.
-   This deletion affects this process only; restarting restores the fixture.
+   In memory-only mode, restarting restores the fixture. In persistent mode,
+   active deletion survives restart; older generations and snapshots retain prior data.
 5. Sign out, sign in as reader, and inspect the overview. Inventory and permitted
    search remain; advisory details show `DENIED` and Owner controls are absent.
    Directly opening `/workspace/advisories` also denies access. With a fresh
@@ -69,7 +79,7 @@ source freshness/availability; it does not change or measure a real service.
 | `GET /api/search?q=lamp` | Permitted JSON extracts; `/search` remains the existing JSON alias. |
 | `GET /api/advisories`, `GET /api/documents` | Owner-only details and document IDs. |
 | `POST /admin/scenario` | Owner-only `scenario` plus session `csrf`; fixed scenario values only. |
-| `POST /admin/delete` | Owner-only `source_id` plus session `csrf`; in-memory removal. |
+| `POST /admin/delete` | Owner-only `source_id` plus session `csrf`; active removal, durably committed when persistent mode is selected. |
 | `/login`, `/session`, `/logout`, `/private` | Existing [identity/session contract](IDENTITY.md). |
 
 Mutations require the exact loopback Host/Origin, an active owner session and its
@@ -103,11 +113,12 @@ actual form submission and visible states; HTTP client tests alone did not catch
 the earlier browser Origin/referrer interaction.
 
 Keep a known working source revision. Stop the owned demo before switching it,
-rerun tests, and start a fresh process. This resets sessions, deletions and fixture
-states together. Reverting a source change affects this demo only; it is not a
+rerun tests, and start a fresh process. In memory-only mode this resets sessions, deletions and fixture
+states together. Persistent mode clears sessions while preserving committed data;
+use the [explicit state recovery/reset commands](STATE.md) for that mode. Reverting a source change affects this demo only; it is not a
 real application-data restore. No service or schedule is installed.
 
 The demo stays isolated on loopback HTTP with public credentials. It is not a
-production authentication boundary, native SSO integration, persistent document
+production authentication boundary, native SSO integration, production document
 store or live security console. Keep real settings, data, inventories, reports
 and deployment acceptance in a separate private workspace.

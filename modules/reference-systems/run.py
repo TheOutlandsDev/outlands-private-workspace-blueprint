@@ -13,6 +13,8 @@ from inventory import private_scan, scan
 from retrieval import Index
 from runtime_io import load_json
 from workspace import Workspace
+from state_commands import handle as state_command, options as state_options
+from state_store import CURRENT_SCHEMA, StateError, StateStore
 
 
 def index_fixture():
@@ -22,6 +24,26 @@ def index_fixture():
 def workspace_fixture():
     return Workspace(index_fixture(), scan((HERE / 'fixtures/source-tree').resolve(), synthetic=True),
                      load_json(HERE / 'fixtures/advisories.example.json'))
+
+
+def seed_state():
+    return {'schema_version': CURRENT_SCHEMA, 'synthetic_fixture': True,
+            'scenario': 'fresh', 'reset_count': 0,
+            'corpus': load_json(HERE / 'fixtures/corpus.example.json')}
+
+
+def workspace_persistent(directory):
+    store = StateStore(directory)
+    try:
+        payload = store.payload
+        if payload['schema_version'] != CURRENT_SCHEMA:
+            raise StateError('explicit upgrade required')
+        return Workspace(Index(payload['corpus']),
+                         scan((HERE / 'fixtures/source-tree').resolve(), synthetic=True),
+                         load_json(HERE / 'fixtures/advisories.example.json'), store=store)
+    except BaseException:
+        store.close()
+        raise
 
 
 def demo():
@@ -62,16 +84,21 @@ def main(argv=None):
             result = review(load_json(HERE / 'fixtures/advisories.example.json'), args[3])
         elif args == ['workspace', '--demo']:
             result = workspace_fixture().summary('reader')
-        elif args == ['workspace', '--serve'] or (len(args) == 4 and args[0:3] == ['workspace', '--serve', '--port']):
-            workspace = workspace_fixture()
-            server = make_server(workspace.index, int(args[3]) if len(args) == 4 else 0, workspace=workspace)
+        elif args and args[0] == 'state':
+            result = state_command(args[1:], seed_state)
+        elif args[:2] == ['workspace', '--serve']:
+            selected = state_options(args[2:], optional=('--state-dir', '--port'))
+            workspace = workspace_persistent(selected['--state-dir']) if '--state-dir' in selected else workspace_fixture()
+            server = None
             try:
+                server = make_server(workspace.index, int(selected.get('--port', '0')), workspace=workspace)
                 print(f'Synthetic workspace: http://127.0.0.1:{server.server_port}/', flush=True)
                 server.serve_forever()
             except KeyboardInterrupt:
                 pass
             finally:
-                server.server_close()
+                if server:server.server_close()
+                workspace.close()
             return 0
         elif args == ['identity', '--serve'] or (len(args) == 4 and args[0:3] == ['identity', '--serve', '--port']):
             server = make_server(index_fixture(), int(args[3]) if len(args) == 4 else 0)
@@ -87,7 +114,7 @@ def main(argv=None):
             raise ValueError('command')
         print(json.dumps(result, indent=2, sort_keys=True))
         return 0
-    except (OSError, ValueError, TypeError, UnicodeError, RecursionError):
+    except (StateError, OSError, ValueError, TypeError, UnicodeError, RecursionError):
         print(json.dumps({'result': 'REVIEW', 'real_host_qualified': False}, sort_keys=True))
         return 1
 

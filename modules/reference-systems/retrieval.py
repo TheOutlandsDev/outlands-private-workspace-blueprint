@@ -18,7 +18,7 @@ class Index:
                 or type(corpus['schema_version']) is not int or corpus['schema_version'] != 1
                 or corpus['synthetic_fixture'] is not True
                 or not isinstance(corpus['documents'], list)
-                or not 1 <= len(corpus['documents']) <= 16):
+                or not 0 <= len(corpus['documents']) <= 16):
             raise ValueError('corpus contract')
         self.documents = {}
         self.chunks = []

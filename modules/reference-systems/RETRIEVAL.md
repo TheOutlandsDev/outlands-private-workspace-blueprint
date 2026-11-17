@@ -54,6 +54,12 @@ The combined demo also checks session-derived role filtering, logout revocation
 and deletion. Tests cover refused admission, bounds, deterministic chunks,
 untrusted extracts and denied document identifiers remaining absent from output.
 
+The [persistent workspace adapter](STATE.md) can save the fictional corpus and
+active deletions across restarts. It commits state before changing the running
+index, reconstructs chunks on restart, and leaves sessions ephemeral. Earlier
+generations/snapshots retain prior data; this is not secure erasure. The standalone
+retrieval demo and direct `Index.delete` call remain memory-only.
+
 ## Setup boundary, maintenance and rollback
 
 The launcher reads only the fixed public corpus. It has no real-document import,
@@ -64,6 +70,7 @@ This is working retrieval code, not a qualified generative RAG application.
 
 The index lives in memory. Stopping the process clears it; a new process reloads
 the unchanged fixture, including documents deleted in the previous process.
-Persistent deletion and external replicas are not implemented. Revert an isolated
+The optional workspace adapter persists active deletion; external replicas and
+secure erasure are not implemented. Revert an isolated
 fixture/source change and rerun tests to roll back a demo; never use this action
 as a claim that real documents were deleted from another system.

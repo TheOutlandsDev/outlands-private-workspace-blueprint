@@ -15,8 +15,14 @@ python3 -I -B modules/reference-systems/run.py workspace --serve
 Open the printed loopback URL, sign in with a fictional role, and follow the
 [workspace walkthrough](WORKSPACE.md). Inventory, retrieval and advisory views
 share the session boundary; owner controls change synthetic states and delete
-documents from memory. Reader restrictions are enforced at each endpoint.
+documents from active state. Reader restrictions are enforced at each endpoint.
 Stop with Ctrl+C. This command never accepts real roots, data sources or accounts.
+
+For optional [durable synthetic state](STATE.md), initialize a new private
+directory outside Git and pass it explicitly to the workspace launcher. Committed
+document deletions and scenarios then survive restart; sessions never persist.
+Snapshot/restore, versioned upgrade/rollback and reset are offline commands with
+no-overwrite outputs and preserved history. Default commands remain memory-only.
 
 ## Setup and first run
 
@@ -67,9 +73,10 @@ deployment review described in [the identity walkthrough](../../docs/11-identity
 
 Keep a known working source revision and run the offline and HTTP tests before
 switching an isolated demo. These systems install no service or scheduler.
-Identity sessions and the retrieval index live in memory; stopping the process
-clears them. Restarting rebuilds only the original fictional fixture; a deletion
-is not persistent across a new demo process. Inventory reports are independent
+Identity sessions always live in memory. Default commands rebuild the original
+fictional fixture on restart. The optional persistent workspace rebuilds its
+index from committed private state, retaining active deletions and the scenario.
+See the [state guide](STATE.md) for reset, recovery and retained-history limits. Inventory reports are independent
 private artifacts; keep prior reports instead of overwriting them. Advisory
 review changes no asset or package. Roll back the source checkout, then rerun
 the tests. Do not touch existing native app accounts, data or routes.

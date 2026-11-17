@@ -9,7 +9,8 @@ import secrets
 import time
 from urllib.parse import parse_qs, urlsplit
 
-from workspace import (advisory_page, denied_page, home_page, login_page, search_page)
+from workspace import (advisory_page, denied_page, home_page, login_page, search_page, state_unavailable_page)
+from state_store import StateError
 
 COOKIE = 'outlands_fixture_session'
 DEMO_PASSWORD = 'synthetic-only'
@@ -145,6 +146,9 @@ def make_server(index, port=0, workspace=None, sessions=None):
             if workspace is not None and target.path == '/workspace.css' and not target.query:
                 return self.respond(200, css, stylesheet=True)
             if workspace is not None and target.path == '/':
+                if record:
+                    try:workspace.ensure_available()
+                    except StateError:return self.respond(503, state_unavailable_page(record), html=True)
                 try:
                     notices = parse_qs(target.query, strict_parsing=True, max_num_fields=1) if target.query else {}
                     if notices and (set(notices) != {'notice'} or len(notices['notice']) != 1
@@ -175,6 +179,9 @@ def make_server(index, port=0, workspace=None, sessions=None):
                 if workspace is not None and target.path.startswith('/workspace/'):
                     return self.respond(401, denied_page(status='SIGNED_OUT'), html=True)
                 return self.respond(401, {'result': 'DENIED'})
+            if workspace is not None and target.path not in {'/session', '/logout'}:
+                try:workspace.ensure_available()
+                except StateError:return self.respond(503, {'result': 'STATE_UNAVAILABLE'})
             if workspace is not None and not target.query:
                 if target.path == '/api/summary':
                     return self.respond(200, workspace.summary(record['role']))
@@ -237,7 +244,7 @@ def make_server(index, port=0, workspace=None, sessions=None):
                         workspace.select_scenario(fields['scenario'][0], record['role'])
                         return self.respond(303, {'result': 'UPDATED'}, location='/?notice=scenario')
                     if self.path == '/admin/delete' and set(fields) == {'csrf', 'source_id'}:
-                        existed = index.delete(fields['source_id'][0], record['role'])
+                        existed = workspace.delete_document(fields['source_id'][0], record['role'])
                         return self.respond(303, {'result': 'DELETED' if existed else 'MISSING'},
                                             location='/?notice=deleted' if existed else '/?notice=missing')
                     raise ValueError('admin route')
@@ -250,6 +257,8 @@ def make_server(index, port=0, workspace=None, sessions=None):
                     if sessions.logout(self.session_token(), fields['csrf'][0]):
                         return self.respond(303, {'result': 'SIGNED_OUT'}, cookie='', location='/')
                     return self.respond(403, {'result': 'DENIED'})
+            except (StateError, OSError):
+                return self.respond(503, {'result': 'STATE_UNAVAILABLE'})
             except (ValueError, UnicodeError):
                 return self.respond(400, {'result': 'REVIEW'})
             return self.respond(400, {'result': 'REVIEW'})

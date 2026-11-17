@@ -69,9 +69,12 @@ coverage remains partial. Counts establish neither authorship nor rights.
 
 **Retrieval** checks admission and synthetic-rights declarations, creates bounded
 chunks, filters by a trusted role before ranking, returns source IDs and untrusted
-extracts, and supports owner-only in-memory deletion. The identity server supplies
-the role from its session. No real corpus, connector, model or embedding store is
-enabled; persistent deletion across process restarts is not implemented.
+extracts, and supports owner-only active deletion. The identity server supplies
+the role from its session. The [optional private state adapter](../modules/reference-systems/STATE.md)
+retains the fictional corpus, active deletions and scenario across restart, with
+explicit snapshot/restore, schema upgrade/rollback and reset. Sessions remain
+ephemeral; retained history is not secure erasure. No real corpus, connector,
+model or embedding store is enabled.
 
 **Identity** supplies local fictional password verification, expiring opaque
 sessions, owner/reader authorization, rotation, CSRF-protected logout and real
