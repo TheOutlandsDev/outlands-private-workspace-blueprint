@@ -1,5 +1,11 @@
 # Changelog
 
+## Systems, setup and engineering methods — 2026-11-16
+
+- Added a system map, ordered setup guide, maintenance and rollback method, and explicit design-only contracts for optional systems.
+- Added an offline dependency planner with strict fictional input, three profiles, refusal tests, and acceptance gates fixed at NOT_RUN.
+- Linked existing runtime modules and engineering tools without importing operational data or deploying services.
+
 ## Local pre-upload review aid
 
 - Added a reusable offline exact-file text screen, private terms input, and owner-only no-overwrite review receipt for a staged public export.
