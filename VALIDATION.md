@@ -1,17 +1,40 @@
 # Validation boundaries
 
+## Working synthetic systems
+
+The [reference systems](modules/reference-systems/README.md) provide working identity,
+source inventory, retrieval and advisory review code. Thirty-one tests exercise
+password/session behavior, expiry, rotation, cooldown, CSRF and revocation; actual
+loopback HTTP owner/reader denial and retrieval filtering; source count separation,
+link/special-file/size/change refusal, private no-overwrite reports; document
+admission, ranking and deletion; and version/freshness boundaries. The combined
+fictional demo runs with network and subprocess calls blocked in an offline test.
+The separate HTTP tests require a temporary loopback listener and close it afterward.
+All default data is invented. The source scanner alone offers an explicit opt-in
+reader-private root and report. These checks do not qualify a real identity
+provider, production auth boundary, private source discovery, document corpus,
+advisory feed, remediation, TLS, or persistent retrieval deletion. No real host
+or app is changed. Planner coverage is SYNTHETIC_RUNTIME; reader-host gates remain
+NOT_RUN. The public source count limit is exactly 215 for the expanded reviewed
+tree; a test still verifies refusal at one file over the configured bound.
+
+```sh
+python3 -I -B modules/reference-systems/run.py demo
+python3 -I -B -m unittest discover -s modules/reference-systems -p 'test_*.py'
+```
+
 ## Fictional systems and workspace planning
 
 The [systems map](docs/25-systems-blueprint.md), [setup guide](docs/26-workspace-setup.md),
 and [engineering methods](docs/27-engineering-methods.md) describe public roles and
 acceptance boundaries. The [planner](tools/workspace-plan/README.md) reads one
 fictional fixture, orders dependencies, and emits no successful acceptance state.
-Eight offline tests cover profile order and uniqueness, retained design-only
+Eight offline tests cover profile order and uniqueness, retained synthetic-runtime
 coverage, cycles outside a chosen profile, malformed dependencies, forbidden
 operator/state fields, duplicate JSON keys, fixed error output, and a CLI run
 with network and subprocess calls blocked. No deployment, host discovery, real
 ingestion, access change, update or restore is performed. Source tests do not
-qualify the design-only systems for runtime use.
+qualify the systems for real deployment.
 
 ```sh
 python3 -I -B tools/workspace-plan/workspace_plan.py extended
@@ -142,9 +165,9 @@ source checks only; they do not clear privacy or publication rights. See the
 
 ## Public source screen capacity
 
-The source screen accepts up to 192 files while retaining its 8 MB total and
-2 MB per-file limits. An offline boundary test checks that 192 fictional files
-pass, the 193rd fails, and synthetic private-path and secret-directory findings still appear.
+The source screen accepts up to 215 files while retaining its 8 MB total and
+2 MB per-file limits. An offline boundary test checks that 215 fictional files
+pass, the 216th fails, and synthetic private-path and secret-directory findings still appear.
 The screen reports categories, not matched content; it remains a review aid,
 not publication clearance. Run from the repository root:
 

@@ -18,9 +18,9 @@ python3 -I -B tools/workspace-plan/workspace_plan.py extended
 
 Choose one profile; running all three only previews their different plans.
 `minimal` orders foundation, AI and recovery. `workspace` adds fictional metrics
-and a catalog. `extended` includes optional access and design-only systems.
-Every emitted acceptance gate starts at `NOT_RUN`. A design-only step is a
-proposal to implement and qualify separately, not a command to install an app.
+and a catalog. `extended` includes optional access and working synthetic systems.
+Every emitted acceptance gate starts at `NOT_RUN`. `SYNTHETIC_RUNTIME` means
+reference code runs with invented fixtures, not an accepted real deployment.
 
 ## 2. Prepare the host and private copy
 
@@ -58,13 +58,26 @@ and [Tailscale Serve](https://tailscale.com/docs/features/tailscale-serve).
 Upstream defaults can change. Review their current requirements and preserve this
 blueprint's explicit local binding, per-app authorization and separate denial tests.
 
-## 4. Add design-only systems through their own review
+## 4. Run the four synthetic systems
 
-Use the [systems contracts](25-systems-blueprint.md) for identity integration,
-source inventory, retrieval and advisory review. Begin with fictional files and
-stubbed interfaces. Supply a separate implementation, setup, refusal tests,
-rollback and acceptance worksheet before claiming a runtime exists. Do not point
-a prototype at real accounts, project roots or a document collection by default.
+The [working reference systems](../modules/reference-systems/README.md) implement
+identity sessions, bounded source inventory, admitted lexical retrieval and
+advisory range review. They use Linux and Python 3.10+, with no Docker or model
+requirement. The planner dependencies describe a learning sequence rather than
+software prerequisites. From the repository root:
+
+```sh
+python3 -I -B modules/reference-systems/run.py demo
+python3 -I -B -m unittest discover -s modules/reference-systems -p 'test_*.py'
+```
+
+Follow each linked system guide for setup, inputs, refusal behavior, state and
+rollback. The separate identity demo binds only loopback and uses public
+fictional credentials; keep it isolated. Its HTTP tests verify actual owner/reader
+access and retrieval filtering. Default commands read only public fixtures.
+Real provider login, native SSO, document ingestion and advisory feeds still need
+separate private adapters and deployment review. Only the inventory tool offers
+an explicit reader-owned private-root scan with a private no-overwrite report.
 
 ## 5. Update and roll back deliberately
 

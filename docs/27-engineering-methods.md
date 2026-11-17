@@ -26,6 +26,9 @@ private location; create public examples from invented inputs.
 The [workspace planner](../tools/workspace-plan/README.md) demonstrates this method
 without touching a host: strict fixture shape, dependency ordering, cycle refusal,
 fixed errors and acceptance fields that cannot become successful through planning.
+The [four working synthetic systems](../modules/reference-systems/README.md)
+extend this approach to actual session-to-retrieval access checks, bounded source
+counting, document deletion and advisory matching.
 The [evidence ledger](../examples/evidence-ledger/README.md) and
 [release tools](../examples/release-manifest/README.md) supply other small examples.
 

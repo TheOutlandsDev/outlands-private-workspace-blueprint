@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "id": "server-01.reference-systems",
+  "host_role": "server-01",
+  "status": "synthetic-runtime",
+  "systems": ["identity", "source-inventory", "retrieval", "security-review"],
+  "requires": ["linux", "python-3.10-or-newer"],
+  "inputs": ["explicit-private-scan-root-and-report-only-for-opt-in-inventory"],
+  "public_ports": [],
+  "loopback_ports": ["reader-selected-identity-demo-port"],
+  "persistent_volumes": [],
+  "starts_by_default": false
+}

@@ -4,7 +4,7 @@ The blueprint teaches how to build and explain a private application workspace. 
 
 | Practice | Inspectable example | Test or decision boundary |
 | --- | --- | --- |
-| Systems and setup | [System map](25-systems-blueprint.md), [staged setup](26-workspace-setup.md), [planner code](../tools/workspace-plan/README.md), and [engineering methods](27-engineering-methods.md) | Dependency order and design contracts do not establish deployment or acceptance. |
+| Systems and setup | [System map](25-systems-blueprint.md), [staged setup](26-workspace-setup.md), [planner code](../tools/workspace-plan/README.md), and [engineering methods](27-engineering-methods.md) | [Working synthetic systems](../modules/reference-systems/README.md) exercise sessions, bounded inventory, retrieval and advisory matching; real deployment acceptance stays separate. |
 | Host assembly | [server-01 staged guide and fictional worksheet](../hosts/server-01/ASSEMBLY.md) | Source checks cannot establish cross-module wiring, app authorization, or recovery on a reader's host. |
 | Disposable staging | [Hosted synthetic run method](../staging/server-01/README.md) | Hosted results apply to the checked image digests and ephemeral runner only; reader models, GPU and real routes require separate acceptance. |
 | Catalog navigation | [server-01 Homepage module](../modules/catalog/homepage/README.md) | Fictional links do not deploy apps, grant access, or prove native UI rendering. |

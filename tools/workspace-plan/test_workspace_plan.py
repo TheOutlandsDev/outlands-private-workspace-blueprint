@@ -30,10 +30,11 @@ class WorkspacePlanTests(unittest.TestCase):
         self.assertEqual(len(planner.make_plan(self.data, 'extended')['steps']), 10)
         self.assertEqual(len(planner.make_plan(self.data, 'minimal')['steps']), 3)
 
-    def test_design_coverage_survives_planning(self):
+    def test_synthetic_runtime_coverage_survives_without_live_acceptance(self):
         plan = planner.make_plan(self.data, 'extended')
         retrieval = next(s for s in plan['steps'] if s['system'] == 'retrieval')
-        self.assertEqual(retrieval['coverage'], 'DESIGN_ONLY')
+        self.assertEqual(retrieval['coverage'], 'SYNTHETIC_RUNTIME')
+        self.assertEqual(set(retrieval['acceptance'].values()), {'NOT_RUN'})
 
     def test_cycle_outside_selected_profile_is_refused(self):
         self.data['systems'][-1]['requires'] = ['security-review']

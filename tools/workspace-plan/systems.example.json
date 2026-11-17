@@ -7,11 +7,11 @@
     {"id": "observability", "requires": ["foundation"], "coverage": "REFERENCE"},
     {"id": "catalog", "requires": ["ai", "observability"], "coverage": "REFERENCE"},
     {"id": "private-entry", "requires": ["catalog"], "coverage": "REFERENCE"},
-    {"id": "identity", "requires": ["private-entry"], "coverage": "DESIGN_ONLY"},
+    {"id": "identity", "requires": ["private-entry"], "coverage": "SYNTHETIC_RUNTIME"},
     {"id": "recovery", "requires": ["ai"], "coverage": "REHEARSAL"},
-    {"id": "source-inventory", "requires": ["foundation"], "coverage": "DESIGN_ONLY"},
-    {"id": "retrieval", "requires": ["ai", "source-inventory"], "coverage": "DESIGN_ONLY"},
-    {"id": "security-review", "requires": ["source-inventory"], "coverage": "DESIGN_ONLY"}
+    {"id": "source-inventory", "requires": ["foundation"], "coverage": "SYNTHETIC_RUNTIME"},
+    {"id": "retrieval", "requires": ["ai", "source-inventory"], "coverage": "SYNTHETIC_RUNTIME"},
+    {"id": "security-review", "requires": ["source-inventory"], "coverage": "SYNTHETIC_RUNTIME"}
   ],
   "profiles": {
     "minimal": ["ai", "recovery"],
