@@ -7,7 +7,7 @@ import sys
 
 FIXTURE = Path(__file__).with_name('systems.example.json')
 PROFILES = {'minimal', 'workspace', 'extended'}
-COVERAGE = {'REFERENCE', 'REHEARSAL', 'DESIGN_ONLY'}
+COVERAGE = {'REFERENCE', 'REHEARSAL', 'DESIGN_ONLY', 'SYNTHETIC_RUNTIME'}
 GATES = ('source_review', 'isolated_setup', 'allowed_access', 'denied_access',
          'state_retention', 'isolated_restore', 'rollback')
 

@@ -16,11 +16,13 @@ python3 -I -B -m unittest discover -s tools/workspace-plan -p 'test_*.py'
 
 No argument selects `workspace`. `minimal` covers foundation, AI and recovery;
 `workspace` adds fictional monitoring and the catalog. `extended` also shows
-optional private entry and the design-only identity, source-inventory, retrieval,
-and security-review roles. These are dependencies for this learning sequence,
+optional private entry and the working synthetic identity, source-inventory,
+retrieval, and security-review roles. These are dependencies for this learning sequence,
 not universal software requirements. For example, a real catalog need not run
 an AI service. Every acceptance gate remains `NOT_RUN`, and every plan says
-`deployment_authorized=false`.
+`deployment_authorized=false`. The four new roles carry `SYNTHETIC_RUNTIME`
+coverage and link to the [working code and setup guides](../../modules/reference-systems/README.md);
+this does not grant real-host acceptance.
 
 The fixture admits at most 16 systems, fixed profile names, simple role IDs,
 dependency IDs, and coverage labels. Unknown fields, duplicate JSON keys,

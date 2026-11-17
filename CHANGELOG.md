@@ -1,5 +1,11 @@
 # Changelog
 
+## Working synthetic reference systems — 2026-11-16
+
+- Implemented the four previously design-only roles: a loopback identity gate with retrieval integration, bounded source inventory, admitted lexical retrieval, and offline advisory range review.
+- Added setup/rollback guides, invented accounts/documents/source files/products, and tests including real loopback HTTP access denial and logout. No real provider, corpus, inventory or route was imported.
+- Added SYNTHETIC_RUNTIME planner coverage while preserving every reader acceptance gate at NOT_RUN. The source screen file cap now matches the reviewed 215-file tree; its byte bounds and refusal checks remain active.
+
 ## Systems, setup and engineering methods — 2026-11-16
 
 - Added a system map, ordered setup guide, maintenance and rollback method, and explicit design-only contracts for optional systems.

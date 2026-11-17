@@ -64,6 +64,12 @@ jobs:
       - name: Test fictional workspace planning boundaries
         run: python3 -I -B -m unittest discover -s tools/workspace-plan -p 'test_*.py'
 
+      - name: Run the four synthetic reference systems
+        run: python3 -I -B modules/reference-systems/run.py demo
+
+      - name: Test synthetic systems and loopback identity integration
+        run: python3 -I -B -m unittest discover -s modules/reference-systems -p 'test_*.py'
+
       - name: Check synthetic server-01 AI module
         run: python3 -I -B modules/ai/ollama-open-webui/check_example.py
 

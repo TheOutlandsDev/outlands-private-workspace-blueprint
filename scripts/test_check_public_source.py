@@ -32,18 +32,18 @@ class PublicSourceBoundaryTests(unittest.TestCase):
         return code, json.loads(output.getvalue())
 
     def test_file_count_boundary_fails_closed(self):
-        for index in range(191):
+        for index in range(check_public_source.MAX_FILES - 1):
             (self.root / f"fixture-{index:03d}.txt").write_text("fictional\n",
                                                               encoding="utf-8")
         code, report = self.run_screen()
         self.assertEqual(code, 0)
-        self.assertEqual(report["files_checked"], 192)
+        self.assertEqual(report["files_checked"], check_public_source.MAX_FILES)
         self.assertEqual(report["findings"], [])
 
         (self.root / "one-more.txt").write_text("fictional\n", encoding="utf-8")
         code, report = self.run_screen()
         self.assertEqual(code, 1)
-        self.assertEqual(report["files_checked"], 193)
+        self.assertEqual(report["files_checked"], check_public_source.MAX_FILES + 1)
         self.assertEqual(report["findings"], [{"check": "bounded_source_limit"}])
         self.assertNotIn("one-more.txt", json.dumps(report))
 

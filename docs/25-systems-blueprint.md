@@ -12,12 +12,11 @@ flowchart TD
   A --> C[Homepage catalog]
   O --> C
   C --> P[Optional private entry and denial checks]
-  P -. optional design .-> I[Identity integration]
+  P -. synthetic runtime .-> I[Local identity gate]
   A --> R[Isolated recovery rehearsal]
-  F -. optional design .-> S[Source inventory]
-  S -. approved fictional inputs .-> K[Retrieval design]
-  A -. inference boundary .-> K
-  S -. public advisory metadata .-> V[Security review design]
+  F -. synthetic runtime .-> S[Source inventory]
+  S -. approved fictional inputs .-> K[Lexical retrieval]
+  S -. invented advisory metadata .-> V[Advisory review]
 ```
 
 Arrows describe the example's learning order. They do not create network routes,
@@ -32,42 +31,52 @@ shared credentials, an ingestion pipeline, or an installation dependency.
 | Observability / `observability` | [Fictional metrics](../modules/observability/synthetic-metrics/README.md) and [optional host-health examples](../modules/observability/host-health/README.md) | Synthetic freshness is distinct from live collection, alert delivery, coverage and retention. |
 | Catalog / `catalog` | [Homepage module](../modules/catalog/homepage/README.md) with invented links | Every destination retains its own authentication and denial checks. |
 | Private entry / `private-entry` | [Route trial and access worksheet](../modules/access/private-entry/README.md) | Local success does not establish remote policy or denied-device behavior. |
-| Identity / `identity` | [Identity walkthrough and static demo](11-identity.md); design only in the integrated planner | No shared-login adapter or account migration is supplied. Preserve native recovery access. |
+| Identity / `identity` | [Working gate and retrieval session integration](../modules/reference-systems/IDENTITY.md) | Public fictional accounts and loopback HTTP only; real IdP/SSO, MFA and TLS remain separate. |
 | Recovery / `recovery` | [Disposable volume archive/restore rehearsal](../staging/server-01/README.md) | Rehearsal coverage only; no real backup destination, archive or restoration result is published. |
-| Source inventory / `source-inventory` | Contract below; design only | No filesystem scanner, private repository connector or authorship inference is included. |
-| Retrieval / `retrieval` | Contract below; design only | No document collection, embedding store, ingestion or model admission is enabled. |
-| Security review / `security-review` | Contract below; design only | No target discovery, active testing, vulnerability scanner or automated remediation is included. |
+| Source inventory / `source-inventory` | [Working bounded scanner](../modules/reference-systems/INVENTORY.md) | Explicit private-root opt-in, aggregate private reports; no discovery or authorship inference. |
+| Retrieval / `retrieval` | [Working admitted lexical engine](../modules/reference-systems/RETRIEVAL.md) | Fictional corpus, role filtering and in-memory deletion; no real connector, embeddings or generation. |
+| Security review / `security-review` | [Working offline advisory matcher](../modules/reference-systems/ADVISORIES.md) | Invented products and ranges only; no target testing, live feed or remediation. |
 
 `REFERENCE` in the [planner fixture](../tools/workspace-plan/systems.example.json)
 means an inspectable guide or example exists. `REHEARSAL` means a disposable
-method exists. `DESIGN_ONLY` means an interface is described but no integrated
-runtime is supplied. None of these labels means deployed or accepted.
+method exists. `SYNTHETIC_RUNTIME` means working code with invented fixtures; `DESIGN_ONLY` is
+reserved for future unimplemented roles. None of these labels means a real
+installation is deployed or accepted. Every planner acceptance gate stays NOT_RUN.
 
-## Optional system contracts
+## Working systems and remaining integration boundaries
 
-**Source inventory:** start with an explicit set of reader-approved roots in a
-private workspace. Define inclusion rules, exclusions, symlink handling and a
-bounded scan before implementing a collector. Separate saved program/configuration
-lines from prose, generated/vendor files and unsaved work. Counts do not establish
-authorship, quality or ownership. A future public fixture should use invented
-project IDs, aggregate counts, observation time and an explicit partial-coverage
-flag; filenames and source paths remain private.
+The [runnable systems bundle](../modules/reference-systems/README.md) contains
+setup and rollback guides, original code and synthetic fixtures for all four
+formerly design-only roles. Run its combined demo without network activity, or
+start its explicit loopback identity server to exercise session-to-retrieval
+filtering. Its tests cover allowed and denied behavior over actual local HTTP.
 
-**Retrieval:** require admission and rights review before copying any source.
-Use invented documents to test parse, chunk, index, retrieve and delete behavior.
-Carry source IDs and limitations into answers. Treat document text as untrusted
-data rather than instructions. Demonstrate refused inputs and access separation
-before enabling any real connector. A successful parser check does not establish
-permission, answer quality or safe retrieval from a private corpus.
+**Source inventory** counts saved files under one explicit root, separates
+code/configuration/prose, excludes named generated/vendor directories and refuses
+links, special files, changed inputs and bound violations. Default use scans
+only the fictional tree. A separate reader-private scan writes aggregates into
+a new 0600 report; it prints no real counts, filenames or root paths. Policy
+coverage remains partial. Counts establish neither authorship nor rights.
 
-**Security review:** accept public advisory metadata into a disposable fixture,
-retain its primary source and observation time, and distinguish a product/version
-match from confirmed exposure. Keep host inventory and findings private. Updates
-need an independently reviewed change and recovery path; an advisory match never
-triggers active testing or a repair. Research evidence, target details and
-disclosure status belong outside this public blueprint.
+**Retrieval** checks admission and synthetic-rights declarations, creates bounded
+chunks, filters by a trusted role before ranking, returns source IDs and untrusted
+extracts, and supports owner-only in-memory deletion. The identity server supplies
+the role from its session. No real corpus, connector, model or embedding store is
+enabled; persistent deletion across process restarts is not implemented.
+
+**Identity** supplies local fictional password verification, expiring opaque
+sessions, owner/reader authorization, rotation, CSRF-protected logout and real
+retrieval integration. Its accounts are public fixtures. It must stay isolated
+on loopback HTTP; it is not a production IdP, native SSO or a TLS/MFA deployment.
+Keep native account recovery separate from any future provider integration.
+
+**Security review** retains invented source URLs and observation times while
+joining exact product IDs to bounded numeric version ranges. Candidates remain
+unconfirmed and no-match does not mean safe. There is no live feed, installed
+asset discovery, target testing or automated repair. Private adapters need their
+own provenance, version semantics, completeness and failure review.
 
 Use the [offline planner](../tools/workspace-plan/README.md) to inspect an ordered
-profile, then follow the [setup guide](26-workspace-setup.md). Implement new roles
+profile, then follow the [setup guide](26-workspace-setup.md). Integrate new roles
 one at a time using the [module contract](../modules/README.md), fictional fixtures,
 bounded checks and an explicit statement of what remains untested.

@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "synthetic_fixture": true,
+  "observed_at": "2026-01-01T00:00:00Z",
+  "assets": [
+    {"id": "fictional-amber", "product": "invented-lamp", "version": "1.2.0"},
+    {"id": "fictional-blue", "product": "invented-lamp", "version": "1.3.0"},
+    {"id": "fictional-green", "product": "invented-switch", "version": "1.2.0"}
+  ],
+  "advisories": [
+    {"id": "fictional-advisory-one", "product": "invented-lamp", "introduced": "1.1.0", "fixed": "1.3.0", "source": "https://advisories.example.invalid/fictional-advisory-one"}
+  ]
+}

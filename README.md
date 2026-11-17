@@ -17,8 +17,8 @@ keep their [upstream licenses](docs/third-party.md).
 ## Systems, setup, code and methods
 
 The [systems blueprint](docs/25-systems-blueprint.md) maps the host, AI, access,
-observability, catalog and recovery roles, plus clearly marked design contracts
-for identity integration, source inventory, retrieval and advisory review. Follow
+observability, catalog and recovery roles, plus [working synthetic systems](modules/reference-systems/README.md)
+for identity sessions, source inventory, retrieval and advisory review. Follow
 the [staged setup](docs/26-workspace-setup.md) and inspect an ordered plan with
 the [offline workspace planner](tools/workspace-plan/README.md). The
 [engineering methods](docs/27-engineering-methods.md) connect implementation,
