@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "synthetic_fixture": true,
+  "systems": [
+    {"id": "foundation", "requires": [], "coverage": "REFERENCE"},
+    {"id": "ai", "requires": ["foundation"], "coverage": "REFERENCE"},
+    {"id": "observability", "requires": ["foundation"], "coverage": "REFERENCE"},
+    {"id": "catalog", "requires": ["ai", "observability"], "coverage": "REFERENCE"},
+    {"id": "private-entry", "requires": ["catalog"], "coverage": "REFERENCE"},
+    {"id": "identity", "requires": ["private-entry"], "coverage": "DESIGN_ONLY"},
+    {"id": "recovery", "requires": ["ai"], "coverage": "REHEARSAL"},
+    {"id": "source-inventory", "requires": ["foundation"], "coverage": "DESIGN_ONLY"},
+    {"id": "retrieval", "requires": ["ai", "source-inventory"], "coverage": "DESIGN_ONLY"},
+    {"id": "security-review", "requires": ["source-inventory"], "coverage": "DESIGN_ONLY"}
+  ],
+  "profiles": {
+    "minimal": ["ai", "recovery"],
+    "workspace": ["catalog", "recovery"],
+    "extended": ["identity", "recovery", "retrieval", "security-review"]
+  }
+}

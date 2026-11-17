@@ -14,6 +14,17 @@ application can share the same theme, credentials or read-only API.
 Original materials are [MIT licensed](LICENSE). Applications and their brands
 keep their [upstream licenses](docs/third-party.md).
 
+## Systems, setup, code and methods
+
+The [systems blueprint](docs/25-systems-blueprint.md) maps the host, AI, access,
+observability, catalog and recovery roles, plus clearly marked design contracts
+for identity integration, source inventory, retrieval and advisory review. Follow
+the [staged setup](docs/26-workspace-setup.md) and inspect an ordered plan with
+the [offline workspace planner](tools/workspace-plan/README.md). The
+[engineering methods](docs/27-engineering-methods.md) connect implementation,
+failure tests, evidence, maintenance, rollback and public export review.
+All examples remain synthetic; no real deployment inventory is included.
+
 ## server-01: a modular OUTLANDS host
 
 The [server-01 host reference](hosts/server-01/README.md) is a synthetic

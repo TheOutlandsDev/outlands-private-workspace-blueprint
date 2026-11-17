@@ -58,6 +58,12 @@ jobs:
             "$receipt_parent/private-terms.json" \
             "$receipt_parent/fictional-receipt"
 
+      - name: Check fictional extended workspace plan
+        run: python3 -I -B tools/workspace-plan/workspace_plan.py extended
+
+      - name: Test fictional workspace planning boundaries
+        run: python3 -I -B -m unittest discover -s tools/workspace-plan -p 'test_*.py'
+
       - name: Check synthetic server-01 AI module
         run: python3 -I -B modules/ai/ollama-open-webui/check_example.py
 

@@ -1,5 +1,23 @@
 # Validation boundaries
 
+## Fictional systems and workspace planning
+
+The [systems map](docs/25-systems-blueprint.md), [setup guide](docs/26-workspace-setup.md),
+and [engineering methods](docs/27-engineering-methods.md) describe public roles and
+acceptance boundaries. The [planner](tools/workspace-plan/README.md) reads one
+fictional fixture, orders dependencies, and emits no successful acceptance state.
+Eight offline tests cover profile order and uniqueness, retained design-only
+coverage, cycles outside a chosen profile, malformed dependencies, forbidden
+operator/state fields, duplicate JSON keys, fixed error output, and a CLI run
+with network and subprocess calls blocked. No deployment, host discovery, real
+ingestion, access change, update or restore is performed. Source tests do not
+qualify the design-only systems for runtime use.
+
+```sh
+python3 -I -B tools/workspace-plan/workspace_plan.py extended
+python3 -I -B -m unittest discover -s tools/workspace-plan -p 'test_*.py'
+```
+
 ## Local pre-upload review aid
 
 The [pre-upload review aid](tools/preupload-check/README.md) checks an exact staged text export before a public branch is pushed. Eleven disposable tests cover clean fictional files, changed bytes, extra files, missing links, private values, binary and symlink refusal, address boundaries, private input permissions, and private no-overwrite receipts. The checked-in two-file fixture is invented; CI runs it with a disposable private receipt directory. The tool makes no network request and leaves publication authorization false and all manual review fields pending. It does not prove synthetic data, rights, safe Git history, or the current GitHub destination state.
