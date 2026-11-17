@@ -29,6 +29,11 @@ Try the [integrated synthetic workspace](modules/reference-systems/WORKSPACE.md)
 one loopback portal for role-based inventory, permitted search, advisory review,
 and reversible owner-only fixture controls. It uses invented data throughout.
 
+The [durable synthetic state guide](modules/reference-systems/STATE.md) adds
+explicit private persistence, restart acceptance and a disposable recovery
+rehearsal. Actual state and snapshots stay outside Git; no live backup or private
+configuration is included.
+
 ## server-01: a modular OUTLANDS host
 
 The [server-01 host reference](hosts/server-01/README.md) is a synthetic

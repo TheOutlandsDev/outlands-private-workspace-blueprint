@@ -1,5 +1,26 @@
 # Validation boundaries
 
+## Durable state and recovery acceptance
+
+The [state guide](modules/reference-systems/STATE.md) documents explicit private
+persistence and offline snapshot, restore, schema upgrade/rollback and reset.
+Nineteen storage tests cover permissions, no-overwrite initialization, exclusive
+locking, outside-Git/nesting rules, links/unknown entries, corruption, checksum
+validation, schema changes, preserved history, empty corpus, generation conflicts,
+write failure boundaries, fixed errors and the offline rehearsal. Four additional
+process/HTTP tests verify actual restart and abrupt exit, persistent deletions and
+scenario, old-cookie refusal, fresh-directory restore, 503 handling without memory
+mutation/path disclosure, and refusal of missing/corrupt state. All state is
+synthetic and private; no real root, provider or backup is used. These checks do
+not establish hardware power-loss durability, network-filesystem semantics, secure
+erasure, production identity or a real application restore. Sessions and credentials
+are never serialized. Runtime state and snapshots are not repository fixtures.
+
+```sh
+python3 -I -B modules/reference-systems/run.py state rehearse
+python3 -I -B -m unittest discover -s modules/reference-systems -p 'test_state_*.py'
+```
+
 ## Integrated workspace acceptance
 
 The [integrated workspace](modules/reference-systems/WORKSPACE.md) connects the four
@@ -32,9 +53,9 @@ The separate HTTP tests require a temporary loopback listener and close it after
 All default data is invented. The source scanner alone offers an explicit opt-in
 reader-private root and report. These checks do not qualify a real identity
 provider, production auth boundary, private source discovery, document corpus,
-advisory feed, remediation, TLS, or persistent retrieval deletion. No real host
+advisory feed, remediation, TLS, or real document persistence. No real host
 or app is changed. Planner coverage is SYNTHETIC_RUNTIME; reader-host gates remain
-NOT_RUN. The public source count limit was 215 at that increment and is now 219; a test still verifies refusal at one file over the configured bound.
+NOT_RUN. The public source count limit was 215 at that increment and is now 224; a test still verifies refusal at one file over the configured bound.
 
 ```sh
 python3 -I -B modules/reference-systems/run.py demo
@@ -183,9 +204,9 @@ source checks only; they do not clear privacy or publication rights. See the
 
 ## Public source screen capacity
 
-The source screen accepts up to 219 files while retaining its 8 MB total and
-2 MB per-file limits. An offline boundary test checks that 219 fictional files
-pass, the 220th fails, and synthetic private-path and secret-directory findings still appear.
+The source screen accepts up to 224 files while retaining its 8 MB total and
+2 MB per-file limits. An offline boundary test checks that 224 fictional files
+pass, the 225th fails, and synthetic private-path and secret-directory findings still appear.
 The screen reports categories, not matched content; it remains a review aid,
 not publication clearance. Run from the repository root:
 

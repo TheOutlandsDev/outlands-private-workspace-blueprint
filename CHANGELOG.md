@@ -1,5 +1,11 @@
 # Changelog
 
+## Durable synthetic state and recovery — 2026-11-17
+
+- Added explicit private generation-based persistence for the fictional corpus, active deletions and source scenario, with ephemeral sessions, exclusive process locking and checksum validation.
+- Added no-overwrite snapshot/restore, explicit schema upgrade/rollback and confirmed reset with preserved history, plus a disposable recovery rehearsal.
+- Added restart/abrupt-exit and failure-injection acceptance tests. Default runs remain memory-only; no real state, account, provider or backup destination is imported.
+
 ## Integrated synthetic workspace — 2026-11-16
 
 - Connected the four systems through one loopback portal with responsive owner/reader views, permission-filtered search, inventory summaries and owner-only advisory details.

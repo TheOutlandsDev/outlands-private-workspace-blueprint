@@ -70,6 +70,9 @@ jobs:
       - name: Check integrated synthetic workspace summary
         run: python3 -I -B modules/reference-systems/run.py workspace --demo
 
+      - name: Rehearse disposable synthetic state recovery
+        run: python3 -I -B modules/reference-systems/run.py state rehearse
+
       - name: Test synthetic systems and loopback identity integration
         run: python3 -I -B -m unittest discover -s modules/reference-systems -p 'test_*.py'
 

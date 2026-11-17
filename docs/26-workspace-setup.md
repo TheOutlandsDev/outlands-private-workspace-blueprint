@@ -87,8 +87,14 @@ python3 -I -B modules/reference-systems/run.py workspace --serve
 
 Follow the printed loopback URL and the [workspace walkthrough](../modules/reference-systems/WORKSPACE.md)
 for owner/reader login, permitted search, source-state simulations, deletion and
-direct access denial. Stop with Ctrl+C; restarting restores the original fixtures
-and clears sessions and changes. This is separate from the private Compose setup.
+direct access denial. Stop with Ctrl+C; restarting default memory-only mode restores the original
+fixtures and clears sessions and changes. This is separate from the private Compose setup.
+
+For explicit [durable synthetic state](../modules/reference-systems/STATE.md),
+initialize a new private directory outside Git and add the state flag to the
+launcher. Committed corpus deletions and fixture state then persist; sessions do
+not. The state guide supplies offline snapshot/restore, versioned upgrade/rollback,
+confirmed reset and a disposable recovery rehearsal. Default mode stays memory-only.
 
 ## 5. Update and roll back deliberately
 

@@ -2,12 +2,14 @@
 from html import escape
 
 from advisories import review
+from runtime_io import identifier
+from state_store import StateError
 
 SCENARIOS = {'fresh', 'stale', 'unavailable'}
 
 
 class Workspace:
-    def __init__(self, index, inventory, advisories):
+    def __init__(self, index, inventory, advisories, store=None):
         if inventory.get('synthetic_fixture') is not True:
             raise ValueError('synthetic inventory required')
         # The fixed advisory input is validated before the workspace is started.
@@ -15,14 +17,41 @@ class Workspace:
         self.index = index
         self.inventory = inventory
         self.advisories = advisories
-        self.scenario = 'fresh'
+        self.store = store
+        self.scenario = store.payload['scenario'] if store else 'fresh'
+
+    def ensure_available(self):
+        if self.store:
+            self.store.ensure_available()
+
+    def close(self):
+        if self.store:
+            self.store.close()
 
     def select_scenario(self, scenario, role):
         if role != 'owner' or not isinstance(scenario, str) or scenario not in SCENARIOS:
             raise ValueError('scenario denied')
+        self.ensure_available()
+        if self.store and scenario != self.scenario:
+            payload = self.store.payload
+            payload['scenario'] = scenario
+            self.store.commit(payload)
         self.scenario = scenario
 
+    def delete_document(self, source, role):
+        if role != 'owner' or not identifier(source):
+            raise ValueError('document deletion denied')
+        self.ensure_available()
+        if source not in self.index.documents:
+            return False
+        if self.store:
+            payload = self.store.payload
+            payload['corpus']['documents'] = [d for d in payload['corpus']['documents'] if d['id'] != source]
+            self.store.commit(payload)
+        return self.index.delete(source, role)
+
     def inventory_view(self):
+        self.ensure_available()
         if self.scenario == 'unavailable':
             return {'state': 'UNAVAILABLE', 'synthetic_fixture': True}
         return {'state': 'STALE' if self.scenario == 'stale' else 'FRESH',
@@ -31,6 +60,7 @@ class Workspace:
     def advisory_view(self, role):
         if role != 'owner':
             raise ValueError('advisory access denied')
+        self.ensure_available()
         if self.scenario == 'unavailable':
             return {'state': 'UNAVAILABLE', 'synthetic_fixture': True}
         report = review(self.advisories, '2026-01-03T00:00:00Z' if self.scenario == 'stale'
@@ -40,16 +70,19 @@ class Workspace:
     def documents(self, role):
         if role != 'owner':
             raise ValueError('document administration denied')
+        self.ensure_available()
         return sorted(self.index.documents)
 
     def summary(self, role):
         if role not in {'owner', 'reader'}:
             raise ValueError('role denied')
+        self.ensure_available()
         return {'synthetic_fixture': True, 'role': role,
                 'inventory': self.inventory_view(),
                 'advisories': self.advisory_view(role) if role == 'owner' else {'state': 'DENIED'},
                 'retrieval': {'state': 'READY', 'visible_documents':
                               sum(role in audience for audience in self.index.documents.values())},
+                'storage': 'PRIVATE_PERSISTENT' if self.store else 'MEMORY_ONLY',
                 'real_host_qualified': False}
 
 
@@ -101,6 +134,12 @@ def denied_page(record=None, status='DENIED'):
                 '<p><a href="/">Return to the workspace</a></p></section>', record)
 
 
+def state_unavailable_page(record):
+    return page('State unavailable', '<section class="intro">' + badge('UNAVAILABLE') +
+                '<h1>State could not be confirmed.</h1><p class="lede">Stop this demo and inspect its state privately. '
+                'No successful change is reported.</p></section>', record)
+
+
 def inventory_card(view):
     body = '<p>Fixture source is unavailable. No counts are shown.</p>'
     if 'data' in view:
@@ -135,7 +174,7 @@ def search_form(query=''):
 
 def home_page(workspace, record, notice=''):
     summary = workspace.summary(record['role'])
-    message = {'deleted': 'Document removed from this in-memory workspace.',
+    message = {'deleted': 'Document removed from the active workspace.',
                'missing': 'That document is already absent.',
                'scenario': 'Synthetic source state changed.'}.get(notice, '')
     content = ('<section class="intro"><p class="eyebrow">INTEGRATED SYNTHETIC WORKSPACE</p>'
@@ -161,10 +200,13 @@ def home_page(workspace, record, notice=''):
             content += ('<form method="post" action="/admin/delete">' + csrf +
                         '<label for="source_id">Remove an invented document</label><select id="source_id" name="source_id">' +
                         ''.join(f'<option>{esc(source)}</option>' for source in documents) + '</select>'
-                        '<button class="danger">Delete from memory</button></form>')
+                        '<button class="danger">Delete from workspace</button></form>')
         else:
             content += '<p>No documents remain in this process.</p>'
-        content += '</div><p class="hint">Changes affect this shared demo process. Restart restores the fixtures; deletion is not persistent.</p></section>'
+        detail = ('Changes persist in the selected private state directory. Earlier generations and backups retain prior data; '
+                  'reset and recovery are explicit offline commands.' if workspace.store else
+                  'Memory-only mode: restarting restores the fixtures. Use an initialized private state directory for persistence.')
+        content += '</div><p class="hint">' + detail + '</p></section>'
     return page('Workspace', content, record)
 
 
