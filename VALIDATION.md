@@ -1,5 +1,24 @@
 # Validation boundaries
 
+## Synthetic native authentication acceptance
+
+The optional [OIDC fixture](modules/native-auth/README.md) adds 21 tests with
+invalid-token subcases and an actual verified loopback HTTPS rehearsal. These
+cover code/PKCE binding, state/nonce, issuer/audience/time/signature/key rejection,
+invented subject allowlisting, ignored token privilege claims, replay and expiry,
+cookie flags, local session rotation/logout, origin/CSRF/host denial, endpoint
+permissions, bounded failure responses, serialized durable changes and state
+failure without a success acknowledgement. Temporary certificate trust is scoped
+to test clients; a default-trust client must reject that certificate. No browser
+or OS trust store is changed. Optional package installation is separately pinned
+by versions and wheel hashes in an isolated environment.
+
+No real provider, identity, route, private configuration or target deployment is
+used. These tests do not establish real staging qualification, production account
+lifecycle, deployed TLS, browser/device acceptance or resource suitability. Existing
+standard-library checks do not require the optional packages; the required source
+CI job separately installs and tests the native fixture.
+
 ## Durable state and recovery acceptance
 
 The [state guide](modules/reference-systems/STATE.md) documents explicit private

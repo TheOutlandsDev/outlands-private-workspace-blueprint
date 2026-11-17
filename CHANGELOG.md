@@ -1,5 +1,11 @@
 # Changelog
 
+## Synthetic native authentication — 2026-11-17
+
+- Added a fixture-only OIDC Authorization Code/PKCE adapter using maintained OAuth/JWT libraries, exact invented issuer/subject role mapping, ephemeral secure sessions and no demo-password fallback.
+- Added an invented one-use-code issuer, invalid-token and endpoint tests, and a finite verified loopback HTTPS rehearsal with temporary client-local trust and private durable synthetic state.
+- Added an isolated hash-pinned setup guide, dependency notices and required CI checks, including pull requests targeting feature branches. No real provider, TLS trust, identity, route or staging configuration is changed.
+
 ## Durable synthetic state and recovery — 2026-11-17
 
 - Added explicit private generation-based persistence for the fictional corpus, active deletions and source scenario, with ephemeral sessions, exclusive process locking and checksum validation.
