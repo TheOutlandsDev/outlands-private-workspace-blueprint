@@ -24,6 +24,11 @@ document deletions and scenarios then survive restart; sessions never persist.
 Snapshot/restore, versioned upgrade/rollback and reset are offline commands with
 no-overwrite outputs and preserved history. Default commands remain memory-only.
 
+The optional [synthetic native authentication adapter](../native-auth/README.md)
+rehearses OIDC code/PKCE login and verified loopback HTTPS with a fake issuer.
+It has a separate isolated dependency setup and fixed invented identity mapping.
+Real provider registration, deployed TLS and target staging remain unqualified.
+
 ## Setup and first run
 
 Use Linux, Python 3.10+ and a downloaded checkout. No package installation,

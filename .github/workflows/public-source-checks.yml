@@ -4,7 +4,6 @@ on:
   push:
     branches: [main]
   pull_request:
-    branches: [main]
 
 permissions:
   contents: read
@@ -126,3 +125,16 @@ jobs:
 
       - name: Check app tour
         run: python3 -I -B scripts/check_app_tour.py
+
+      - name: Install isolated native authentication fixture dependencies
+        run: |
+          python3 -m venv "$RUNNER_TEMP/native-auth"
+          "$RUNNER_TEMP/native-auth/bin/python" -m pip install \
+            --index-url https://pypi.org/simple --require-hashes --only-binary=:all: \
+            -r modules/native-auth/requirements.lock
+
+      - name: Test synthetic OIDC protocol and permission boundaries
+        run: '"$RUNNER_TEMP/native-auth/bin/python" -I -B -m unittest discover -s modules/native-auth -p "test_*.py"'
+
+      - name: Rehearse verified loopback HTTPS authentication
+        run: '"$RUNNER_TEMP/native-auth/bin/python" -I -B modules/native-auth/run_native.py rehearse'
