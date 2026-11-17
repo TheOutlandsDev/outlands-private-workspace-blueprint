@@ -4,6 +4,10 @@ This is a working local teaching gate, not an Authentik deployment or an OIDC/SS
 implementation. It serves fixed routes and invented data. It forwards no traffic,
 accepts no identity headers from a proxy, and connects to no native app or account.
 
+For the combined portal, use the [integrated workspace](WORKSPACE.md). It keeps
+this session boundary and adds role-filtered views, owner-only mutations and
+server-rendered responsive pages. The standalone identity command remains available.
+
 ## Start and use the demo
 
 From the repository root:

@@ -79,6 +79,17 @@ Real provider login, native SSO, document ingestion and advisory feeds still nee
 separate private adapters and deployment review. Only the inventory tool offers
 an explicit reader-owned private-root scan with a private no-overwrite report.
 
+### Open the integrated portal
+
+```sh
+python3 -I -B modules/reference-systems/run.py workspace --serve
+```
+
+Follow the printed loopback URL and the [workspace walkthrough](../modules/reference-systems/WORKSPACE.md)
+for owner/reader login, permitted search, source-state simulations, deletion and
+direct access denial. Stop with Ctrl+C; restarting restores the original fixtures
+and clears sessions and changes. This is separate from the private Compose setup.
+
 ## 5. Update and roll back deliberately
 
 Record the working image digests, configuration revision, state format and private

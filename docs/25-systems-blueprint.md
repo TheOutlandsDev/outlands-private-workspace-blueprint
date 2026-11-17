@@ -22,6 +22,15 @@ flowchart TD
 Arrows describe the example's learning order. They do not create network routes,
 shared credentials, an ingestion pipeline, or an installation dependency.
 
+## One integrated local workspace
+
+The [integrated portal](../modules/reference-systems/WORKSPACE.md) connects the
+four reference systems behind one session boundary. It supplies inventory
+summaries, role-filtered document search, owner-only advisory details, and
+reversible owner controls for synthetic source states and in-memory deletion.
+The same permissions apply to direct endpoint requests. Its loopback launcher
+accepts no real source roots, accounts, document collections or feed URLs.
+
 ## Systems and public coverage
 
 | Role / planner ID | What the repository supplies | Acceptance boundary |
