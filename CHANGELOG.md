@@ -1,5 +1,12 @@
 # Changelog
 
+## Integrated synthetic workspace — 2026-11-16
+
+- Connected the four systems through one loopback portal with responsive owner/reader views, permission-filtered search, inventory summaries and owner-only advisory details.
+- Added reversible owner-only source-state and in-memory deletion controls with endpoint-level authorization, session CSRF and Origin checks. Added direct endpoint acceptance tests and a setup/rollback walkthrough.
+- Corrected browser form sign-in by using a same-origin referrer policy while retaining rejection of missing, null and foreign mutation origins.
+- Extended the bounded source file cap from 215 to exactly 219 for four reviewed additions; existing byte and privacy checks remain active.
+
 ## Working synthetic reference systems — 2026-11-16
 
 - Implemented the four previously design-only roles: a loopback identity gate with retrieval integration, bounded source inventory, admitted lexical retrieval, and offline advisory range review.

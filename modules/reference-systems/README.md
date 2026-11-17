@@ -6,6 +6,18 @@ use the Python standard library, invented accounts/documents/products, and
 explicit entry points. The identity gate passes its server-side session role to
 the retrieval engine; request headers cannot select that role.
 
+## Open the integrated portal
+
+```sh
+python3 -I -B modules/reference-systems/run.py workspace --serve
+```
+
+Open the printed loopback URL, sign in with a fictional role, and follow the
+[workspace walkthrough](WORKSPACE.md). Inventory, retrieval and advisory views
+share the session boundary; owner controls change synthetic states and delete
+documents from memory. Reader restrictions are enforced at each endpoint.
+Stop with Ctrl+C. This command never accepts real roots, data sources or accounts.
+
 ## Setup and first run
 
 Use Linux, Python 3.10+ and a downloaded checkout. No package installation,

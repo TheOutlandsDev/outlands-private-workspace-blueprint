@@ -25,6 +25,10 @@ the [offline workspace planner](tools/workspace-plan/README.md). The
 failure tests, evidence, maintenance, rollback and public export review.
 All examples remain synthetic; no real deployment inventory is included.
 
+Try the [integrated synthetic workspace](modules/reference-systems/WORKSPACE.md):
+one loopback portal for role-based inventory, permitted search, advisory review,
+and reversible owner-only fixture controls. It uses invented data throughout.
+
 ## server-01: a modular OUTLANDS host
 
 The [server-01 host reference](hosts/server-01/README.md) is a synthetic

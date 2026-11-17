@@ -1,5 +1,24 @@
 # Validation boundaries
 
+## Integrated workspace acceptance
+
+The [integrated workspace](modules/reference-systems/WORKSPACE.md) connects the four
+synthetic runtimes behind one role-aware loopback portal. Twelve new tests cover
+anonymous/forged sessions, reader projections and direct mutation attempts, owner
+and reader retrieval, stale/unavailable/recovered sources, deletion, CSRF and
+foreign/null origins, session expiry/logout, input escaping, fixed asset scope,
+malformed mutations and an offline summary with network/subprocess calls blocked.
+All document, source, account and advisory fixtures remain invented. No real
+project root, account, collection, route, feed or system is connected. Browser
+checks separately exercised actual form login/logout, owner source-state changes,
+search and deletion, reader view/denial and a narrow responsive viewport. Those
+checks do not establish native app, physical-device or production acceptance.
+
+```sh
+python3 -I -B modules/reference-systems/run.py workspace --demo
+python3 -I -B -m unittest discover -s modules/reference-systems -p 'test_workspace.py'
+```
+
 ## Working synthetic systems
 
 The [reference systems](modules/reference-systems/README.md) provide working identity,
@@ -15,8 +34,7 @@ reader-private root and report. These checks do not qualify a real identity
 provider, production auth boundary, private source discovery, document corpus,
 advisory feed, remediation, TLS, or persistent retrieval deletion. No real host
 or app is changed. Planner coverage is SYNTHETIC_RUNTIME; reader-host gates remain
-NOT_RUN. The public source count limit is exactly 215 for the expanded reviewed
-tree; a test still verifies refusal at one file over the configured bound.
+NOT_RUN. The public source count limit was 215 at that increment and is now 219; a test still verifies refusal at one file over the configured bound.
 
 ```sh
 python3 -I -B modules/reference-systems/run.py demo
@@ -165,9 +183,9 @@ source checks only; they do not clear privacy or publication rights. See the
 
 ## Public source screen capacity
 
-The source screen accepts up to 215 files while retaining its 8 MB total and
-2 MB per-file limits. An offline boundary test checks that 215 fictional files
-pass, the 216th fails, and synthetic private-path and secret-directory findings still appear.
+The source screen accepts up to 219 files while retaining its 8 MB total and
+2 MB per-file limits. An offline boundary test checks that 219 fictional files
+pass, the 220th fails, and synthetic private-path and secret-directory findings still appear.
 The screen reports categories, not matched content; it remains a review aid,
 not publication clearance. Run from the repository root:
 

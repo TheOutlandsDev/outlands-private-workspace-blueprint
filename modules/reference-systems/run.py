@@ -12,10 +12,16 @@ from identity import DEMO_PASSWORD, Sessions, make_server
 from inventory import private_scan, scan
 from retrieval import Index
 from runtime_io import load_json
+from workspace import Workspace
 
 
 def index_fixture():
     return Index(load_json(HERE / 'fixtures/corpus.example.json'))
+
+
+def workspace_fixture():
+    return Workspace(index_fixture(), scan((HERE / 'fixtures/source-tree').resolve(), synthetic=True),
+                     load_json(HERE / 'fixtures/advisories.example.json'))
 
 
 def demo():
@@ -54,6 +60,19 @@ def main(argv=None):
             result = review(load_json(HERE / 'fixtures/advisories.example.json'), '2026-01-01T12:00:00Z')
         elif len(args) == 4 and args[0:3] == ['advisories', '--demo', '--as-of']:
             result = review(load_json(HERE / 'fixtures/advisories.example.json'), args[3])
+        elif args == ['workspace', '--demo']:
+            result = workspace_fixture().summary('reader')
+        elif args == ['workspace', '--serve'] or (len(args) == 4 and args[0:3] == ['workspace', '--serve', '--port']):
+            workspace = workspace_fixture()
+            server = make_server(workspace.index, int(args[3]) if len(args) == 4 else 0, workspace=workspace)
+            try:
+                print(f'Synthetic workspace: http://127.0.0.1:{server.server_port}/', flush=True)
+                server.serve_forever()
+            except KeyboardInterrupt:
+                pass
+            finally:
+                server.server_close()
+            return 0
         elif args == ['identity', '--serve'] or (len(args) == 4 and args[0:3] == ['identity', '--serve', '--port']):
             server = make_server(index_fixture(), int(args[3]) if len(args) == 4 else 0)
             try:
