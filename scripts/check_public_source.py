@@ -8,12 +8,12 @@ import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-MAX_FILES = 231
+MAX_FILES = 232
 MAX_TOTAL_BYTES = 8_000_000
 ALLOWED_EMAIL_DOMAINS = {'example.com', 'example.invalid', 'example.org'}
-# Visually reviewed captures of the original fictional fixture only.
+# Visually reviewed fictional fixture captures and original blueprint artwork.
 # Any changed/new image requires a fresh review; arbitrary binaries stay blocked.
-REVIEWED_DEMO_IMAGES = {'assets/ai-workbench-demo.jpg': '141f70171f442482b1b7c00a9e1f8e7179c71786ba099b85f9d6ccd656de43d1', 'assets/alertmanager-demo.jpg': 'cd815e308f5a03b0eaec8cf59738b99fa52b209b07f9ad6d941b2787fb5afb75', 'assets/cadvisor-demo.jpg': 'e5daedf21f0221bc74dd7e6e1b2c0bf3c9c99c7af826c25f69f03ec3df854cb1', 'assets/dockhand-demo-desktop.jpg': 'b9f9ac0cb9d163d5ab04b37e5856a362a6778fda78457a2a04646eb7015a17f2', 'assets/dockhand-demo-portrait.jpg': 'cd6ba476237dc009b45997f7e701e6a0cdd48a9b27d8bf4b0dfaec3633a52535', 'assets/fleet-demo.jpg': '286d7bfb79530385716575a7c3a65043ec0386ab34d8a4b5aaea87b4d31dcbb6', 'assets/game-connections-demo.jpg': 'be0c329396657e71ed07cc0b5514055ff1bea650f017167faa86d78633362abc', 'assets/git-manager-demo.jpg': '8ca3fe58539e73a2f3af52aec6f02df80d5b75457deec6c69d15c46a9d3f896f', 'assets/grafana-demo.jpg': 'c17fd6f792810c224daf794f28c4f480883668911f33e42500bdec87422f6e50', 'assets/homepage-demo.jpg': '11aac8641d24b36448560eba6447ad3925618a197abf7db63acfc26c9a60ee15', 'assets/identity-demo.jpg': '77c89434a40723cb1821854d44853137dfc79418b869fb026f4fa70f49fd3a83', 'assets/learning-demo.jpg': 'e6d54c22b12e0b8b1fb84e0693f50e0dcfab0152e39b60543798705444cc6b91', 'assets/local-tools-demo.jpg': 'f42876c1698129aad4d8c7ff21465ec777234b9304f052921e4b97f2a7633907', 'assets/portals-demo.jpg': '630be7f0b473d73e19123700a8add164a712ddd7c5f16ce4552a2ba57c6173ee', 'assets/prometheus-demo.jpg': '4b3149c1f9842af50ce3fc26fb10211ac21db9fcd2e3ad36bc8e03b54cdb9454'}
+REVIEWED_PUBLIC_IMAGES = {'assets/outlands-beyond-the-wall-banner.jpg': 'd9ab08f1ac34e5fa1063368554c0295dfc5cf9b659e1fdc9bfc051d7591155ed', 'assets/ai-workbench-demo.jpg': '141f70171f442482b1b7c00a9e1f8e7179c71786ba099b85f9d6ccd656de43d1', 'assets/alertmanager-demo.jpg': 'cd815e308f5a03b0eaec8cf59738b99fa52b209b07f9ad6d941b2787fb5afb75', 'assets/cadvisor-demo.jpg': 'e5daedf21f0221bc74dd7e6e1b2c0bf3c9c99c7af826c25f69f03ec3df854cb1', 'assets/dockhand-demo-desktop.jpg': 'b9f9ac0cb9d163d5ab04b37e5856a362a6778fda78457a2a04646eb7015a17f2', 'assets/dockhand-demo-portrait.jpg': 'cd6ba476237dc009b45997f7e701e6a0cdd48a9b27d8bf4b0dfaec3633a52535', 'assets/fleet-demo.jpg': '286d7bfb79530385716575a7c3a65043ec0386ab34d8a4b5aaea87b4d31dcbb6', 'assets/game-connections-demo.jpg': 'be0c329396657e71ed07cc0b5514055ff1bea650f017167faa86d78633362abc', 'assets/git-manager-demo.jpg': '8ca3fe58539e73a2f3af52aec6f02df80d5b75457deec6c69d15c46a9d3f896f', 'assets/grafana-demo.jpg': 'c17fd6f792810c224daf794f28c4f480883668911f33e42500bdec87422f6e50', 'assets/homepage-demo.jpg': '11aac8641d24b36448560eba6447ad3925618a197abf7db63acfc26c9a60ee15', 'assets/identity-demo.jpg': '77c89434a40723cb1821854d44853137dfc79418b869fb026f4fa70f49fd3a83', 'assets/learning-demo.jpg': 'e6d54c22b12e0b8b1fb84e0693f50e0dcfab0152e39b60543798705444cc6b91', 'assets/local-tools-demo.jpg': 'f42876c1698129aad4d8c7ff21465ec777234b9304f052921e4b97f2a7633907', 'assets/portals-demo.jpg': '630be7f0b473d73e19123700a8add164a712ddd7c5f16ce4552a2ba57c6173ee', 'assets/prometheus-demo.jpg': '4b3149c1f9842af50ce3fc26fb10211ac21db9fcd2e3ad36bc8e03b54cdb9454'}
 
 
 def main():
@@ -39,11 +39,11 @@ def main():
                 or '.secrets' in relative.parts
                 or path.suffix.lower() in ('.key', '.pem', '.db', '.sqlite', '.sqlite3')):
             findings.append({'file': str(relative), 'check': 'private_file_type'})
-        if relative.as_posix() in REVIEWED_DEMO_IMAGES:
+        if relative.as_posix() in REVIEWED_PUBLIC_IMAGES:
             data = path.read_bytes()
             if (not data.startswith(b'\xff\xd8\xff') or not data.endswith(b'\xff\xd9')
-                    or hashlib.sha256(data).hexdigest() != REVIEWED_DEMO_IMAGES[relative.as_posix()]):
-                findings.append({'file': str(relative), 'check': 'reviewed_demo_image_changed'})
+                    or hashlib.sha256(data).hexdigest() != REVIEWED_PUBLIC_IMAGES[relative.as_posix()]):
+                findings.append({'file': str(relative), 'check': 'reviewed_public_image_changed'})
             continue
         try:
             text = path.read_text(encoding='utf-8')
