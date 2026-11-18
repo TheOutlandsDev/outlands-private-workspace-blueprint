@@ -1,4 +1,4 @@
-<p align="center"><img src="assets/outlands-banner.svg" alt="OUTLANDS — Private Workspace Blueprint" width="100%"></p>
+<p align="center"><img src="assets/outlands-beyond-the-wall-banner.jpg" alt="OUTLANDS Private Workspace Blueprint. A netrunner stands at the foot of a red digital wall." width="100%"></p>
 
 # OUTLANDS · Private Workspace Blueprint
 
